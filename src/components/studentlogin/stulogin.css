@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.studentlog{
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    background-image: url(/public/assets/SavedPictures/lancaster5.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: cover;
+}
+.stuWrapper{
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 95vh;
+    border-radius: 6px;
+    margin: 10px auto;
+    background-color: rgba(24, 15, 15, 0.5);
+}
+.stuloginfill{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    margin: 1px auto;
+    padding: 10px 0px;
+    justify-content: center;
+    gap: 0.8em;
+}
+.stuloginfill input{
+    width: 28%;
+    min-height: 20px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: #ffffff;
+    padding: 5px;
+}
+.stuidinput::-webkit-inner-spin-button,.stuidinput::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+.stuloginfill input:focus{
+    outline: none;
+    background-color: #ffffff;
+    border-radius: 5px; 
+    color: black;
+}
+.stuloginfill label{
+    color: #ffffff;
+    font-size: 20px;
+}
+#formsubmit{
+    background-color: #b5121b;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    font-style: italic;
+    margin-top: 20px;
+    border: 0px solid;
+    padding: 5px 2px;
+}

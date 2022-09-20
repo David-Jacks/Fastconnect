@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.bookshow{
+    flex: 6;
+    width: 100vw;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    padding-bottom: 25px;
+}
+::-webkit-scrollbar{
+    width: 2px;
+    display: block;
+}
