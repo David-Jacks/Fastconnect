@@ -1,0 +1,33 @@
+.conversationdisplay{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 2px;
+}
+.confirst{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+.confirst:hover{
+    background-color: #444;
+    color: #ffffff;
+}
+.confirst img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.consecond{
+    display: flex;
+    justify-content: center;
+}
+.consecond span{
+    background-color: brown;
+    padding: 2px; border-radius: 5px;
+    color: #ffffff;
+}

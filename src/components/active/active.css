@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+.activedisplay{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 7px;
+}
+.active img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.active{
+    position: relative;
+}
+.activesign{
+    width: 8px;
+    height: 8px;
+    background-color: #b5121b;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px; right: 0px;
+}

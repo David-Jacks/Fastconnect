@@ -64,6 +64,15 @@
     justify-content: space-around;
     background-color: #b5121b;
 }
+.reactioncenter button{
+    border: 0px solid;
+    border-radius: 50%;
+    background-color: rgb(64, 64, 64, 0.8);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+}
 .icon{
     width: 22px;
     height: 22px;

@@ -1,10 +1,11 @@
 import React from 'react';
-import Home from './pages/home/home.jsx';
 import "./App.css";
+import Home from './pages/home/home.jsx';
 import Login from './pages/login/login.jsx';
 import Stulogin from './components/studentlogin/stulogin.jsx';
 import Stalogin from './components/stafflogin/stalogin.jsx';
 import Basket from './pages/basket/basket.jsx';
+import Chat from './pages/chat/chat.jsx';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path='/basket' element= {<Basket />} />
+      </Routes>
+      <Routes>
+        <Route path='/chat' element= {<Chat />} />
       </Routes>
     </Router >  
     </div>

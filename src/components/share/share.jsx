@@ -12,7 +12,9 @@ const Share = () =>{
                     <input type="text" placeholder="speak to the whole community" />
                     </div>
                     <div className="shareBottom">
-                        <a href="{}">Post</a>
+                        <a href="{}">Add_Video</a>
+                        <a href="{}">Add_Event</a>
+                        <a href="{}">Add_Image</a>
                     </div>
                 </div>
             </div>
