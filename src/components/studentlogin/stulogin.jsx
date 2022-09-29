@@ -1,6 +1,6 @@
 import React from "react";
 import "./stulogin.css";
-
+import {Link} from "react-router-dom";
 const Stulogin = () =>{
     return(
         <>
@@ -48,7 +48,7 @@ const Stulogin = () =>{
                             <option value="2nd year">2nd Year</option>
                             <option value="3rd year">3rd Year</option>
                         </select>
-                        <button type="submit" id="formsubmit">Join_community</button>
+                        <Link id="stuformsubmit" to={"/home"}>Join_community</Link>
                     </form>
 
             </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import "./stalogin.css";
+import { Link } from "react-router-dom";
 
 const Stalogin = () =>{
     return(
@@ -41,7 +42,7 @@ const Stalogin = () =>{
                             <option value="Listening to music">Listening to music</option>
                             <option value="Dancing">Dancing</option>
                         </select>
-                        <button type="submit" id="staformsubmit">Join_community</button>
+                        <Link id="staformsubmit" to={"/home"}>Join_community</Link>
                     </form>
 
             </div>

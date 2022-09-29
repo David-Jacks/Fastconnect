@@ -62,13 +62,16 @@
     width: 35%; 
     justify-content: space-around;
 }
-.topbarLinks     a{
-    margin-right: 5px;
+.topbarLinks a{
+    margin-right: 7px;
     font-size: 14px;
     cursor: pointer;
     color: #ffffff;
     text-decoration: overline;
     font-weight: bold;
+}
+.topbarLinks a:hover{
+    color: #9f7878;
 }
 .topbarIcons{
     display: flex;
@@ -77,21 +80,25 @@
     gap: 6px;
 }
 .topbarIconItem{
-    cursor: pointer;
     position: relative;
-    top: 16px;
-    display: flex; 
+    top: 2.6vh;
+    display: flex;
+    width: 2.5vw; 
     align-items: center;
     justify-content: center;
 }
 .iconedite{
     color: #ffffff;
-    width: 23px;
-    height: 25px;
+    width: 2vw;
+    height: 4.5vh;
+    cursor: pointer;
+}
+.iconedite:hover{
+    color: #9f7878;
 }
 .topbarIconBadge{
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     background-color: red;
     border-radius: 50%;
     color: white;

@@ -13,9 +13,12 @@ const Chatmain = () => {
             <div className="chatmaincontent">
                 <div className="chatcontenthead">
                     <img src=".//assets/rep.jpeg" alt="" />
-                    <span>ChatName</span>
+                    <span>ChatNameis verylong</span>
                 </div>
                 <div className="chatbox">
+                    <div className="chatdate">
+                        <span>21/09/2022</span>
+                    </div>
                         <Messaging />
                         <Messaging />
                         <Messaging />
@@ -28,8 +31,8 @@ const Chatmain = () => {
                         <Messaging />
                 </div>
                 <div className="chatsend">
-                    <textarea name="chatinput" id="messagewrite" cols="30" rows="10" placeholder="write message"></textarea>
-                    <button className="sender">fast <GrSend /></button>
+                    <textarea name="chatinput" id="messagewrite" cols="30" rows="10" placeholder="Write your message"></textarea>
+                    <button className="sender">Fast <GrSend className="sendicon"/></button>
                 </div>
             </div>
             <div className="somefield">

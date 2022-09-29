@@ -11,8 +11,8 @@ const Login = () =>{
            <div className="dropdown">
            <button className="drop">Sign up</button>
            <div className="dropcontent">
-            <Link  to={'/stulogin'}> Student</Link>
-            <Link to={'/stalogin'}> Staff</Link>
+            <Link  to={'/stulogin'} className="studrop"> Student</Link>
+            <Link to={'/stalogin'} className="stadrop"> Staff</Link>
            </div>
            </div>
         </div>

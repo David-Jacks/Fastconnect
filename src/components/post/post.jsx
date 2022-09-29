@@ -13,7 +13,7 @@ const Post = ({post}) =>{
     
     const [likes, setLikes] = useState(0);
     const [secret, setSecret] = useState(0);
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     const theLikes = () =>{
             setLikes(likes + 1)

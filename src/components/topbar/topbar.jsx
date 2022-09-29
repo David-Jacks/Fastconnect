@@ -31,11 +31,11 @@ import { Link } from 'react-router-dom';
                     </div>
                     <div className="topbarIconItem">
                        <Link to= {'/basket'}> <BsFillBasket3Fill className="iconedite"/> </Link>
-                        <span className="topbarIconBadge">2</span>
+                        <span className="topbarIconBadge">5</span>
                     </div>
                     <div className="topbarIconItem">
                     <Link to={'/fastaware'}><FaNotEqual  className="iconedite"/></Link>
-                        <span className="topbarIconBadge">1</span>
+                        <span className="topbarIconBadge">6</span>
                     </div>
                 </div>
                 <img src="/assets/02B00C71-F3B5-46C8-9F15-A768CF2AE1B7.jpeg" alt="" className="topbarImage" />
