@@ -4,7 +4,16 @@ import {FaNotEqual, FaSearch} from "react-icons/fa";
 import {IoMdChatbubbles} from "react-icons/io";
 import {BsFillBasket3Fill} from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import { useState } from "react";
+import Notify from "../notification/notify";
+
+
  const Topbar = () => {
+    const [open, setOpen] = useState(false);
+
+   const openFunction = () => {
+        setOpen(!open);
+    }
     return(
         <>
         <div className="topbarContainer">
@@ -33,9 +42,20 @@ import { Link } from 'react-router-dom';
                        <Link to= {'/basket'}> <BsFillBasket3Fill className="iconedite"/> </Link>
                         <span className="topbarIconBadge">5</span>
                     </div>
-                    <div className="topbarIconItem">
-                    <Link to={'/fastaware'}><FaNotEqual  className="iconedite"/></Link>
+                    <div id="seperate-icon" className="topbarIconItem" onClick={openFunction}>
+                    <Link><FaNotEqual className="iconedite"/></Link>
                         <span className="topbarIconBadge">6</span>
+                        {open ?<div className="notification-panel">
+                            <button>
+                                X
+                            </button>
+                            <div className="n-head">
+                                   you are notified bellow
+                                    <Notify />
+                            </div>
+                        </div>: ""
+                            }
+                      
                     </div>
                 </div>
                 <img src="/assets/02B00C71-F3B5-46C8-9F15-A768CF2AE1B7.jpeg" alt="" className="topbarImage" />

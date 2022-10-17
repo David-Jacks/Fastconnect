@@ -117,3 +117,21 @@
     object-fit: cover;
     cursor: pointer;
 }
+#seperate-icon{
+    position: relative;
+
+}
+.notification-panel{
+    position: fixed;
+    top: 3rem;
+    left: 58rem;
+    right: 0;
+    bottom: 5rem;
+    background-color: rgb(91, 15, 15);
+}
+.n-head{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+}

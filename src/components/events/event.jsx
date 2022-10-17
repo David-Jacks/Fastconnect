@@ -1,6 +1,8 @@
 import React from "react";
 import "./events.css";
-import { GiEternalLove } from "react-icons/gi";
+
+
+
 const Events = () =>{
     return(
         <>
@@ -13,7 +15,6 @@ const Events = () =>{
                   </div>
                   <div className="eventreaction">
                      <a href="{}" className="aboutevent">About</a>
-                   <span style={{display: "flex", alignItems: "center", gap:"4px"}}><GiEternalLove /><span className="lovecount">0</span></span>
                      <a href="{}" className="loveevent"> Ask Question? </a>
                   </div>
                 </div>

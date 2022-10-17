@@ -36,8 +36,12 @@ const Post = ({post}) =>{
                             <img src={post.postpicture} alt="postimg" />
                         </div>
                         <div className="reactioncenter">
-                            <div className="starRate"><button onClick={theLikes}><GiStarFormation className="icon"/></button><span>Star {likes}</span></div> 
-                            <div className="commentRate"><button onClick={() =>{setShow(!show)}}><MdAddComment className="icon"/></button><span className="countfind"> comments</span></div>
+                            <div className="starRate">
+                                <button onClick={theLikes}><GiStarFormation className="icon"/></button><span>Star {likes}</span>
+                            </div> 
+                            <div className="commentRate">
+                                <button onClick={() =>{setShow(!show)}}><MdAddComment className="icon"/></button><span className="countfind">comments</span> 
+                            </div>
                             <div className="reportRate"><button onClick={theSecret}><BiHide className="icon"/></button><span>{secret}</span></div>                           
                         </div>
                     </div>
