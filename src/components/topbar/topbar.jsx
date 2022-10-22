@@ -51,6 +51,22 @@ import Notify from "../notification/notify";
                             </button>
                             <div className="n-head">
                                    you are notified bellow
+                            </div>
+                            <div className="n-body">
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
+                                    <Notify />
                                     <Notify />
                             </div>
                         </div>: ""

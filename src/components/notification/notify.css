@@ -1,52 +1,12 @@
-.food{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px;
-    gap: 5px;
-    width: 100%;
-    justify-content: center;
+*{
+    box-sizing: border-box;
+    margin: 0;
 }
-.foodtop span{
+.noti-wrapper{
     display: flex;
     align-items: center;
-    gap: 10px;
 }
-.foodcontent img{
-    width: 100%;
-    height: 300px;
-    object-fit: contain;
-    border-radius: 5px;
-}
-.foodcontent{
-    width: 80%;
-    height: auto;
-    border-radius: 10px;
-    border: none;
-    box-shadow: 10px 15px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 8px 5px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-}
-.foodreaction{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 8px;
-}
-.foodreaction span{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.foodorder{
-    background-color: #b5121b;
-    border: none;
-    color: #ffffff;
-    border-radius: 5px;
-    padding: 5px 3px;
-}
-.foodlike{
-    width: 23px;
-    height: 23px;
+.noti-wrapper img{
+    width: 38px; height: 38px;
+    border-radius: 50%;
 }

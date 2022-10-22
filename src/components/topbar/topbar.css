@@ -128,10 +128,16 @@
     right: 0;
     bottom: 5rem;
     background-color: rgb(91, 15, 15);
+    overflow-y: scroll;
 }
 .n-head{
     text-align: center;
     text-transform: uppercase;
-    font-family: sans-serif;
-    font-weight: bold;
+    font-family: serif;
+    overflow-y: scroll;
+    
+}
+.n-body{
+    display: flex;
+    flex-direction: column;
 }

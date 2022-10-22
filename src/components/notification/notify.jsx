@@ -7,7 +7,7 @@ const Notify = () =>{
         <>
         <div className="notify-col">
            <div className="noti-wrapper">
-            <img src="" alt="" />
+            <img src="../assets/funny.jpeg" alt="" />
             <p>Lorem ipsum dolor sit amet consectetur.</p>
            </div>
         </div>
