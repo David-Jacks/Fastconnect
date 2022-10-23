@@ -2,16 +2,18 @@
     flex: 2.5;
     height: calc(100vh - 50px);
     width: 100%;
+    overflow-y: scroll;
 }
-.sidebarWrapper{
+
+.sidebar-Wrapper{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    width: 100%; 
     padding: 2em;
-    margin-top: 22px;
-
+    margin-top: 2.5em;
+    width: 100%; 
+    height: auto;
 }
 .sidebarList{
     padding: 0;
@@ -22,6 +24,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+    position: relative;
 }
 .sidebarListItem button{
     cursor: pointer;
@@ -42,11 +45,14 @@
     height: 25px;
 }
 .sidebarButton{
-    width: 150px;
+    width: 130px;
     border: none;
-    border-radius: 5px;
+    background-color: #b5121b;
+    border-radius: 2px;
     padding: 10px;
     font-weight: 400;
+    color: #ffffff;
+    align-self: center;
 }
 .sidebarHr{
     width: 100%;
@@ -67,4 +73,14 @@
     height: 32px;border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+}
+.course-wrapper{
+    position: relative;
+    top: 0; left: 0;
+}
+.course-wrapper::after{
+    content: "corses";
+    width: 5px; height: 5px;
+    position: absolute;
+    top: 10px; left: 5px;
 }

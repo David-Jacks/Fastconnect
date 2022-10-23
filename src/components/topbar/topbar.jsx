@@ -30,8 +30,8 @@ import Notify from "../notification/notify";
             </div>
             <div className="topbarRight">
                 <div className="topbarLinks">
-                    <a href="https:/www.lancaster.edu.gh/" rel= 'noreferrer' className="topbarLink" target={'_blank'}>LanWeb</a>
-                    <a href="https://ghana-modules.lancaster.ac.uk/" target={"_blank"} rel= 'noreferrer' className="topbarLink">Module</a>
+                <a href="https:/www.lancaster.edu.gh/" rel= 'noreferrer' className="topbarLink" target={'_blank'}>LanWeb</a>
+                <a href="https://ghana-modules.lancaster.ac.uk/" target={"_blank"} rel= 'noreferrer' className="topbarLink">Module</a>
                 </div>
                 <div className="topbarIcons">
                     <div className="topbarIconItem">
@@ -42,8 +42,8 @@ import Notify from "../notification/notify";
                        <Link to= {'/basket'}> <BsFillBasket3Fill className="iconedite"/> </Link>
                         <span className="topbarIconBadge">5</span>
                     </div>
-                    <div id="seperate-icon" className="topbarIconItem" onClick={openFunction}>
-                    <Link><FaNotEqual className="iconedite"/></Link>
+                    <div className="topbarIconItem" >
+                    <Link><FaNotEqual onClick={openFunction} className="iconedite"/></Link>
                         <span className="topbarIconBadge">6</span>
                         {open ?<div className="notification-panel">
                             <button>

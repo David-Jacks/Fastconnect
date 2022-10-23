@@ -1,19 +1,25 @@
 import React from "react";
 import "./login.css";
 import { Link} from 'react-router-dom';
+import { useState } from "react";
 
 const Login = () =>{
+const [log,setLog] = useState(false);
+function logClose(){
+    setLog(!log);
+}
+
     return(
         <>
        <div className="bigcontainer">
         <div className="loginheader">
             <span>First Time to LancasterFastConnect? </span>
            <div className="dropdown">
-           <button className="drop">Sign up</button>
-           <div className="dropcontent">
+           <button className="drop" onClick={logClose}>Sign up</button>
+           {log ? <div className="dropcontent">  
             <Link  to={'/stulogin'} className="studrop"> Student</Link>
             <Link to={'/stalogin'} className="stadrop"> Staff</Link>
-           </div>
+           </div> :""}
            </div>
         </div>
         <div className="mainlog">
