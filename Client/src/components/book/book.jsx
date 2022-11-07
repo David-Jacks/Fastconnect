@@ -25,7 +25,7 @@ const Book = () => {
                         </p>
                     </div>
                     
-                </div>
+        </div>
         </>
     )
 }

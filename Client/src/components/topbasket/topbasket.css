@@ -24,12 +24,8 @@
     flex-direction: column;
     padding: 15px;
 }
-.basketleft{
-    flex: 6;
-    background-color: #b5121b;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
+::placeholder{
+    color: #b5121b;
 }
 .search{
     width: 90%;

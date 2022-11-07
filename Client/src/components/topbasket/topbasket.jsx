@@ -13,13 +13,6 @@ const Topbasket = () =>{
                         <button className="searchbooks">Go</button>
                     </div>
                 </div>
-                <div className="basketleft">
-                        <h3>Cafeteria Display</h3>
-                    <div className="foodsearch">
-                        <input type="text"  className="search" placeholder="Search food by name or price"/>
-                        <button className="searcgfoods">Go</button>
-                    </div>
-                </div>
                
             </div>
             
