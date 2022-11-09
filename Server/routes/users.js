@@ -4,9 +4,5 @@ myRouter.get("/", (req, res) => {
     res.send("welcome to the homepage i am new");
 })
 
-myRouter.get("/", (req, res) => {
-    res.send("welcome to the homepage i am new");
-})
-
 module.exports = myRouter;
 

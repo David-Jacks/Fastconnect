@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 
 
-const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const helmet = require("helmet");
@@ -11,12 +10,17 @@ const myauthRouter = require("./routes/auth");
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, () => {
-    console.log("connected");
+//mysql database
+app.get('/stulogin', (req, res) => {
+    dbase.query("INSERT INTO student (stu_id, firstname, lastname, programme, gender, level, email) VALUES (?, ?, ?, ?, ?, ?, ?)"), 
+    (err, results) =>{
+        res.send(results);
+    }
 });
 
+
 //middleware
-app.use("/api/user", myRouter);
+app.use("/api/users", myRouter);
 app.use("/api/auth", myauthRouter);
 
 app.use(express.json());

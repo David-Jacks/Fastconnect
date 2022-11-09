@@ -7,40 +7,60 @@ const Stulogin = () =>{
         <div className="studentlog">
             <div className="stuWrapper">
                 <form action="submit" className="stuloginfill">
-                        <label htmlFor="id">
+                    <div>
+                         <label htmlFor="id">
                             Stu. ID
-                        </label>
+                        </label> 
                         <input type="number" className="stuidinput"/>
+                    </div>
+                       <div> 
                         <label htmlFor="fname">
                             First name
-                        </label>
+                        </label> 
                         <input type="text" className="fnameinput"/>
+                        </div>
+                       <div> 
                         <label htmlFor="lname">
                             Last name
-                        </label>
+                        </label> 
                         <input type="text" className="lnameinput"/>
-                        <label htmlFor="course">
-                            Course
+                        </div>
+                       <div> <label htmlFor="mail">
+                            Email
                         </label>
-                        <input type="text" className="courseinput"/>
-                        <label htmlFor="gender">Gender</label>
+                        <input type="email" className="mail"/>
+                        </div>
+                       <div> 
+                        <label htmlFor="stuDOB">
+                            Date of Birth
+                        </label> 
+                        <input type="date" className="studob"/>
+                        </div>
+                       <div> <label htmlFor="Programme">
+                            Programme
+                        </label> 
+                        <input type="text" className="programmeinput"/>
+                        </div>
+                       <div> <label htmlFor="gender">Gender</label>
                         <select name="gender" id="stugen">
                             <option value="Male">Male</option>
                             <option value="Female">Femal</option>
                         </select>
-                        <label htmlFor="stuhobby">
+                        </div>
+                       <div> <label htmlFor="stuhobby">
                             Interests or Hobby
-                        </label>
+                        </label> 
                         <select name="hobby" id="stuhob">
                             <option value="reading">Reading</option>
                             <option value="basketball">Basketball</option>
                             <option value="shopping">Shopping</option>
                             <option value="singing">Singing</option>
-                            <option value="learning new languaages">Learning New Languages</option>
                             <option value="playing instrument">Playing instruments</option>
                             <option value="Listening to music">Listening to music</option>
                             <option value="Dancing">Dancing</option>
                         </select>
+                        </div>
+                       <div> 
                         <label htmlFor="level">Institutional Level</label>
                         <select name="stu.level" id="levelselect">
                             <option value="foundation">Foundation</option>
@@ -48,6 +68,7 @@ const Stulogin = () =>{
                             <option value="2nd year">2nd Year</option>
                             <option value="3rd year">3rd Year</option>
                         </select>
+                        </div>
                         <Link id="stuformsubmit" to={"/home"}>Join_community</Link>
                     </form>
 
