@@ -1,10 +1,5 @@
- const dbase = mysql.createconnection({
-    host: "localhost",
-    user: "root",
-    password: "logout.commysql",
-    database: "schooldb"
-});
+const express = require("express");
 
 
 
-module.export = base;
+module.export = dbase;
