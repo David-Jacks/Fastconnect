@@ -4,8 +4,8 @@ const app = express();
 
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const helmet = require("helmet");
 const mysql = require("mysql2");
+const helmet = require("helmet");
 const myRouter = require("./routes/users");
 const myauthRouter = require("./routes/auth");
 dotenv.config();
@@ -20,10 +20,11 @@ const dbase = mysql.createConnection({
 });
 dbase.connect(function(err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("Connected!....");
   });
+
 app.get('/stulogin', (req, res) => {
-    dbase.query("INSERT IGNORE INTO student (stu_id, firstname) VALUES ('4567', 'david');"), 
+    dbase.query("INSERT IGNORE INTO student (stu_id, firstname) VALUES ('4787', 'david');"), 
     (err, results) =>{
         res.send(results);
     }
