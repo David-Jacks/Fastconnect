@@ -12,11 +12,13 @@ const myauthRouter = require("./routes/auth");
 const myPostRouter = require("./routes/post");
 // dotenv.config();
 
+//middleware
 app.use(express.json());
 app.use(helmet());
-
-//middleware
 app.use(morgan("common"));
+
+
+
 app.use("/api/users", myUsersRouter);
 app.use("/api/auth", myauthRouter);
 app.use("/api/post", myPostRouter);
