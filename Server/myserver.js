@@ -1,44 +1,31 @@
 const express = require("express");
 const app = express();
+const db = require("./models");
+const port = process.env.PORT || 8080;
 
-
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const morgan = require("morgan");
 const mysql = require("mysql2");
 const helmet = require("helmet");
-const myRouter = require("./routes/users");
+const myUsersRouter = require("./routes/users");
 const myauthRouter = require("./routes/auth");
-dotenv.config();
+const myPostRouter = require("./routes/post");
+// dotenv.config();
+
+app.use(express.json());
+app.use(helmet());
+
+//middleware
+app.use(morgan("common"));
+app.use("/api/users", myUsersRouter);
+app.use("/api/auth", myauthRouter);
+app.use("/api/post", myPostRouter);
+
 
 //mysql database//
 
-const dbase = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "logout.commysql",
-    database: "schooldb"
-});
-dbase.connect(function(err) {
-    if (err) throw err;
-    console.log("Connected!....");
-  });
-
-app.get('/stulogin', (req, res) => {
-    dbase.query("INSERT IGNORE INTO student (stu_id, firstname) VALUES ('4787', 'david');"), 
-    (err, results) =>{
-        res.send(results);
-    }
-});
-
-
-//middleware
-app.use("/api/users", myRouter);
-app.use("/api/auth", myauthRouter);
-
-app.use(express.json());
-app.use(morgan("common"));
-app.use(helmet());
-
-app.listen(8080, () => {
-    console.log("backend is active....");
+db.sequelize.sync().then(() =>{
+    app.listen(port, () => {
+        console.log(`backend is active....on port ${port}`);
+    });
 });

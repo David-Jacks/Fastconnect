@@ -1,8 +1,8 @@
-const myRouter = require("express").Router();
+const myUsersRouter = require("express").Router();
 
-myRouter.get("/", (req, res) => {
+myUsersRouter.get("/user", (req, res) => {
     res.send("welcome to the homepage i am new");
 })
 
-module.exports = myRouter;
+module.exports = myUsersRouter;
 
