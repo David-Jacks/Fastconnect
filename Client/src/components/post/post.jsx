@@ -18,8 +18,6 @@ const Post = ({post}) =>{
     const theLikes = () =>{
             setLikes(likes + 1)
 }
-
-
     const theSecret = () =>{
     setSecret(secret + 1)
 }

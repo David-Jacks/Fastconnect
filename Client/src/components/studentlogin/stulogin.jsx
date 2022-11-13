@@ -25,6 +25,18 @@ const Stulogin = () =>{
                         </label> 
                         <input type="text" className="lnameinput"/>
                         </div>
+                        <div> 
+                        <label htmlFor="lname">
+                            Password
+                        </label> 
+                        <input type="password" className="lnameinput"/>
+                        </div>
+                        <div> 
+                        <label htmlFor="lname">
+                            Confirm Password
+                        </label> 
+                        <input type="password" className="lnameinput"/>
+                        </div>
                        <div> <label htmlFor="mail">
                             Email
                         </label>
@@ -45,19 +57,6 @@ const Stulogin = () =>{
                         <select name="gender" id="stugen">
                             <option value="Male">Male</option>
                             <option value="Female">Femal</option>
-                        </select>
-                        </div>
-                       <div> <label htmlFor="stuhobby">
-                            Interests or Hobby
-                        </label> 
-                        <select name="hobby" id="stuhob">
-                            <option value="reading">Reading</option>
-                            <option value="basketball">Basketball</option>
-                            <option value="shopping">Shopping</option>
-                            <option value="singing">Singing</option>
-                            <option value="playing instrument">Playing instruments</option>
-                            <option value="Listening to music">Listening to music</option>
-                            <option value="Dancing">Dancing</option>
                         </select>
                         </div>
                        <div> 

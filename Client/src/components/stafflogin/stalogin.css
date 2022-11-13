@@ -15,23 +15,26 @@
     display: flex;
     align-items: center;
     width: 80%;
-    height: 95vh;
     border-radius: 6px;
-    margin: 10px auto;
+    margin: 1px auto;
     background-color: rgba(24, 15, 15, 0.5);
 }
 .staloginfill{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 70%;
-    margin: 1px auto;
-    padding: 10px 0px;
+    width: 100%;
+    margin: 5px auto;
     justify-content: center;
-    gap: 0.8em;
+    gap: 0.2em;
+}
+.staloginfill div{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
 }
 .staloginfill input{
-    width: 28%;
+    width: 100%;
     min-height: 20px;
     height: 30px;
     background-color: transparent;
@@ -40,7 +43,7 @@
     padding: 5px;
 }
 .staidinput::-webkit-inner-spin-button,.stuidinput::-webkit-outer-spin-button{
-    -webkit-appearance: none;
+    appearance: none;
     margin: 0;
 }
 .staloginfill input:focus{
