@@ -3,14 +3,15 @@ import Post from "../post/post";
 import Share from "../share/share";
 import "./feed.css";
 import { Poster } from "../../myData";
-import {useEffect} from "react";
-const axios = require("axios");
+// import {useEffect} from "react";
+// const axios = require("axios");
+
 const Feed = () =>{
-    useEffect (() => {
-        axios.get("").then(() =>{
+//     useEffect (() => {
+//         axios.get("").then(() =>{
             
-        })
-    })
+//         })
+//     })
 
     return(
         <>

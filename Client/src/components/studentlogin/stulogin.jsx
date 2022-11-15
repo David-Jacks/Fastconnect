@@ -1,7 +1,14 @@
 import React from "react";
+import {useState} from "react";
 import "./stulogin.css";
 import {Link} from "react-router-dom";
 const Stulogin = () =>{
+
+    const [stuID, setStuID] = useState(""); 
+    const [firstName, setFirstName] = useState(""); 
+    const [LastName, setLastName] = useState(""); 
+    const [password, setPassword] = useState(""); 
+
     return(
         <>
         <div className="studentlog">
@@ -11,25 +18,25 @@ const Stulogin = () =>{
                          <label htmlFor="id">
                             Stu. ID
                         </label> 
-                        <input type="number" className="stuidinput"/>
+                        <input type="number" className="stuidinput" onChange={() => setStuID(document.querySelector(".stuidinput").value)}/>
                     </div>
                        <div> 
                         <label htmlFor="fname">
                             First name
                         </label> 
-                        <input type="text" className="fnameinput"/>
+                        <input type="text" className="fnameinput" onChange={() => setFirstName(document.querySelector(".fnameinput").value)}/>
                         </div>
                        <div> 
                         <label htmlFor="lname">
                             Last name
                         </label> 
-                        <input type="text" className="lnameinput"/>
+                        <input type="text" className="lnameinput" onChange={() => setLastName(document.querySelector(".lnameinput").value)}/>
                         </div>
                         <div> 
                         <label htmlFor="lname">
                             Password
                         </label> 
-                        <input type="password" className="lnameinput"/>
+                        <input type="password" className="stupass" onChange={() => {setPassword(document.querySelector(".stupass").value)}}/>
                         </div>
                         <div> 
                         <label htmlFor="lname">
@@ -68,7 +75,11 @@ const Stulogin = () =>{
                             <option value="3rd year">3rd Year</option>
                         </select>
                         </div>
-                        <Link id="stuformsubmit" to={"/home"}>Join_community</Link>
+                        <Link id="stuformsubmit" to={"/home"} onClick={() => {
+                            console.log(password); 
+                            console.log(firstName); 
+                            console.log(LastName)
+                            console.log(stuID)}}>Join_community</Link>
                     </form>
 
             </div>
