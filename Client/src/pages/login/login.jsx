@@ -4,18 +4,16 @@ import { Link} from 'react-router-dom';
 import { useState } from "react";
 
 const Login = () =>{
+const [userid, setUserID] = useState("");
+const [userpasscode, setUserPasscode] = useState("");
 const [log,setLog] = useState(false);
-function logClose(){
-    setLog(!log);
-}
-
     return(
         <>
        <div className="bigcontainer">
         <div className="loginheader">
             <span>First Time to LancasterFastConnect? </span>
            <div className="dropdown">
-           <button className="drop" onClick={logClose}>Sign up</button>
+           <button className="drop" onClick={()=>setLog(!log)}>Sign up</button>
            {log ? <div className="dropcontent">  
             <Link  to={'/stulogin'} className="studrop"> Student</Link>
             <Link to={'/stalogin'} className="stadrop"> Staff</Link>
@@ -35,16 +33,16 @@ function logClose(){
                     <label htmlFor="Idno">
                         ID No.
                     </label>
-                    <input type="number" className="fullID" />
+                    <input type="number" className="fullID" onChange={()=>{setUserID(document.querySelector(".fullID").value)}}/>
                     <label htmlFor="pass">
                     Password    
                     </label>
-                    <input type="text" className="password" /> 
+                    <input type="text" className="password" onChange={()=>{setUserPasscode(document.querySelector(".password").value)}}/> 
                 </form>
                 
             </div>
             <div className="finalBtn">
-                    <Link to={'/home'}>Take me there</Link>
+                    <Link to={'/home'} onClick={console.log(userid, userpasscode)}>Take me there</Link>
             </div>
         </div>
        </div>
