@@ -4,7 +4,7 @@ import Share from "../share/share";
 import "./feed.css";
 import { Poster } from "../../myData";
 // import {useEffect} from "react";
-// const axios = require("axios");
+//import axios from "axios";
 
 const Feed = () =>{
 //     useEffect (() => {
