@@ -20,8 +20,8 @@ const myCommentRouter = require("./routes/comment");
 
 //middleware
 app.use(express.json());
-app.use(helmet());
 app.use(cors());
+app.use(helmet());
 app.use(morgan("common"));
 
 

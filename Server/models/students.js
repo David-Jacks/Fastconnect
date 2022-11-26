@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) =>{
             allowNull: false
         },
         stuDoB: {
-            type: DataTypes.DATE,
-            allowNull: false
+            type: DataTypes.STRING,
+            allowNull: true
         },
         stuProgramme: {
             type: DataTypes.STRING,

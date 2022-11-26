@@ -3,15 +3,15 @@ import Post from "../post/post";
 import Share from "../share/share";
 import "./feed.css";
 import { Poster } from "../../myData";
-// import {useEffect} from "react";
-//import axios from "axios";
+import axios from "axios";
+import {useEffect} from "react";
 
 const Feed = () =>{
-//     useEffect (() => {
-//         axios.get("").then(() =>{
-            
-//         })
-//     })
+    useEffect (() => {
+        axios.get("http://localhost:8080/api/post").then((response) =>{
+            console.log(response);
+        })
+    }, []);
 
     return(
         <>

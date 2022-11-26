@@ -1,7 +1,8 @@
 import React from "react";
 import {useState} from "react";
-import "./stulogin.css";
 import {Link} from "react-router-dom";
+import "./stulogin.css";
+import axios from "axios";
 const Stulogin = () =>{
 
     const [stuID, setStuID] = useState(""); 
@@ -15,7 +16,9 @@ const Stulogin = () =>{
     const [stugender, setstuGender] = useState("");
     const[stulevel, setstuLevel] = useState("");
 
-
+axios.post("http://localhost:8080/api/auth/sendStudent").then((response)=>{
+        console.log(response);
+})
     return(
         <>
         <div className="studentlog">

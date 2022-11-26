@@ -1,8 +1,9 @@
 const myPostRouter = require("express").Router();
 
 const { Post} = require("../models");
-myPostRouter.get("/", (req, res)=>{
-    res.send("hello")
+    myPostRouter.get("/", async(req, res)=>{
+        const listOfPost = await Post.findAll();
+        res.json(listOfPost);
 })
 
 myPostRouter.post("/post", async (req, res) =>{

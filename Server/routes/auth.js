@@ -1,16 +1,17 @@
 const myauthRouter = require("express").Router();
+const {Students} = require("../models");
 
-myauthRouter.get("/", (req, res) => {
-    res.send("welcome to the homepage i am new");
+myauthRouter.get("/", async(req, res) => {
+    const stu = await Students.findAll();
+    res.json(stu);
 });
 
-myauthRouter.get("/stalogin", (req, res) => {
-    res.send("welcome to the staff login page i am new");
+myauthRouter.post("/sendStudent", async(req, res) => {
+    const stusend = req.body;
+    await Students.create(stusend);
+    res.json(stusend);
 });
 
-myauthRouter.get("/stulogin", (req, res) => {
-    res.send("welcome to the student login page i am new");
-})
 
 
 module.exports = myauthRouter;
