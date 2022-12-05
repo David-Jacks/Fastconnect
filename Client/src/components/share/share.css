@@ -60,6 +60,24 @@
     background-color: #b5121b;
     font-size: 16px;
 }
+
+.add{
+    position: fixed;
+    width: 42vw;
+    height: 70%;  
+    margin: 1px auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+textarea{
+    width: 100%;
+    resize: none; 
+    outline: none;
+    background: transparent;
+}
+
 /* .addvideo{
     position: fixed;
     top: 0; left: 10px;

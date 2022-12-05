@@ -10,19 +10,19 @@ const Stulogin = () =>{
     const [LastName, setLastName] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [passconfirm, setPassconfirm] = useState(""); 
-    const[stuemail, setstuEmail] = useState("");
-    const[studob, setstuDOB] = useState("");
-    const[programme, setProgramme] = useState("");
+    const [stuemail, setstuEmail] = useState("");
+    const [studob, setstuDOB] = useState("");
+    const [programme, setProgramme] = useState("");
     const [stugender, setstuGender] = useState("");
-    const[stulevel, setstuLevel] = useState("");
+    const [stulevel, setstuLevel] = useState("");
 
-const sendFormData = () =>{
-    axios.post("http://localhost:8080/api/auth/sendStudent").then((response)=>{
+// const sendFormData = () =>{
+//     axios.post("http://localhost:8080/api/auth/sendStudent").then((response)=>{
 
-            console.log(response);
+//             console.log(response);
             
-        })
-}
+//         })
+// }
 
     return(
         <>
@@ -92,7 +92,7 @@ const sendFormData = () =>{
                             <option value="3rd year">3rd Year</option>
                         </select>
                         </div>
-                        <Link id="stuformsubmit" /*to={"/home"}*/ onClick={sendFormData}>Join_community</Link>
+                        <Link id="stuformsubmit" /*to={"/home"}*/ onClick={{/*sendFormData*/}}>Join_community</Link>
                     </form>
 
             </div>
