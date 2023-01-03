@@ -11,9 +11,6 @@ import Notify from "../notification/notify";
  const Topbar = () => {
     const [open, setOpen] = useState(false);
 
-   const openFunction = () => {
-        setOpen(!open);
-    }
     return(
         <>
         <div className="topbarContainer">
@@ -43,10 +40,10 @@ import Notify from "../notification/notify";
                         <span className="topbarIconBadge">5</span>
                     </div>
                     <div className="topbarIconItem" >
-                    <Link><FaNotEqual onClick={openFunction} className="iconedite"/></Link>
+                    <Link><FaNotEqual onClick={()=>{setOpen(!open)}} className="iconedite"/></Link>
                         <span className="topbarIconBadge">6</span>
                         {open ?<div className="notification-panel">
-                            <button>
+                            <button className="btn-noti" onClick={()=>{setOpen(false)}}>
                                 X
                             </button>
                             <div className="n-head">
