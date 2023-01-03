@@ -13,11 +13,11 @@ const [log,setLog] = useState(false);
         <div className="loginheader">
             <span>First Time to LancasterFastConnect? </span>
            <div className="dropdown">
-           <button className="drop" onClick={()=>setLog(!log)}>Sign up</button>
-           {log ? <div className="dropcontent">  
-            <Link  to={'/stulogin'} className="studrop"> Student</Link>
-            <Link to={'/stalogin'} className="stadrop"> Staff</Link>
-           </div> :""}
+                <button className="drop" onClick={()=>setLog(!log)}>Sign up</button>
+                {log ? <div className="dropcontent">  
+                <Link  to={'/stulogin'} className="studrop"> Student</Link>
+                <Link to={'/stalogin'} className="stadrop"> Staff</Link>
+                </div> :""}
            </div>
         </div>
         <div className="mainlog">
@@ -29,7 +29,7 @@ const [log,setLog] = useState(false);
                 <span>An effective way for Communication and Management </span>
             </div>
             <div className="loginform">
-                <form action="">
+                <form action="" method="POST">
                     <label htmlFor="Idno">
                         ID No.
                     </label>
@@ -37,14 +37,14 @@ const [log,setLog] = useState(false);
                     <label htmlFor="pass">
                     Password    
                     </label>
-                    <input type="text" className="password" onChange={()=>{setUserPasscode(document.querySelector(".password").value)}}/> 
+                    <input type="text"  className="fullID" onChange={()=>{setUserPasscode(document.querySelector(".fullID").value)}}/> 
                 </form>
-                
-            </div>
             <div className="finalBtn">
                     <Link to={'/home'} onClick={console.log(userid, userpasscode)}>Take me there</Link>
             </div>
-        </div>
+            </div>
+            </div>
+            
        </div>
         </>
     );

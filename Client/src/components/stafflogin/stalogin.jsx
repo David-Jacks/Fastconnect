@@ -20,48 +20,48 @@ const [gender, setGender] = useState("");
         <>
         <div className="stafflog">
             <div className="staWrapper">
-            <form action="submit" className="staloginfill">
+            <form className="staloginfill" method="POST">
                         <div>       
                         <label htmlFor="id">
                             Staff. ID
                         </label>
-                        <input type="number" className="staidinput" onChange={(e)=>{setStaffID(e.target.value)}}/>
+                        <input name ="ID" type="number" className="staidinput" onChange={(e)=>{setStaffID(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="fname">
                             First name
                         </label>
-                        <input type="text" className="stafname" onChange={(e)=>{setFirstName(e.target.value)}}/>
+                        <input name ="FN" type="text" className="stafname" onChange={(e)=>{setFirstName(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Last name
                         </label>
-                        <input type="text" className="stalname" onChange={(e) =>{setLastName(e.target.value)}}/>
+                        <input name ="LN" type="text" className="stalname" onChange={(e) =>{setLastName(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Password
                         </label>
-                        <input type="password" className="stalpasscode" onChange={(e) =>{setPasscode(e.target.value)}}/>
+                        <input name ="PCODE" type="password" className="stalpasscode" onChange={(e) =>{setPasscode(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Confirm Password
                         </label>
-                        <input type="password" className="stalpassconfirm" onChange={(e) =>{setPasscon(e.target.value)}}/>
+                        <input name ="PCODEC" type="password" className="stalpassconfirm" onChange={(e) =>{setPasscon(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Email
                         </label>
-                        <input type="email" className="stalemail" onChange={(e)=>{setEmail(e.target.value)}}/>
+                        <input name ="MAIL" type="email" className="stalemail" onChange={(e)=>{setEmail(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Date of Birth
                         </label>
-                        <input type="date" className="staldob" onChange={(e)=>{setDOB(e.target.value)}}/>
+                        <input name ="DOB" type="date" className="staldob" onChange={(e)=>{setDOB(e.target.value)}}/>
                         </div>
                         <div>
                             <label htmlFor="department">
                             Department
                         </label>
-                        <input type="text" className="departinput" onChange={(e)=>{setDepartment(e.target.value)}}/>
+                        <input name ="DEPT" type="text" className="departinput" onChange={(e)=>{setDepartment(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stagender">Gender</label>
                         <select name="stagender" id="stagen" onChange={(e)=>setGender(e.target.value)}>

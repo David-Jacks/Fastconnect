@@ -1,18 +1,24 @@
-const myauthRouter = require("express").Router();
+const myAuthRouter = require("express").Router();
 const {Students} = require("../models");
+const {Staff} = require("../models");
 
-myauthRouter.get("/", async(req, res) => {
-    const stu = await Students.findAll();
-    res.json(stu);
-});
+// myAuthRouter.get("/", async(req, res) => {
+//     const stu = await Students.findAll();
+//     res.json(stu);
+// });
 
-myauthRouter.post("/sendStudent", async(req, res) => {
+myAuthRouter.post("/sendStudent", async(req, res) => {
     const stusend = req.body;
     await Students.create(stusend);
     res.json(stusend);
 });
 
+myAuthRouter.post("/sendStaff", async(req, res) => {
+    const stasend = req.body;
+    await Staff.create(stasend);
+    res.json(stasend);
+});
 
 
-module.exports = myauthRouter;
+module.exports = myAuthRouter;
 

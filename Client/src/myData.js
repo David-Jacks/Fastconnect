@@ -50,25 +50,37 @@ export const Poster = [
 ]
 
 export const Users = [
-    { UserId: 1,
-      username: "david jackson",
-      profilepicture: "/assets/final.png",
-},{ UserId: 2,
+{   UserId: 1,
+    username: "david jackson",
+    profilepicture: "/assets/final.png",
+},
+
+{   UserId: 2,
     username: "steven Larkai",
     profilepicture: "/assets/funny.jpeg",
-},{ UserId: 3,
+},
+
+{   UserId: 3,
     username: "Isaac amfoh",
     profilepicture: "/assets/hey.png",
-},{ UserId: 4,
+},
+
+{   UserId: 4,
     username: "Cyril Abakah",
     profilepicture: "/assets/okay.jpeg",
-},{ UserId: 5,
+},
+
+{   UserId: 5,
     username: "mr Dankwah",
     profilepicture: "/assets/rep.jpeg",
-},{ UserId: 6,
+},
+
+{   UserId: 6,
     username: "Tomison Alibaba",
     profilepicture: "/assets/invoke.jpeg",
-},{ UserId: 7,
+},
+
+{   UserId: 7,
     username: "Tomison Alibaba",
     profilepicture: "/assets/res.jpeg",
 }
