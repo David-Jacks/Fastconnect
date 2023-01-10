@@ -40,7 +40,7 @@ const [log,setLog] = useState(false);
                     <input type="text"  className="fullID" onChange={()=>{setUserPasscode(document.querySelector(".fullID").value)}}/> 
                 </form>
             <div className="finalBtn">
-                    <Link to={'/home'} onClick={console.log(userid, userpasscode)}>Take me there</Link>
+                    <Link to={'/home'} onClick={console.log(userid, userpasscode)}> Let's Go!</Link>
             </div>
             </div>
             </div>

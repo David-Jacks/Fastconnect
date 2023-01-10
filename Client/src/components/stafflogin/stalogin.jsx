@@ -18,52 +18,36 @@ const [gender, setGender] = useState("");
 
     return(
         <>
-        <div className="stafflog">
+        <div  className="stafflog">
             <div className="staWrapper">
             <form className="staloginfill" method="POST">
                         <div>       
-                        <label htmlFor="id">
-                            Staff. ID
-                        </label>
-                        <input name ="ID" type="number" className="staidinput" onChange={(e)=>{setStaffID(e.target.value)}}/>
+                        <input name ="ID" type="number" placeholder="Staff. ID"  className="staidinput" onChange={(e)=>{setStaffID(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="fname">
-                            First name
-                        </label>
-                        <input name ="FN" type="text" className="stafname" onChange={(e)=>{setFirstName(e.target.value)}}/>
+                        <div>
+                        <input name ="FN" type="text" placeholder="First name"  className="stafname" onChange={(e)=>{setFirstName(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="stalname">
-                            Last name
-                        </label>
-                        <input name ="LN" type="text" className="stalname" onChange={(e) =>{setLastName(e.target.value)}}/>
+                        <div>
+                        <input name ="LN" type="text" placeholder=" Last name"  className="stalname" onChange={(e) =>{setLastName(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="stalname">
-                            Password
-                        </label>
-                        <input name ="PCODE" type="password" className="stalpasscode" onChange={(e) =>{setPasscode(e.target.value)}}/>
+                        <div>
+                        <input name ="PCODE" type="password" placeholder="Password"  className="stalpasscode" onChange={(e) =>{setPasscode(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="stalname">
-                            Confirm Password
-                        </label>
-                        <input name ="PCODEC" type="password" className="stalpassconfirm" onChange={(e) =>{setPasscon(e.target.value)}}/>
+                        <div>
+                        <input name ="PCODEC" type="password" placeholder=" Confirm Password"  className="stalpassconfirm" onChange={(e) =>{setPasscon(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="stalname">
-                            Email
-                        </label>
-                        <input name ="MAIL" type="email" className="stalemail" onChange={(e)=>{setEmail(e.target.value)}}/>
+                        <div>
+                        <input name ="MAIL" type="email" placeholder="Email"  className="stalemail" onChange={(e)=>{setEmail(e.target.value)}}/>
                         </div>
                         <div><label htmlFor="stalname">
                             Date of Birth
                         </label>
-                        <input name ="DOB" type="date" className="staldob" onChange={(e)=>{setDOB(e.target.value)}}/>
+                        <input name ="DOB" type="date" placeholder="Date of Birth"  className="staldob" onChange={(e)=>{setDOB(e.target.value)}}/>
                         </div>
                         <div>
-                            <label htmlFor="department">
-                            Department
-                        </label>
-                        <input name ="DEPT" type="text" className="departinput" onChange={(e)=>{setDepartment(e.target.value)}}/>
+                        <input name ="DEPT" type="text" placeholder="Department"  className="departinput" onChange={(e)=>{setDepartment(e.target.value)}}/>
                         </div>
-                        <div><label htmlFor="stagender">Gender</label>
+                        <div>
                         <select name="stagender" id="stagen" onChange={(e)=>setGender(e.target.value)}>
                             <option value="Male">Select Gender</option>
                             <option value="Male">Male</option>
