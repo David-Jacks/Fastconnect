@@ -16,14 +16,22 @@ const Stulogin = () =>{
     const [stugender, setstuGender] = useState("");
     const [stulevel, setstuLevel] = useState("");
 
-// const sendFormData = () =>{
-//     axios.post("http://localhost:8080/api/auth/sendStudent").then((response)=>{
-
-//             console.log(response);
-            
-//         })
-// }
-
+const sendFormData = () =>{
+    axios.post("http://localhost:8080/api/auth/sendStudent", {
+            studentId: stuID,
+            firstname: firstName,
+            lastname: LastName,
+            password: password,
+            email: stuemail,
+            dateofbirth: studob,
+            programme: programme,
+            gender: stugender,
+            level:stulevel  }).then((response)=>{
+            console.log(response);
+        }).catch((err) =>{
+        console.log(err);
+        })
+}
     return(
         <>
         <div className="studentlog">
@@ -91,9 +99,9 @@ const Stulogin = () =>{
                             <option value="2nd year">2nd Year</option>
                             <option value="3rd year">3rd Year</option>
                         </select>
-                        </div>
-                        <Link id="stuformsubmit" /*to={"/home"}*/ onClick={{/*sendFormData*/}}>Join_community</Link>
-                    </form>
+                    </div>
+                        <Link id="stuformsubmit" to={"/home"} onClick={{sendFormData}}>Join_community</Link>
+                </form>
 
             </div>
         </div>

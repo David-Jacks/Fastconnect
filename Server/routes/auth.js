@@ -1,4 +1,5 @@
 const myauthRouter = require("express").Router();
+const db = require("../models");
 const {Students} = require("../models");
 
 myauthRouter.get("/", async(req, res) => {
@@ -11,6 +12,8 @@ myauthRouter.post("/sendStudent", async(req, res) => {
     await Students.create(stusend);
     res.json(stusend);
 });
+//trying to send the data to the mysql database
+// db.query("studentId, firstname,lastname,password,email,dateofbirth,programme,gender,level",Value () );
 
 
 
