@@ -43,3 +43,11 @@
     width: 100%;
     height: auto;
 }
+@media screen and (max-width = 370) {
+    .feed{
+        flex: 10;
+        padding: 1.3em;
+        height: calc(100vh - 50px);
+        overflow-y: scroll;
+    }
+}

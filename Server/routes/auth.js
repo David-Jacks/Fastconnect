@@ -1,13 +1,13 @@
-const myauthRouter = require("express").Router();
-const db = require("../models");
+const myAuthRouter = require("express").Router();
 const {Students} = require("../models");
+const {Staff} = require("../models");
 
-myauthRouter.get("/", async(req, res) => {
-    const stu = await Students.findAll();
-    res.json(stu);
-});
+// myAuthRouter.get("/", async(req, res) => {
+//     const stu = await Students.findAll();
+//     res.json(stu);
+// });
 
-myauthRouter.post("/sendStudent", async(req, res) => {
+myAuthRouter.post("/sendStudent", async(req, res) => {
     const stusend = req.body;
     await Students.create(stusend);
     res.json(stusend);
@@ -15,7 +15,12 @@ myauthRouter.post("/sendStudent", async(req, res) => {
 //trying to send the data to the mysql database
 // db.query("studentId, firstname,lastname,password,email,dateofbirth,programme,gender,level",Value () );
 
+myAuthRouter.post("/sendStaff", async(req, res) => {
+    const stasend = req.body;
+    await Staff.create(stasend);
+    res.json(stasend);
+});
 
 
-module.exports = myauthRouter;
+module.exports = myAuthRouter;
 

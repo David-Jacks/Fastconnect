@@ -120,12 +120,17 @@
 
 .notification-panel{
     position: fixed;
-    top: 3rem;
-    left: 58rem;
-    right: 0;
+    top: 8.1vh; right: 0.5vw;
+    width: 35vw; height: 80vh;
     bottom: 5rem;
     background-color: rgb(91, 15, 15);
     overflow-y: scroll;
+}
+.btn-noti{
+    outline: none; font-size: small;
+    margin-left: 1px; border-radius: 2px;
+    font-style: italic;
+    border: 0px; color: rgb(238, 2, 14);
 }
 .n-head{
     text-align: center;

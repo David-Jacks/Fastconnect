@@ -6,6 +6,7 @@ import { Poster } from "../../myData";
 import axios from "axios";
 import {useEffect} from "react";
 
+
 const Feed = () =>{
     useEffect (() => {
         axios.get("http://localhost:8080/api/post").then((response) =>{
@@ -20,10 +21,10 @@ const Feed = () =>{
                 <h1>Lancaster_Community</h1>
             </div>
             <Share />
-            {Poster.map(p =>(
+             {Poster.map(p =>(
                 <Post key= {p.postID} post = {p}/>
             ))}
-            
+        
            
             
         </div>

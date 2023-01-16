@@ -36,6 +36,6 @@ app.use("/api/comment", myCommentRouter);
 
 db.sequelize.sync().then(() =>{
     app.listen(port, () => {
-        console.log(`backend is active....on port ${port}`);
+        console.log(`backend is active..and ready to start..on port ${port}`);
     });
 });
