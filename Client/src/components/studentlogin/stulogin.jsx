@@ -7,36 +7,30 @@ const Stulogin = () =>{
 
     const [stuID, setStuID] = useState(""); 
     const [firstName, setFirstName] = useState(""); 
-    const [LastName, setLastName] = useState(""); 
+    const [lastName, setLastName] = useState(""); 
     const [password, setPassword] = useState(""); 
     const [passconfirm, setPassconfirm] = useState(""); 
-    const [stuemail, setstuEmail] = useState("");
+    const [stuEmail, setstuEmail] = useState("");
     const [studob, setstuDOB] = useState("");
     const [programme, setProgramme] = useState("");
     const [stugender, setstuGender] = useState("");
     const [stulevel, setstuLevel] = useState("");
 
-const sendFormData = () =>{
-    axios.post("http://localhost:8080/api/auth/sendStudent", {
-            studentId: stuID,
-            firstname: firstName,
-            lastname: LastName,
-            password: password,
-            email: stuemail,
-            dateofbirth: studob,
-            programme: programme,
-            gender: stugender,
-            level:stulevel  }).then((response)=>{
-            console.log(response);
-        }).catch((err) =>{
-        console.log(err);
+const sendFormData = async(e) =>{
+    e.preventDefault();
+        const  formData = {stuID, firstName, lastName, password, stuEmail, studob, programme, stugender, stulevel}
+
+        await  axios.post("/api/users/sendStudent", formData).then (res =>{
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
         })
 }
     return(
         <>
         <div className="studentlog">
             <div className="stuWrapper">
-                <form action="submit" className="stuloginfill" method="POST">
+                <form action="submit" className="stuloginfill">
                     <div>
                         <input name="ID" type="number" placeholder ="Stu. ID"  className="stuidinput" onChange={(e) => setStuID(e.target.value)}/>
                     </div>
@@ -80,7 +74,8 @@ const sendFormData = () =>{
                             <option value="3rd year">3rd Year</option>
                         </select>
                     </div>
-                        <Link id="stuformsubmit" to={"/home"} onClick={{sendFormData}}>Join_community</Link>
+                        <Link id="stuformsubmit"  onClick={sendFormData}>Join_community</Link>
+                        {/* to={"/home"} */}
                 </form>
 
             </div>

@@ -1,39 +1,78 @@
-module.exports = (sequelize, DataTypes) =>{
+ module.exports = (sequelize, DataTypes) =>{
     const Students = sequelize.define("Students", {
-        stu_ID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuEmail: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuDoB: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        stuProgramme: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuGender: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuLevel: {
-            type: DataTypes.STRING,
-            allowNull: false
+       stuID: {
+    type: DataTypes.INTEGER,
+    validate: {
+        isInt: {
+            msg: "invalid Id"
         }
-    }) 
-        return Students;
+    }
+  },
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "First name is required"
+      }
+    }
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Last name is required"
+      }
+    }
+  },
+  stuEmail: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: {
+        msg: "Invalid email format"
+      }
+    }
+  },
+  studob: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+    validate: {
+      isDate: {
+        msg: "Invalid date format"
+      }
+    }
+  },
+  programme: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Programme is required"
+      }
+    }
+  },
+  stugender: {
+    type: DataTypes.ENUM("male", "female"),
+    allowNull: false,
+    validate: {
+      isIn: {
+        args: [["male", "female"]],
+        msg: "Invalid gender"
+      }
+    }
+  },
+  stulevel: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+        notEmpty: {
+          msg: "Level is required"
+        }
+      }}
+  })
+    return Students;
 };
-
 
