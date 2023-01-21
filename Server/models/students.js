@@ -2,76 +2,41 @@
     const Students = sequelize.define("Students", {
        stuID: {
     type: DataTypes.INTEGER,
-    validate: {
-        isInt: {
-            msg: "invalid Id"
-        }
-    }
+    allowNull: false,
   },
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: "First name is required"
-      }
-    }
   },
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: "Last name is required"
-      }
-    }
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   stuEmail: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-    validate: {
-      isEmail: {
-        msg: "Invalid email format"
-      }
-    }
   },
   studob: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      isDate: {
-        msg: "Invalid date format"
-      }
-    }
   },
   programme: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: "Programme is required"
-      }
-    }
   },
   stugender: {
-    type: DataTypes.ENUM("male", "female"),
+    type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-      isIn: {
-        args: [["male", "female"]],
-        msg: "Invalid gender"
-      }
-    }
   },
   stulevel: {
     type: DataTypes.STRING,
     allowNull: false,
-    validate: {
-        notEmpty: {
-          msg: "Level is required"
-        }
-      }}
+   }
   })
     return Students;
 };

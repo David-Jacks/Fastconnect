@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const db = require("./models");
 const port = process.env.PORT || 8080;
 
 // const dotenv = require("dotenv");
@@ -58,8 +57,8 @@ app.use("/api/comment", myCommentRouter);
 
 //mysql database//
 
-db.sequelize.sync().then(() =>{
+
     app.listen(port, () => {
         console.log(`backend is active..and ready to start..on port ${port}`);
     });
-});
+
