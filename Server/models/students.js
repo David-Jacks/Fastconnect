@@ -1,39 +1,43 @@
-module.exports = (sequelize, DataTypes) =>{
+ module.exports = (sequelize, DataTypes) =>{
     const Students = sequelize.define("Students", {
-        stu_ID: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuEmail: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuDoB: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        stuProgramme: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuGender: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        stuLevel: {
-            type: DataTypes.STRING,
-            allowNull: false
-        }
-    }) 
-        return Students;
+       stuID: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  stuEmail: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  studob: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  programme: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  stugender: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  stulevel: {
+    type: DataTypes.STRING,
+    allowNull: false,
+   }
+  })
+    return Students;
 };
-
 
