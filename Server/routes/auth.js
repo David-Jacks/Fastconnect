@@ -1,17 +1,22 @@
 const myAuthRouter = require("express").Router();
+const connection = require("../mydata");
 
 
-
-// myAuthRouter.get("/", async(req, res) => {
-//     const stu = await Students.findAll();
-//     res.json(stu);
-// });
-
-
-myAuthRouter.post("/sendStaff", async(req, res) => {
-    const stasend = req.body;
-    await Staff.create(stasend);
-    res.json(stasend);
+myAuthRouter.post("/check", async(req, res) => {
+    const dataCheck = req.body;
+//i will have to check this section to ensure accurate checking of query
+    connection.query(`SELECT userID FROM students WHERE userID = '${dataCheck.userid}'
+    UNION
+    SELECT userID FROM staffs WHERE userID = '${dataCheck.userid}'
+    `, (err, results)=>{
+        if (err) {
+            res.status(500).json({ error: err });
+        } else {
+            // check for results
+           console.log(results);
+        }
+    })
+   
 });
 
 
