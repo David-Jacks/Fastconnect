@@ -1,23 +1,42 @@
 const myAuthRouter = require("express").Router();
 const connection = require("../mydata");
-
+const bcrypt = require("bcrypt");
 
 myAuthRouter.post("/check", async(req, res) => {
-    const dataCheck = req.body;
-//i will have to check this section to ensure accurate checking of query
-    connection.query(`SELECT userID FROM students WHERE userID = '${dataCheck.userid}'
+    if (!req.body || !req.body.userid || !req.body.userpassword) {
+        return res.status(400).json({ error: "Bad request, userid and password are required" });
+    }
+
+    const userid = req.body.userid;
+    const password = req.body.userpassword;
+
+    connection.query(`SELECT userID, password FROM students WHERE userID = ?
     UNION
-    SELECT userID FROM staffs WHERE userID = '${dataCheck.userid}'
-    `, (err, results)=>{
+    SELECT userID, password FROM staffs WHERE userID = ?`, [userid, password], (err, results)=>{
         if (err) {
-            res.status(500).json({ error: err });
-        } else {
-            // check for results
-           console.log(results);
+            return res.status(500).json({ error: "Internal Server Error" });
+        } 
+        if(results.length === 0){
+            return res.status(401).json({ error: "Invalid Credentials" });
+        }else {
+            const hashedPassword = results[0].password;
+            bcrypt.compare(password, hashedPassword, function(err, match) {
+                if (err) {
+                    return res.status(500).json({ error: "Internal Server Error" });
+                }
+                if(match){
+                   return res.status(200).json({ data: results });
+                   // credentials match, proceed to next page
+                    // req.session.userid = userid;
+                    // return res.redirect('/home');
+                }else {
+                    return res.status(401).json({ error: "Invalid Credentials" });
+                }
+            });
         }
-    })
-   
+    });   
 });
+
 
 
 module.exports = myAuthRouter;
