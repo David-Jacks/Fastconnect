@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const session = require('express-session');
 
@@ -16,10 +17,12 @@ const cors = require("cors");
 const myUsersRouter = require("./routes/users");
 const myauthRouter = require("./routes/auth");
 const myPostRouter = require("./routes/post");
+const myHomeRouter = require("./routes/home");
 const myCommentRouter = require("./routes/comment");
+const clientCatch = require("./routes/clientAll");
 
 //middlewares
-
+app.use(express.static(path.join(__dirname, "../coding/MyProjects/Fastconnect/Client/build/index.html")));
 //my session middleware setting
 app.use(session({
   secret: 'your-secret-key', //use a secret key to encrypt the session data
@@ -63,6 +66,8 @@ app.use("/api/users", myUsersRouter);
 app.use("/api/auth", myauthRouter);
 app.use("/api/post", myPostRouter);
 app.use("/api/comment", myCommentRouter);
+app.use("/api/home", myHomeRouter);
+app.use("/api/client", clientCatch);
 
 
 //mysql database//

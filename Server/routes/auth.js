@@ -25,10 +25,10 @@ myAuthRouter.post("/check", async(req, res) => {
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
                 if(match){
-                   return res.status(200).json({ data: results });
-                   // credentials match, proceed to next page
-                    // req.session.userid = userid;
-                    // return res.redirect('/home');
+                    /// credentials match, proceed to next page
+                    req.session.userid = userid;
+                    req.session.authenticated = true;
+                    return res.redirect("/home"); 
                 }else {
                     return res.status(401).json({ error: "Invalid Credentials" });
                 }
