@@ -28,7 +28,7 @@ myAuthRouter.post("/check", async(req, res) => {
                     /// credentials match, proceed to next page
                     req.session.userid = userid;
                     req.session.authenticated = true;
-                    return res.redirect('/api/home'); 
+                    return res.redirect("/home"); 
                 }else {
                     return res.status(401).json({ error: "Invalid Credentials" });
                 }

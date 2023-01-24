@@ -5,7 +5,7 @@ myHomeRouter.get("/", (req, res)=>{
 if(!req.session.authenticated){
     res.redirect("/login");
 }else{
-    res.render("home", {user: req.session.userid});
+    res.render("/home", {user: req.session.userid});
 }
 
 });
