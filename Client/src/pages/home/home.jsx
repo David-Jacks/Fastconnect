@@ -5,18 +5,18 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Topbar from "../../components/topbar/topbar";
 import "../home/home.css";
 
-const Home = () =>{
-    return(
-        <>
-        <Topbar />
-        <div className="homeContainer">
+const Home = () => {
+  return (
+    //i will delete you later
+    <>
+      <Topbar />
+      <div className="homeContainer">
         <Sidebar />
         <Feed />
         <Rightbar />
-        </div>
-           
-        </>
-    );
-}
+      </div>
+    </>
+  );
+};
 
 export default Home;
