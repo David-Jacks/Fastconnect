@@ -1,6 +1,6 @@
 import React from "react";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -11,19 +11,25 @@ const Login = () => {
 
   const userData = { userid, userpassword };
 
+  const history = useNavigate();
+
   const checkUser = (e) => {
     e.preventDefault();
-
     axios
       .post("/api/auth/check", userData)
       .then((res) => {
         console.log(res);
+        if (res.status === 200) {
+          const token = res.data.token;
+          localStorage.setItem("token", token);
+          history("/home");
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
-//just to change you later
+
   return (
     <>
       <div className="bigcontainer">
@@ -50,7 +56,7 @@ const Login = () => {
         <div className="mainlog">
           <div className="profilecontainer">
             <img
-              src="https://www.schooldrillers.com/wp-content/uploads/2021/05/Lancaster-University-Ghana-Courses.jpg"
+              src="https://cdn.modernghana.com/story_/400/250/818201662154_142961407894lancasteruniversityghana.png"
               alt="lancaster"
             />
             <h2>Lancaster Fastconnect</h2>
@@ -78,9 +84,7 @@ const Login = () => {
               />
             </form>
             <div className="finalBtn">
-              <Link to={"/home"} onClick={checkUser}>
-                Let's Go!
-              </Link>
+              <Link onClick={checkUser}>Let's Go!</Link>
             </div>
           </div>
         </div>

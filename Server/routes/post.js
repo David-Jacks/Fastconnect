@@ -1,9 +1,9 @@
 const myPostRouter = require("express").Router();
 
-    myPostRouter.get("/", async(req, res)=>{
+//     myPostRouter.get("/", async(req, res)=>{
       
-        res.json(listOfPost); 
-});
+//         res.json(listOfPost); 
+// });
 
     myPostRouter.post("/post", async (req, res) =>{
          const post = req.body;

@@ -22,14 +22,18 @@ const myCommentRouter = require("./routes/comment");
 const clientCatch = require("./routes/clientAll");
 
 //middlewares
+// myauthRouter.createToken(userid, "student");
+// myauthRouter.verifyToken(token);
+
+
 app.use(express.static(path.join(__dirname, "../coding/MyProjects/Fastconnect/Client/build/index.html")));
 //my session middleware setting
-app.use(session({
-  secret: 'your-secret-key', //use a secret key to encrypt the session data
-  resave: false, // do not resave the session if nothing changed
-  saveUninitialized: true, //create new session for new users
-  cookie: { secure: false } // set to true if using https
-}))
+// app.use(session({
+//   secret: 'your-secret-key', //use a secret key to encrypt the session data
+//   resave: false, // do not resave the session if nothing changed
+//   saveUninitialized: true, //create new session for new users
+//   cookie: { secure: false } // set to true if using https
+// }))
 app.use(express.json());
 app.use(cors());
 app.use(helmet());

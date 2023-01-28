@@ -15,20 +15,20 @@ const Stulogin = () => {
   const [stugender, setstuGender] = useState("");
   const [stulevel, setstuLevel] = useState("");
 
+  const formData = {
+    userID,
+    firstName,
+    lastName,
+    password,
+    stuEmail,
+    studob,
+    programme,
+    stugender,
+    stulevel,
+  };
+
   const sendFormData = async (e) => {
     e.preventDefault();
-    const formData = {
-      userID,
-      firstName,
-      lastName,
-      password,
-      stuEmail,
-      studob,
-      programme,
-      stugender,
-      stulevel,
-    };
-
     await axios
       .post("/api/users/sendStudent", formData)
       .then((res) => {
@@ -156,7 +156,6 @@ const Stulogin = () => {
             <Link id="stuformsubmit" onClick={sendFormData}>
               Join_community
             </Link>
-            {/* to={"/home"} */}
           </form>
         </div>
       </div>

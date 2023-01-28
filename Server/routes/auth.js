@@ -1,6 +1,30 @@
 const myAuthRouter = require("express").Router();
 const connection = require("../mydata");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
+const secret = "fastConnect.com";
+
+function createToken(userid, role){
+    const payload = {
+        userid: userid,
+        role: role
+    };
+    const token = jwt.sign(payload, secret);
+
+    return token;
+}
+
+function verifyToken(token){
+    try{
+            const decode = jwt.verify(token, secret);
+
+            return decode;
+    }catch(err){
+            return null;
+    }
+}
+
 
 myAuthRouter.post("/check", async(req, res) => {
     if (!req.body || !req.body.userid || !req.body.userpassword) {
@@ -26,14 +50,18 @@ myAuthRouter.post("/check", async(req, res) => {
                 }
                 if(match){
                     /// credentials match, proceed to next page
-                    req.session.userid = userid;
-                    req.session.authenticated = true;
-                    return res.redirect("/home"); 
+                    // req.session.userid = userid;
+                    // req.session.authenticated = true;
+                    // return res.redirect("/home"); 
+                    
+                    const token = createToken(userid, "student"); 
+                    verifyToken(token);
+                    return res.json({token});
                 }else {
                     return res.status(401).json({ error: "Invalid Credentials" });
                 }
             });
-        }//just to enhance commit
+        }
     });   
 });
 

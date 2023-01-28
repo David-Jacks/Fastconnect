@@ -14,20 +14,10 @@ function App() {
     <Router >    
       <Routes>    
       <Route exact path='/' element = {<Login /> }/> 
-      </Routes>
-      <Routes>  
         <Route path='/home' element = {<Home /> }/> 
-      </Routes>
-      <Routes>  
         <Route path='/stalogin' element = {<Stalogin /> }/>
-      </Routes>
-      <Routes>  
         <Route path='/stulogin' element = {<Stulogin /> }/>
-      </Routes>
-      <Routes>
         <Route path='/basket' element= {<Basket />} />
-      </Routes>
-      <Routes>
         <Route path='/chat' element= {<Chat />} />
       </Routes>
     </Router >  
