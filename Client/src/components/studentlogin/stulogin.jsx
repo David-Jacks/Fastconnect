@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./stulogin.css";
 import axios from "axios";
+
 const Stulogin = () => {
+  const navigate = useNavigate();
+
+  const role = "student";
   const [userID, setStuID] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -16,6 +20,7 @@ const Stulogin = () => {
   const [stulevel, setstuLevel] = useState("");
 
   const formData = {
+    role,
     userID,
     firstName,
     lastName,
@@ -33,6 +38,9 @@ const Stulogin = () => {
       .post("/api/users/sendStudent", formData)
       .then((res) => {
         console.log(res);
+        if (res.status === 201 && passconfirm === password) {
+          navigate("/home");
+        } else navigate("/Stulogin");
       })
       .catch((err) => {
         console.log(err);

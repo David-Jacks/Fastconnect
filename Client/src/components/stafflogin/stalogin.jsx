@@ -1,10 +1,11 @@
 import React from "react";
 import "./stalogin.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 const Stalogin = () => {
+  const role = "staff";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userID, setStaffID] = useState("");
@@ -15,7 +16,10 @@ const Stalogin = () => {
   const [Department, setDepartment] = useState("");
   const [staGender, setGender] = useState("");
 
+  const navigate = useNavigate();
+
   const staffData = {
+    role,
     userID,
     firstName,
     lastName,
@@ -32,6 +36,9 @@ const Stalogin = () => {
         .post("/api/users/sendStaff", staffData)
         .then((res) => {
           console.log(res);
+          if (res.status === 201 && passcon === password) {
+            navigate("/home");
+          } else navigate("/Stalogin");
         })
         .catch((err) => console.log(err));
     } catch (err) {
@@ -145,10 +152,7 @@ const Stalogin = () => {
               </select>
             </div>
 
-            <Link
-              id="staformsubmit"
-              /*</form>to={"/home"}*/ onClick={sendStaffData}
-            >
+            <Link id="staformsubmit" onClick={sendStaffData}>
               Join_community
             </Link>
           </form>

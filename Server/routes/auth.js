@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const secret = "fastConnect.com";
 
-function createToken(userid, role){
+  function createToken(userid, role){
     const payload = {
         userid: userid,
         role: role
@@ -15,7 +15,7 @@ function createToken(userid, role){
     return token;
 }
 
-function verifyToken(token){
+  function verifyToken(token){
     try{
             const decode = jwt.verify(token, secret);
 
@@ -33,10 +33,10 @@ myAuthRouter.post("/check", async(req, res) => {
 
     const userid = req.body.userid;
     const password = req.body.userpassword;
-
-    connection.query(`SELECT userID, password FROM students WHERE userID = ?
+    
+    connection.query(`SELECT userID, password, role FROM students WHERE userID = ?
     UNION
-    SELECT userID, password FROM staffs WHERE userID = ?`, [userid, password], (err, results)=>{
+    SELECT userID, password, role FROM staffs WHERE userID = ?`, [userid, password, role], (err, results)=>{
         if (err) {
             return res.status(500).json({ error: "Internal Server Error" });
         } 
@@ -44,17 +44,15 @@ myAuthRouter.post("/check", async(req, res) => {
             return res.status(401).json({ error: "Invalid Credentials" });
         }else {
             const hashedPassword = results[0].password;
+            const role = results[0].role;
+
             bcrypt.compare(password, hashedPassword, function(err, match) {
                 if (err) {
                     return res.status(500).json({ error: "Internal Server Error" });
                 }
                 if(match){
-                    /// credentials match, proceed to next page
-                    // req.session.userid = userid;
-                    // req.session.authenticated = true;
-                    // return res.redirect("/home"); 
                     
-                    const token = createToken(userid, "student"); 
+                    const token = createToken(userid, role); 
                     verifyToken(token);
                     return res.json({token});
                 }else {
