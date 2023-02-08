@@ -3,6 +3,7 @@ const connection = require("../mydata");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
 const secret = "fastConnect.com";
 
   function createToken(userid, role){
@@ -36,7 +37,7 @@ myAuthRouter.post("/check", async(req, res) => {
     
     connection.query(`SELECT userID, password, role FROM students WHERE userID = ?
     UNION
-    SELECT userID, password, role FROM staffs WHERE userID = ?`, [userid, password, role], (err, results)=>{
+    SELECT userID, password, role FROM staffs WHERE userID = ?`, [userid, password], (err, results)=>{
         if (err) {
             return res.status(500).json({ error: "Internal Server Error" });
         } 
@@ -52,8 +53,8 @@ myAuthRouter.post("/check", async(req, res) => {
                 }
                 if(match){
                     
-                    const token = createToken(userid, role); 
-                    verifyToken(token);
+                    const Token = createToken(userid, role); 
+                   const token = verifyToken(Token);
                     return res.json({token});
                 }else {
                     return res.status(401).json({ error: "Invalid Credentials" });
