@@ -21,9 +21,8 @@ const myHomeRouter = require("./routes/home");
 const myCommentRouter = require("./routes/comment");
 const clientCatch = require("./routes/clientAll");
 
-//middlewares
-// myauthRouter.createToken(userid, "student");
-// myauthRouter.verifyToken(token);
+
+
 
 
 app.use(express.static(path.join(__dirname, "../coding/MyProjects/Fastconnect/Client/build/index.html")));

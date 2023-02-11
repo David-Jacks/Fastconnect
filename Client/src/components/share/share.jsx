@@ -22,7 +22,9 @@ const Share = () => {
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        console.log(err);
+      });
   }
   //dealing with video post
   const [vidAbout, setvidAbout] = useState("");

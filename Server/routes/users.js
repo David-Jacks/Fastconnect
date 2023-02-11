@@ -25,6 +25,24 @@ function createToken(userid, role){
     }
 }
 
+// myUsersRouter.get("/api/users/:id", async (req, res) => {
+//     const userId = req.params.id;
+  
+//     connection.query("SELECT * FROM students, staff  WHERE id = ?", [userId], function (error, results, fields) {
+//         if (error) throw error;
+//         const user = results[0];
+//         // Do something with the user data
+//         // If a user with the given ID is found, return the user data in the response
+//         if (user) {
+//           res.json({ user });
+//         } else {
+//           // If a user with the given ID is not found, return a 404 status
+//           res.status(404).send("User not found");
+//         }
+//       });
+  
+//   });
+
 myUsersRouter.post("/sendStudent", async (req, res) => {
     try {
         const data = req.body;
