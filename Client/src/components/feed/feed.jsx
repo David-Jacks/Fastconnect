@@ -3,26 +3,18 @@ import Post from "../post/post";
 import Share from "../share/share";
 import "./feed.css";
 import axios from "axios";
-import { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { makeRequest } from "../../myAxios";
 
 const Feed = () => {
-  const [images, setImages] = useState([]);
-  useEffect(() => {
-    axios
-      .get("/api/post/getimg")
-      .then((response) => {
-        console.log(response.data);
-        // response.forEach((response) => {});
-        const data = response.data.map((img) => ({
-          ...img,
-        }));
-        console.log(data);
-        setImages(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  //making use of react query
+  const { isLoading, error, data } = useQuery(["post"], () => {
+    return makeRequest.get("/post").then((res) => {
+      return res.data;
+    });
+  });
+
+  // console.log(data);
 
   return (
     <>
@@ -31,9 +23,11 @@ const Feed = () => {
           <h1>Lancaster_Community</h1>
         </div>
         <Share />
-        {images.map((images) => (
-          <Post key={images.id} images={images} />
-        ))}
+        {error
+          ? "something went wrong with feed loading"
+          : isLoading
+          ? "Loading"
+          : data.map((post) => <Post key={post.id} post={post} />)}
       </div>
     </>
   );

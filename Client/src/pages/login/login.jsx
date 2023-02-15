@@ -1,33 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/auth-context";
 
 const Login = () => {
+  const [err, setErr] = useState(null);
   const [userid, setUserID] = useState("");
-  const [userpassword, setUserPasscode] = useState("");
+  const [userPassword, setUserPasscode] = useState("");
   const [log, setLog] = useState(false);
 
-  const userData = { userid, userpassword };
+  const inputs = { userid, userPassword };
 
+  const { login } = useContext(AuthContext);
   const history = useNavigate();
 
-  const checkUser = (e) => {
+  const checkUser = async (e) => {
     e.preventDefault();
-    axios
-      .post("/api/auth/check", userData)
-      .then((res) => {
-        console.log(res);
-        if (res.status === 200) {
-          const token = res.data.token;
-          localStorage.setItem("token", token);
-          history("/home");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await login(inputs);
+      history("/home");
+    } catch (err) {
+      // setErr(err.response.data);
+      console.log(err);
+    }
   };
 
   return (
@@ -83,6 +80,7 @@ const Login = () => {
                 }}
               />
             </form>
+            {err && err}
             <div className="finalBtn">
               <Link onClick={checkUser}>Let's Go!</Link>
             </div>

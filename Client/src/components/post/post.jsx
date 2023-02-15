@@ -5,8 +5,10 @@ import { BiHide } from "react-icons/bi";
 import { MdAddComment } from "react-icons/md";
 import { useState } from "react";
 import Commentbox from "../commentbox/commentbox";
+// import { useQuery } from "@tanstack/react-query";
+// import { makeRequest } from "../../myAxios";
 
-const Post = ({ images }) => {
+const Post = ({ post }) => {
   const [likes, setLikes] = useState(0);
   const [secret, setSecret] = useState(0);
   const [show, setShow] = useState(false);
@@ -17,7 +19,6 @@ const Post = ({ images }) => {
   const theSecret = () => {
     setSecret(secret + 1);
   };
-  // images.img = `${Buffer.from(images.img, "base64").toString("binary")}`;
 
   return (
     <div>
@@ -26,16 +27,15 @@ const Post = ({ images }) => {
           <div className="postmain">
             <div className="postabout">
               <img
-                src={images}
+                src={post.userProfile}
                 // Users.filter((u) => u.UserId === post.Userid)[0]
                 //     .profilepicture
                 alt="postuserprofile"
               />
-              <span>{images.imgAbout}</span>
+              <span>{post.imgAbout}</span>
             </div>
             <div className="postcontent">
-              <img src={images.img} alt="postimg" />
-              {/* {console.log(images.img)} */}
+              <img src={post.img} alt="postimg" />
             </div>
             <div className="reactioncenter">
               <div className="starRate">

@@ -5,40 +5,23 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Topbar from "../../components/topbar/topbar";
 import "../home/home.css";
 import axios from "axios";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const Home = () => {
   const [userData, setUserData] = useState({});
 
-  useEffect(() => {
-    // const token = localStorage.getItem("token");
-    // console.log(token);
-    const token = localStorage.getItem("token");
-    if (!token) {
-      console.log("Token not found in local storage.");
-    } else {
-      console.log(token);
-    }
-    // const fetchUser = async () => {
-    //   const response = await axios.get(`/api/users/${token.userid}`, {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   });
-    //   const user = response.data;
-    //   setUserData(user);
-    // };
-
-    // fetchUser();
-  }, []);
+  //using react query
+  const queryClient = new QueryClient();
 
   return (
     <>
-      <Topbar />
-      <div className="homeContainer">
-        <Sidebar />
-        <Feed userData={userData} />
-        <Rightbar />
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <Topbar />
+        <div className="homeContainer">
+          <Sidebar />
+          <Feed userData={userData} />
+          <Rightbar />
+        </div>
+      </QueryClientProvider>
     </>
   );
 };
