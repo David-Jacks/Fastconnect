@@ -26,16 +26,11 @@ const Post = ({ post }) => {
         <div className="postWrapper">
           <div className="postmain">
             <div className="postabout">
-              <img
-                src={post.userProfile}
-                // Users.filter((u) => u.UserId === post.Userid)[0]
-                //     .profilepicture
-                alt="postuserprofile"
-              />
+              <img src={post.userProfile} alt="postuserprofile" />
               <span>{post.imgAbout}</span>
             </div>
             <div className="postcontent">
-              <img src={post.img} alt="postimg" />
+              <img src={"./upload/" + post.img} alt="postimg" />
             </div>
             <div className="reactioncenter">
               <div className="starRate">

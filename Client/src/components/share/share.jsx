@@ -11,20 +11,19 @@ const Share = () => {
   const [imgAbout, setimgAbout] = useState("");
   const [img, setimg] = useState(null);
 
+  const queryClient = useQueryClient(); //will use to refresh post automatically
+
   const upload = async () => {
     try {
       const formData = new FormData();
       formData.append("file", img);
-      const res = await makeRequest.post("/upload", formData);
+      const res = await makeRequest.post("/post/upload", formData);
       return res.data;
     } catch (err) {
       console.log(err);
     }
   };
-
-  // const { currentUser } = useContext(AuthContext);
-
-  const queryClient = useQueryClient(); //will use to refresh post automatically
+  const { currentUser } = useContext(AuthContext);
 
   const mutation = useMutation(
     (newPost) => {
@@ -44,9 +43,8 @@ const Share = () => {
       let imgUrl = "";
       if (img) {
         imgUrl = await upload();
-        mutation.mutate({ imgAbout, img: imgUrl });
       }
-      console.log(imgUrl);
+      mutation.mutate({ imgAbout, img: imgUrl });
     }
   };
 
@@ -61,12 +59,7 @@ const Share = () => {
     vidAbout,
     vid,
   };
-  function vidPost() {
-    axios
-      .post("/api/post/vidpost", vidData)
-      .then((res) => {})
-      .catch((err) => {});
-  }
+  function vidPost() {}
 
   //dealing with event post
   const [eventAbout, seteventAbout] = useState("");
@@ -76,12 +69,7 @@ const Share = () => {
     eventAbout,
     event,
   };
-  function eventPost() {
-    axios
-      .post("/api/post/eventpost", eventData)
-      .then((res) => {})
-      .catch((err) => {});
-  }
+  function eventPost() {}
 
   return (
     <div className="share">
@@ -139,7 +127,7 @@ const Share = () => {
             <input
               type="file"
               className="eventupload"
-              onChangeCapture={(e) => {
+              onChange={(e) => {
                 setevent(e.target.files[0]);
               }}
             />

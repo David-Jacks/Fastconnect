@@ -8,6 +8,7 @@ const cors = require("cors");
 
 
 
+
 ///routing
 const myUsersRouter = require("./routes/users");
 const myauthRouter = require("./routes/auth");
@@ -16,28 +17,13 @@ const myHomeRouter = require("./routes/home");
 const myCommentRouter = require("./routes/comment");
 const clientCatch = require("./routes/clientAll");
 const cookieParser = require("cookie-parser");
-const multer = require("multer");
 // const anonymous = require("./routes/anonymous"); 
 
 
 
 
 //my midlewares
-const storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    cb(null, "../client/public/upload")
-  },
-  filename: function (req, file, cb){
-    cb(null, Date.now() + file.originalname);
-  }
-})
 
-const upload = multer({storage: storage});
-
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  const file = req.file;
-  res.status(200).json(file.filename);
-});
 
 // app.use(express.static(path.join(__dirname, "../coding/MyProjects/Fastconnect/Client/build/index.html")));
 app.use((req, res, next,) =>{

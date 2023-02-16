@@ -1,6 +1,6 @@
 const Router = require("express").Router();
-const connection = require("../mydata");
 const multer = require("multer");
+
 
 const { getPost, addPost } = require("../controllers/post");
 
@@ -11,7 +11,21 @@ const { getPost, addPost } = require("../controllers/post");
 
 
     Router.post("/post", addPost);
+//dealing with image
+    const storage = multer.diskStorage({
+        destination: function(req, file, cb){
+          cb(null, "../client/public/upload")
+        },
+        filename: function (req, file, cb){
+          cb(null, Date.now() + file.originalname);
+        }
+      })
+      const upload = multer({storage: storage});
 
+    Router.post("/upload", upload.single("file"), (req, res) => {
+        const file = req.file;
+        res.status(200).json(file.filename);
+      });
 
 
 
