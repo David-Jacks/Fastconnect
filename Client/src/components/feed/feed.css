@@ -1,20 +1,26 @@
 .feed{
-    flex: 5.5;
+    flex: 6;
     padding: 1em;
     height: calc(100vh - 50px);
     overflow-y: scroll;
     
 }
-::-webkit-scrollbar{
+.feed ::-webkit-scrollbar{
     width: 2px;
     display: none;
 }
-::-webkit-scrollbar-track{
+.feed ::-webkit-scrollbar-track{
     background-color: #444;
 }
-::-webkit-scrollbar-thumb{
+.feed ::-webkit-scrollbar-thumb{
     color: #ffffff;
 }
+.control{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
 .head-const{
     display: flex;
     align-items: center;
@@ -22,9 +28,9 @@
     
 }
 @keyframes example {
-    0% {left:0px; top:0px; }
-    50% {left: 50%; top: 0%;}
-    100% {left: 0px; top:0px;}
+    0% {left:0px;  }
+    50% {left: 300px; }
+    100% {left: 0px; }
 }
 .head-const h1{
     font-size: 24px;
@@ -43,11 +49,14 @@
     width: 100%;
     height: auto;
 }
-@media screen and (max-width = 370) {
-    .feed{
-        flex: 10;
-        padding: 1.3em;
-        height: calc(100vh - 50px);
-        overflow-y: scroll;
-    }
+
+@media (max-width: 480px) {
+   .feed{
+   padding: 0;
+   }
+   @keyframes example {
+    0% {left:0px;  }
+    50% {left: 20%; }
+    100% {left: 0px; }
+}
 }

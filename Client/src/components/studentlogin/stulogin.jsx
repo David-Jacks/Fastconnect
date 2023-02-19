@@ -6,39 +6,38 @@ import axios from "axios";
 
 const Stulogin = () => {
   const navigate = useNavigate();
-
-  const role = "student";
-  const [userID, setStuID] = useState("");
+  //i will have to change the state fnctions later
+  const [userid, setStuID] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
+  const [userPassword, setPassword] = useState("");
   const [passconfirm, setPassconfirm] = useState("");
-  const [stuEmail, setstuEmail] = useState("");
-  const [studob, setstuDOB] = useState("");
+  const [userEmail, setstuEmail] = useState("");
+  const [userDOB, setstuDOB] = useState("");
   const [programme, setProgramme] = useState("");
-  const [stugender, setstuGender] = useState("");
+  const [userGender, setstuGender] = useState("");
   const [stulevel, setstuLevel] = useState("");
 
+  const userName = firstName + " " + lastName;
+
   const formData = {
-    role,
-    userID,
-    firstName,
-    lastName,
-    password,
-    stuEmail,
-    studob,
-    programme,
-    stugender,
+    userid,
+    userName,
+    userPassword,
+    userEmail,
+    userDOB,
+    userGender,
     stulevel,
+    programme,
   };
 
   const sendFormData = async (e) => {
     e.preventDefault();
     await axios
-      .post("/api/users/sendStudent", formData)
+      .post("/api/auth/addstu", formData)
       .then((res) => {
         console.log(res);
-        if (res.status === 201 && passconfirm === password) {
+        if (res.status === 201 && passconfirm === userPassword) {
           navigate("/home");
         } else navigate("/Stulogin");
       })
@@ -81,7 +80,7 @@ const Stulogin = () => {
             <div>
               <input
                 name="PCODE"
-                type="password"
+                type="userPassword"
                 placeholder="Password"
                 className="stupass"
                 onChange={(e) => {
@@ -92,7 +91,7 @@ const Stulogin = () => {
             <div>
               <input
                 name="PCODEC"
-                type="password"
+                type="userPassword"
                 placeholder="Confirm Password"
                 className="stupasscon"
                 onChange={(e) => {
@@ -116,7 +115,7 @@ const Stulogin = () => {
               <input
                 name="DOB"
                 type="date"
-                className="studob"
+                className="userDOB"
                 onChange={(e) => {
                   setstuDOB(e.target.value);
                 }}

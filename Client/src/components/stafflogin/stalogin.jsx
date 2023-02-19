@@ -1,42 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./stalogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/auth-context";
 
 const Stalogin = () => {
-  const role = "staff";
+  const { login } = useContext(AuthContext);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [userID, setStaffID] = useState("");
-  const [password, setPasscode] = useState("");
+  const [userid, setStaffID] = useState("");
+  const [userPassword, setPasscode] = useState("");
   const [passcon, setPasscon] = useState("");
-  const [staEmail, setEmail] = useState("");
-  const [staDoB, setDOB] = useState("");
+  const [userEmail, setEmail] = useState("");
+  const [userDOB, setDOB] = useState("");
   const [Department, setDepartment] = useState("");
-  const [staGender, setGender] = useState("");
+  const [userGender, setGender] = useState("");
 
   const navigate = useNavigate();
-
+  const userName = firstName + " " + lastName;
   const staffData = {
-    role,
-    userID,
-    firstName,
-    lastName,
-    password,
-    staEmail,
-    staDoB,
-    staGender,
+    userid,
+    userName,
+    userPassword,
+    userEmail,
+    userDOB,
+    userGender,
     Department,
   };
   const sendStaffData = async (e) => {
     e.preventDefault();
     try {
       await axios
-        .post("/api/users/sendStaff", staffData)
+        .post("/api/auth/addstaff", staffData)
         .then((res) => {
           console.log(res);
-          if (res.status === 201 && passcon === password) {
+          if (res.status === 201 && passcon === userPassword) {
             navigate("/home");
           } else navigate("/Stalogin");
         })

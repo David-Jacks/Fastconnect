@@ -1,5 +1,5 @@
 .sidebar{
-    flex: 2.5;
+    flex: 2;
     height: calc(100vh - 50px);
     width: 100%;
     overflow-y: scroll;
@@ -8,9 +8,9 @@
 .sidebar-Wrapper{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 1em;
-    padding: 2em;
+    margin-left: 0.5em;
     margin-top: 2.5em;
     width: 100%; 
     height: auto;
@@ -35,7 +35,6 @@
 .sidebarListItem button:hover{
     background-color: #444;
     color: #ffffff;
-    padding: 4px 2px;
     border-radius: 5px;
 }
 .sidebarIcon{
@@ -48,14 +47,16 @@
     width: 130px;
     border: none;
     background-color: #b5121b;
-    border-radius: 2px;
-    padding: 10px;
+    border-radius: 0.5em;
+    padding: 5px;
     font-weight: 400;
     color: #ffffff;
     align-self: center;
 }
 .sidebarHr{
     width: 100%;
+    height: 4px;
+    color: #b5121b;
 }
 .sidebarFriendList{
     padding: 0;
@@ -83,4 +84,30 @@
     width: 5px; height: 5px;
     position: absolute;
     top: 10px; left: 5px;
+}
+
+@media (max-width: 480px) {
+    .sidebar{
+        display: block;
+        position: fixed;
+        left: 0;
+        background-color: #444;
+        z-index: 46568;
+    }
+    .sidebar-Wrapper{
+        gap: 1em;   
+        margin: 1em 0em 0em 0.5em;
+    }
+    .sidebarIcon{
+        margin-right: 15px;
+        color: #f4eeef;
+        width: 25px;
+        height: 25px;
+    }
+    .sidebarListItem button:hover{
+        background-color: #a40d0d;
+        color: #ffffff;
+        padding: 4px 2px;
+        border-radius: 5px;
+    }
 }

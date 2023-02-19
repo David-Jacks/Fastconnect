@@ -1,31 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./share.css";
 import { useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../context/auth-context";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../myAxios";
+
 const Share = () => {
+  //dealing with image post
+  const [imgAbout, setimgAbout] = useState("");
+  const [img, setimg] = useState(null);
+
+  const queryClient = useQueryClient(); //will use to refresh post automatically
+
+  const upload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", img);
+      const res = await makeRequest.post("/post/upload", formData);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const { currentUser } = useContext(AuthContext);
+
+  const mutation = useMutation(
+    (newPost) => {
+      return makeRequest.post("/post/post", newPost);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["post"]);
+      },
+    }
+  );
+
+  const imagePost = async () => {
+    if (imgAbout === "") {
+      console.log("please write something");
+    } else {
+      let imgUrl = "";
+      if (img) {
+        imgUrl = await upload();
+      }
+      mutation.mutate({ imgAbout, img: imgUrl });
+    }
+  };
+
   const [open, setOpen] = useState(false);
   const [picopen, setPicopen] = useState(false);
   const [eventopen, setEventopen] = useState(false);
 
-  //dealing with image post
-  const [imgAbout, setimgAbout] = useState("");
-  const [img, setimg] = useState("");
-
-  const imageData = {
-    imgAbout,
-    img,
-  };
-
-  function imagePost() {
-    axios
-      .post("/api/post/postimg", imageData)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
   //dealing with video post
   const [vidAbout, setvidAbout] = useState("");
   const [vid, setvid] = useState("");
@@ -33,12 +59,7 @@ const Share = () => {
     vidAbout,
     vid,
   };
-  function vidPost() {
-    axios
-      .post("/api/post/vidpost", vidData)
-      .then((res) => {})
-      .catch((err) => {});
-  }
+  function vidPost() {}
 
   //dealing with event post
   const [eventAbout, seteventAbout] = useState("");
@@ -48,12 +69,7 @@ const Share = () => {
     eventAbout,
     event,
   };
-  function eventPost() {
-    axios
-      .post("/api/post/eventpost", eventData)
-      .then((res) => {})
-      .catch((err) => {});
-  }
+  function eventPost() {}
 
   return (
     <div className="share">
@@ -83,7 +99,7 @@ const Share = () => {
               type="file"
               className="vidupload"
               onChange={(e) => {
-                setvid(e.target.value);
+                setvid(e.target.files[0]);
               }}
             />
             <button
@@ -111,8 +127,8 @@ const Share = () => {
             <input
               type="file"
               className="eventupload"
-              onChangeCapture={(e) => {
-                setevent(e.target.value);
+              onChange={(e) => {
+                setevent(e.target.files[0]);
               }}
             />
             <button
@@ -141,7 +157,7 @@ const Share = () => {
               type="file"
               className="imageupload"
               onChange={(e) => {
-                setimg(e.target.value);
+                setimg(e.target.files[0]);
               }}
             />
             <button
@@ -159,7 +175,6 @@ const Share = () => {
         <div className="shareBottom">
           <button
             onClick={() => {
-              vidPost();
               setOpen(true);
             }}
           >
@@ -167,7 +182,6 @@ const Share = () => {
           </button>
           <button
             onClick={() => {
-              eventPost();
               setEventopen(true);
             }}
           >
@@ -175,7 +189,6 @@ const Share = () => {
           </button>
           <button
             onClick={() => {
-              imagePost();
               setPicopen(true);
             }}
           >

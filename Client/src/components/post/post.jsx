@@ -3,10 +3,15 @@ import "./post.css";
 import { GiStarFormation } from "react-icons/gi";
 import { BiHide } from "react-icons/bi";
 import { MdAddComment } from "react-icons/md";
+import { FiMoreHorizontal } from "react-icons/fi";
 import { useState } from "react";
 import Commentbox from "../commentbox/commentbox";
+import { Link } from "react-router-dom";
+import moment from "moment";
+// import { useQuery } from "@tanstack/react-query";
+// import { makeRequest } from "../../myAxios";
 
-const Post = ({ images }) => {
+const Post = ({ post }) => {
   const [likes, setLikes] = useState(0);
   const [secret, setSecret] = useState(0);
   const [show, setShow] = useState(false);
@@ -17,7 +22,6 @@ const Post = ({ images }) => {
   const theSecret = () => {
     setSecret(secret + 1);
   };
-  // images.img = `${Buffer.from(images.img, "base64").toString("binary")}`;
 
   return (
     <div>
@@ -25,24 +29,27 @@ const Post = ({ images }) => {
         <div className="postWrapper">
           <div className="postmain">
             <div className="postabout">
-              <img
-                src={images}
-                // Users.filter((u) => u.UserId === post.Userid)[0]
-                //     .profilepicture
-                alt="postuserprofile"
-              />
-              <span>{images.imgAbout}</span>
+              <div className="f-part">
+                <img src="./assets/final.png" alt="postuserprofile" />
+                <div className="details">
+                  <Link to={"profilePage"} className="link">
+                    <span className="name">{post.userName}</span>
+                  </Link>
+                  <span>{post.created_at}</span>
+                </div>
+              </div>
+              <FiMoreHorizontal />
             </div>
             <div className="postcontent">
-              <img src={images.img} alt="postimg" />
-              {/* {console.log(images.img)} */}
+              <p className="about">{post.imgAbout}</p>
+              <img src={"./upload/" + post.img} alt="postimg" />
             </div>
             <div className="reactioncenter">
               <div className="starRate">
                 <button onClick={theLikes}>
                   <GiStarFormation className="icon" />
                 </button>
-                <span>Star {likes}</span>
+                <span> {likes}</span>
               </div>
               <div className="commentRate">
                 <button
@@ -52,7 +59,6 @@ const Post = ({ images }) => {
                 >
                   <MdAddComment className="icon" />
                 </button>
-                <span className="countfind">comments</span>
               </div>
               <div className="reportRate">
                 <button onClick={theSecret}>
