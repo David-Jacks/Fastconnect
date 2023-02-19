@@ -33,7 +33,7 @@ const Stalogin = () => {
     e.preventDefault();
     try {
       await axios
-        .post("/api/users/addstaff", staffData)
+        .post("/api/auth/addstaff", staffData)
         .then((res) => {
           console.log(res);
           if (res.status === 201 && passcon === userPassword) {

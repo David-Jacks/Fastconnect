@@ -3,8 +3,11 @@ import "./post.css";
 import { GiStarFormation } from "react-icons/gi";
 import { BiHide } from "react-icons/bi";
 import { MdAddComment } from "react-icons/md";
+import { FiMoreHorizontal } from "react-icons/fi";
 import { useState } from "react";
 import Commentbox from "../commentbox/commentbox";
+import { Link } from "react-router-dom";
+import moment from "moment";
 // import { useQuery } from "@tanstack/react-query";
 // import { makeRequest } from "../../myAxios";
 
@@ -26,10 +29,19 @@ const Post = ({ post }) => {
         <div className="postWrapper">
           <div className="postmain">
             <div className="postabout">
-              <img src={post.userProfile} alt="postuserprofile" />
-              <span>{post.imgAbout}</span>
+              <div className="f-part">
+                <img src="./assets/final.png" alt="postuserprofile" />
+                <div className="details">
+                  <Link to={"profilePage"} className="link">
+                    <span className="name">{post.userName}</span>
+                  </Link>
+                  <span>{post.created_at}</span>
+                </div>
+              </div>
+              <FiMoreHorizontal />
             </div>
             <div className="postcontent">
+              <p className="about">{post.imgAbout}</p>
               <img src={"./upload/" + post.img} alt="postimg" />
             </div>
             <div className="reactioncenter">
@@ -37,7 +49,7 @@ const Post = ({ post }) => {
                 <button onClick={theLikes}>
                   <GiStarFormation className="icon" />
                 </button>
-                <span>Star {likes}</span>
+                <span> {likes}</span>
               </div>
               <div className="commentRate">
                 <button
@@ -47,7 +59,6 @@ const Post = ({ post }) => {
                 >
                   <MdAddComment className="icon" />
                 </button>
-                <span className="countfind">comments</span>
               </div>
               <div className="reportRate">
                 <button onClick={theSecret}>

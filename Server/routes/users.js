@@ -43,36 +43,36 @@ function createToken(userid, role){
   
 //   });
 
-Router.post("/sendStudent", async (req, res) => {
+// Router.post("/sendStudent", async (req, res) => {
     
-});
+// });
 
-Router.post("/sendStaff", async(req, res) =>{
-    try{
-        const data = req.body;
-        const userid = data.userID;
-        const role = data.role;
-        const hash =async (pass)=>{
-            return await bcrypt.hash(pass, 10);
-          }
-          const passencrypt = await hash(data.password);
+// Router.post("/sendStaff", async(req, res) =>{
+//     try{
+//         const data = req.body;
+//         const userid = data.userID;
+//         const role = data.role;
+//         const hash =async (pass)=>{
+//             return await bcrypt.hash(pass, 10);
+//           }
+//           const passencrypt = await hash(data.password);
   
-        data.password = passencrypt;
-       connection.query("INSERT INTO staffs SET ?", data, function(err, result){
-            if (err){
-                console.log("An error happend" + err);
-            }if(result){
-            res.status(201);
-            console.log("your data is inserted successfully!");
-            const token = createToken(userid, role);
-              verifyToken(token);
-              return res.json({token});
-            }
-        })
-    }catch(error){
-        res.status(400).send(error);
-    }
-})
+//         data.password = passencrypt;
+//        connection.query("INSERT INTO staffs SET ?", data, function(err, result){
+//             if (err){
+//                 console.log("An error happend" + err);
+//             }if(result){
+//             res.status(201);
+//             console.log("your data is inserted successfully!");
+//             const token = createToken(userid, role);
+//               verifyToken(token);
+//               return res.json({token});
+//             }
+//         })
+//     }catch(error){
+//         res.status(400).send(error);
+//     }
+// })
 
 
 

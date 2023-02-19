@@ -34,7 +34,7 @@ const Stulogin = () => {
   const sendFormData = async (e) => {
     e.preventDefault();
     await axios
-      .post("/api/users/addstu", formData)
+      .post("/api/auth/addstu", formData)
       .then((res) => {
         console.log(res);
         if (res.status === 201 && passconfirm === userPassword) {

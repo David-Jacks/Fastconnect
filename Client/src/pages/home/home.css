@@ -3,3 +3,30 @@
     width: 100vw;
     height: 100vh;
 }
+.left{
+    display: none;
+ color: #211c18;
+ cursor: pointer;
+ margin: 6px 0px 0px 5px;
+ background-color: rgb(237, 207, 171);
+ width: 25px;
+}
+.right{
+    display: none;
+    color: #211c18;
+    cursor: pointer;
+    margin: 6px 5px 0px 0px;
+    background-color: rgb(237, 207, 171);
+    width: 25px;
+}
+@media (max-width: 487px) {
+    .left{
+        color:#343a40;                                                  
+        display: block;
+    }
+    .right{
+        color: #343a40;
+        display: block;
+
+    }
+}

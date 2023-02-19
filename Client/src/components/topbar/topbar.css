@@ -6,9 +6,10 @@
     align-items: center;
     position: sticky;
     top: 0;
+    justify-content: space-around;
+    
 }
 .topbarLeft{
-    /* flex: 3; */
     width: 30%;
     display: flex;
     flex-direction: row;
@@ -29,6 +30,7 @@
     cursor: pointer;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 0;
+    overflow-wrap:break-word;
 }
 .topbarCenter{
     /* flex: 5; */
@@ -55,11 +57,11 @@
     outline: none;
 }
 .topbarRight{
-    /* flex: 4; */
     display: flex;
     align-items: center;
     color: white;
     width: 35%; 
+    gap: 2px;
     justify-content: space-around;
 }
 .topbarLinks a{
@@ -69,6 +71,7 @@
     color: #ffffff;
     text-decoration: overline;
     font-weight: bold;
+    overflow-wrap: break-word;
 }
 .topbarLinks a:hover{
     color: #9f7878;
@@ -76,22 +79,23 @@
 .topbarIcons{
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6px;
+    justify-content: space-around;
+    width: 25%;
 }
 .topbarIconItem{
     position: relative;
-    top: 2.6vh;
-    display: flex;
-    width: 2.5vw; 
+    top: 2dvh;
+    width: fit-content; 
+   height: auto;
     align-items: center;
     justify-content: center;
 }
 .iconedite{
     color: #ffffff;
-    width: 2vw;
-    height: 4.5vh;
+    width: 20px;
+    height: 30px;
     cursor: pointer;
+    margin: 1px auto;
 }
 .iconedite:hover{
     color: #9f7878;
@@ -108,7 +112,7 @@
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    font-weight: 900;
+    font-weight: 600;
 }
 .topbarImage{
     width: 32px;
@@ -143,3 +147,52 @@
     display: flex;
     flex-direction: column;
 }
+
+
+@media (max-width: 480px) {
+    .topbarContainer{
+        align-items: center;
+    }
+    .searchbar{
+       display: none;
+    }
+    .topbarLeft{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+    }
+    .topbarCenter{
+        display: none;
+    }
+    .topbarRight{
+        width: 50%;
+        justify-content: space-around;
+    }
+    .topbarIcons{
+        width: 50%;
+    }
+    .topbarLinks a{
+        margin-right: 6px;
+        font-size: 10px;
+        overflow-wrap: break-word;
+    }
+    .topbarLeft img{
+        margin-left: 4px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .topbarImage{
+        display: none;
+    }
+ }
+ /* .topbarRight{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 35%; 
+    justify-content: space-around;
+} */

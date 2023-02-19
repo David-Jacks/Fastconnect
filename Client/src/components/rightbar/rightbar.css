@@ -6,14 +6,14 @@
     
 }
 
-::-webkit-scrollbar{
+.rightbar ::-webkit-scrollbar{
     width: 0px;
     display: none;
 }
-::-webkit-scrollbar-track{
+.rightbar ::-webkit-scrollbar-track{
     background-color: #fff;
 }
-::-webkit-scrollbar-thumb{
+.rightbar ::-webkit-scrollbar-thumb{
     color: #fff;
 }
 .rightbarWrapper{
@@ -31,4 +31,10 @@
 }
 .rightbarHr{
     width: 100%;
+}
+@media (max-width: 480px) {
+    .rightbar{
+   display: none;
+    }
+    
 }
