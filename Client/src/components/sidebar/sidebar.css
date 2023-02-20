@@ -91,8 +91,8 @@
         display: block;
         position: fixed;
         left: 0;
-        background-color: #444;
-        z-index: 46568;
+        background-color: #120505;
+        z-index: 454654;
     }
     .sidebar-Wrapper{
         gap: 1em;   
@@ -111,3 +111,9 @@
         border-radius: 5px;
     }
 }
+/* @media (min-width: 487px) {
+    .sidebar{
+        display: block;
+    }
+    
+} */
