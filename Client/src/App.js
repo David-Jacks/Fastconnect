@@ -6,8 +6,8 @@ import Stulogin from './components/studentlogin/stulogin.jsx';
 import Stalogin from './components/stafflogin/stalogin.jsx';
 import Basket from './pages/basket/basket.jsx';
 import Chat from './pages/chat/chat.jsx';
-import {createBrowserRouter, Route, RouterProvider, Navigate} from 'react-router-dom';
-import { AuthContext } from './context/auth-context';
+import {createBrowserRouter, RouterProvider, Navigate} from 'react-router-dom';
+import { AuthContext } from "./context/auth-context";
 
 function App() {
   const { currentUser } = useContext(AuthContext);

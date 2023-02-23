@@ -25,54 +25,6 @@ function createToken(userid, role){
     }
 }
 
-// Router.get("/api/users/:id", async (req, res) => {
-//     const userId = req.params.id;
-  
-//     connection.query("SELECT * FROM students, staff  WHERE id = ?", [userId], function (error, results, fields) {
-//         if (error) throw error;
-//         const user = results[0];
-//         // Do something with the user data
-//         // If a user with the given ID is found, return the user data in the response
-//         if (user) {
-//           res.json({ user });
-//         } else {
-//           // If a user with the given ID is not found, return a 404 status
-//           res.status(404).send("User not found");
-//         }
-//       });
-  
-//   });
-
-// Router.post("/sendStudent", async (req, res) => {
-    
-// });
-
-// Router.post("/sendStaff", async(req, res) =>{
-//     try{
-//         const data = req.body;
-//         const userid = data.userID;
-//         const role = data.role;
-//         const hash =async (pass)=>{
-//             return await bcrypt.hash(pass, 10);
-//           }
-//           const passencrypt = await hash(data.password);
-  
-//         data.password = passencrypt;
-//        connection.query("INSERT INTO staffs SET ?", data, function(err, result){
-//             if (err){
-//                 console.log("An error happend" + err);
-//             }if(result){
-//             res.status(201);
-//             console.log("your data is inserted successfully!");
-//             const token = createToken(userid, role);
-//               verifyToken(token);
-//               return res.json({token});
-//             }
-//         })
-//     }catch(error){
-//         res.status(400).send(error);
-//     }
-// })
 
 
 

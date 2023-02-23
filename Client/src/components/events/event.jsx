@@ -9,7 +9,7 @@ const Events = () => {
           <p className="eventTopic"> October summit 2022</p>
         </div>
         <div className="mainevent">
-          <img src="/assets/SavedPictures/madrid.jpg" alt="" />
+          <img src="/assets/madrid.jpg" alt="" />
         </div>
         <div className="eventreaction">
           <a href="{}" className="aboutevent">

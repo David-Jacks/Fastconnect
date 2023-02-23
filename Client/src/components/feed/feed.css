@@ -14,12 +14,6 @@
 .feed ::-webkit-scrollbar-thumb{
     color: #ffffff;
 }
-.control{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
 .head-const{
     display: flex;
     align-items: center;
@@ -43,8 +37,7 @@
 .feedWrapper{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2.5em;
+    gap: 1em;
     width: 100%;
     height: auto;
 }

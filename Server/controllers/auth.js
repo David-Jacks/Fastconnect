@@ -45,9 +45,7 @@ if (err) {
     console.log("An error occurred: " + err);
 } if(result){
     res.status(201).json("A student has been added");
-//   const token = createToken(userid, role);
-//   verifyToken(token);
-//   return res.json({token});
+
 }
 });
 

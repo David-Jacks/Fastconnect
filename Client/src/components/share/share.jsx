@@ -1,29 +1,19 @@
 import React, { useContext } from "react";
 import "./share.css";
 import { useState } from "react";
-import axios from "axios";
-import { AuthContext } from "../../context/auth-context";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../myAxios";
 
 const Share = () => {
+  const [open, setOpen] = useState(false);
+  const [picopen, setPicopen] = useState(false);
+  const [eventopen, setEventopen] = useState(false);
+
   //dealing with image post
   const [imgAbout, setimgAbout] = useState("");
   const [img, setimg] = useState(null);
 
   const queryClient = useQueryClient(); //will use to refresh post automatically
-
-  const upload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", img);
-      const res = await makeRequest.post("/post/upload", formData);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const { currentUser } = useContext(AuthContext);
 
   const mutation = useMutation(
     (newPost) => {
@@ -35,6 +25,16 @@ const Share = () => {
       },
     }
   );
+  const upload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", img);
+      const res = await makeRequest.post("/post/vidupload", formData);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const imagePost = async () => {
     if (imgAbout === "") {
@@ -48,18 +48,41 @@ const Share = () => {
     }
   };
 
-  const [open, setOpen] = useState(false);
-  const [picopen, setPicopen] = useState(false);
-  const [eventopen, setEventopen] = useState(false);
-
   //dealing with video post
   const [vidAbout, setvidAbout] = useState("");
-  const [vid, setvid] = useState("");
-  const vidData = {
-    vidAbout,
-    vid,
+  const [vid, setvid] = useState(null);
+
+  const vidmutation = useMutation(
+    (newPost) => {
+      return makeRequest.post("/post/vid", newPost);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["video"]);
+      },
+    }
+  );
+  const vidupload = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("file", vid);
+      const res = await makeRequest.post("/post/vidupload", formData);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
   };
-  function vidPost() {}
+  const vidPost = async () => {
+    if (vidAbout === "") {
+      console.log(" please write something abt your video");
+    } else {
+      let vidURL = "";
+      if (vid) {
+        vidURL = await vidupload();
+      }
+      vidmutation.mutate({ vid: vidURL, vidAbout: vidAbout });
+    }
+  };
 
   //dealing with event post
   const [eventAbout, seteventAbout] = useState("");
@@ -126,6 +149,7 @@ const Share = () => {
             ></textarea>
             <input
               type="file"
+              // name="file"
               className="eventupload"
               onChange={(e) => {
                 setevent(e.target.files[0]);

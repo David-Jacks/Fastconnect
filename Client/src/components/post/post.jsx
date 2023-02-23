@@ -7,6 +7,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 import { useState } from "react";
 import Commentbox from "../commentbox/commentbox";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import moment from "moment";
 // import { useQuery } from "@tanstack/react-query";
 // import { makeRequest } from "../../myAxios";
@@ -35,35 +36,36 @@ const Post = ({ post }) => {
                   <Link to={"profilePage"} className="link">
                     <span className="name">{post.userName}</span>
                   </Link>
-                  <span>{post.created_at}</span>
+                  <span>{moment(post.created_at).fromNow()}</span>
                 </div>
               </div>
-              <FiMoreHorizontal />
+              <FiMoreHorizontal className="close" />
             </div>
+            <p className="about">{post.imgAbout}</p>
             <div className="postcontent">
-              <p className="about">{post.imgAbout}</p>
-              <img src={"./upload/" + post.img} alt="postimg" />
+              <img
+                src={"./upload/" + post.img}
+                alt="postimg"
+                className="img-fluid"
+              />
             </div>
             <div className="reactioncenter">
               <div className="starRate">
-                <button onClick={theLikes}>
-                  <GiStarFormation className="icon" />
-                </button>
+                <GiStarFormation className="icon" onClick={theLikes} />
+
                 <span> {likes}</span>
               </div>
               <div className="commentRate">
-                <button
+                <MdAddComment
+                  className="icon"
                   onClick={() => {
                     setShow(!show);
                   }}
-                >
-                  <MdAddComment className="icon" />
-                </button>
+                />
               </div>
               <div className="reportRate">
-                <button onClick={theSecret}>
-                  <BiHide className="icon" />
-                </button>
+                <BiHide className="icon" onClick={theSecret} />
+
                 <span>{secret}</span>
               </div>
             </div>
