@@ -14,7 +14,7 @@ const Topbar = () => {
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          <img src="./assets/download.jfif" alt="logo" />
+          <img src="../assets/res.jpeg" alt="logo" />
           <span className="logo">FastConnect</span>
         </div>
         <div className="topbarCenter">

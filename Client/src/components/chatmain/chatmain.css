@@ -1,35 +1,20 @@
 .chatmainall{
-    flex: 7;
+    flex: 7.5;
     width: 100%;
-    height: 100vh;
+    height: calc(100dvh - 50px);
     padding: 1em;
-}
-.chatmainsearch{
-    width: 100%;
-    height: 4vh;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-.searchmessage{
-    width: 50%;
-    height: auto;
-    border-top-style: hidden;
-}
-.searchmessage:focus{
-    outline: none;
 }
 
 .chatmaincontent{
     width: 100%;
-    height: 83.5vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    /* background-color: blue; */
 }
 .chatcontenthead{
-    width: 70%; 
-    text-align: center; border: 0px solid #b5121b;
+    width: 100%; 
+    text-align: center; 
+    border: 0px solid #b5121b;
     border-right-style: hidden;
     border-top-style: hidden; border-left-style: hidden;
     margin: 0px auto; margin-top: 4px; margin-bottom: -1px;
@@ -39,89 +24,120 @@
     gap: 6px; 
 }
 .chatcontenthead img{
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 1px 3px 3px 0px;
 }
 .chatcontenthead span{
-    border: 3px solid #b5121b; 
+    border: 3px solid #ebebeb; 
     border-radius: 5px;
     border-bottom-style: hidden;
-    padding: 5px;margin-bottom: -5px;
-   
+    padding: 5px;
+    margin-bottom: -5px;
+    background-color: #c0c0c0;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .chatbox{
     width: 90%;
-    height: 80%;
+    height: 80dvh;
     overflow-y: scroll;
-    background-color: brown;
+    background-color: #c0c0c0;
     margin: 1px auto;
+    gap: 0.2em;
     border-radius: 6px;
-    padding: 0.5rem 0.5rem;
+    padding: 0.1rem 0.5rem 0px 0.5rem;
     position: relative;
+    box-shadow: 8px 30px 48px 6px rgba(206,204,204,0.75);
+    -webkit-box-shadow: 8px 30px 48px 6px rgba(206,204,204,0.75);
+    -moz-box-shadow: 8px 30px 48px 6px rgba(206,204,204,0.75);
 }
 .chatbox::-webkit-scrollbar{
-    width: 0px;
+    display: none;
 }
 .chatdate{
-    width: 100%; margin-bottom: 5px;
-    height: 20px; 
+    width: 100%; 
+    height: max-content; 
+    margin-bottom: 5px;
     display: flex;
     justify-content: center;
     position: sticky; top: 0;
     z-index: 6516;
 }
 .chatdate span{
-    background-color: #ffffff;
-    padding: 2px 5px; border-radius: 3px;
+    background-color: #ebe8e8;
+    padding: 2px 5px; 
+    border-radius: 3px;
+    font-size: 15px;
 }
 .chatsend{
-    width: 80%;
-    height: 10%;
-    display: flex;
-    margin: 0px auto;
-    gap: 5px; margin-top: 10px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    
 }
-
+.chatsend-div{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: #ebe8e8;
+    height: auto;
+    bottom: -2px;
+}
 #messagewrite{
     resize: none;
-    width: 80%; padding-left: 8px; padding-right: 8px;
-    max-height: 50px;
+    width: 60%; 
+    max-height: 35px;
+    padding-left: 10px; 
     overflow-y: scroll;
-    font-size: large;
-    border-right-style: hidden;
-    border-top-style: hidden;
-    border-bottom-left-radius: 5px;
+    font-size: 20px;
+    background-color: #ebe8e8;
+    border: none;
+    transition: all .5s ease;
 }
-#messagewrite:focus{
-    outline: none;
-    
+#messagewrite::placeholder{
+    color: #121111;
+}
+#messagewrite:focus, #messagewrite:not(:placeholder-shown){
+    max-height: 65px; 
+    outline: none;  
 }
 #messagewrite::-webkit-scrollbar{
     width: 0px;
 }
-.sender{
-    width: 15%;
-    height: 45px; border: none;
-    border-radius: 4px; gap: 5px;
-    color: #ffffff; cursor: pointer;
-    background-color: #b5121b;
+.send-icon{
+    color: #b5121b;
+    border: 2px solid #c0c0c0;
+    border-radius: 50%;
+    align-self: flex-end;
+    padding: 2px;
+    font-size: 30px;
+    margin: 0px 0px 4px 0px;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+.send-icon:hover,.chat-tools .icon:hover{
+    background-color: #c0c0c0;
+    color: #121111;
+    transform: scale(1.1);
+}
+.chat-tools{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: large;
+    align-self: flex-end;
+    width: 20%;
+    justify-content: space-around;
+    padding: 4px 0px 4px 0px;
 }
-/* i have to do onclick animation using key frames for tsender button */
-.sendicon{
-    width: 20px; height: 20px;
-}
-.somefield{
-    width: 100%;
-    height: 6%;
-    background-color: chocolate;
+.chat-tools .icon{
+    border: 2px solid #c0c0c0;
+    border-radius: 50%;
+    padding: 2px;
+    transition: all .3s ease;
+    color: #b5121b;
 }

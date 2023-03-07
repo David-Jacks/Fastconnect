@@ -1,24 +1,21 @@
 import React from "react";
-import './messaging.css';
+import "./messaging.css";
 
-
-
-const Messaging = ({own}) => {
-    return(
-        <>
-        <div className="messagingdisplay">
-            <div className="messagefirst">
-                <img src=".//assets/res.jpeg" alt="" />
-                <p className="messagepara">Lorem ipsum dolor sit, uidem adipiscir quos officiis!</p>
-            </div>
-            <div className="messagereact">
-                <div className="myicon"></div>
-                <span>Just now</span>
-            </div>
+const Messaging = ({ own }) => {
+  return (
+    <>
+      <div className="messagingdisplay">
+        <div className="messagefirst">
+          <img src="../assets/res.jpeg" alt="" />
+          <p className="messagepara">
+            Lorem ipsum dolor sit, uidem adipiscir quos officiis! Lorem ipsum
+            dolor sit, uidem adipisci
+          </p>
+          <span className="myicon">Just now</span>
         </div>
-        </>
-    )
-}
-
+      </div>
+    </>
+  );
+};
 
 export default Messaging;
