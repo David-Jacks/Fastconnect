@@ -29,7 +29,7 @@ const Share = () => {
     try {
       const formData = new FormData();
       formData.append("file", img);
-      const res = await makeRequest.post("/post/vidupload", formData);
+      const res = await makeRequest.post("/post/upload", formData);
       return res.data;
     } catch (err) {
       console.log(err);

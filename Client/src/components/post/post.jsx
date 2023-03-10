@@ -34,20 +34,32 @@ const Post = ({ post }) => {
                 <img src="./assets/final.png" alt="postuserprofile" />
                 <div className="details">
                   <Link to={"profilePage"} className="link">
-                    <span className="name">{post.userName}</span>
+                    {post.userName && (
+                      <span className="name">{post.userName}</span>
+                    )}
                   </Link>
-                  <span>{moment(post.created_at).fromNow()}</span>
+                  {post.created_at && (
+                    <span>{moment(post.created_at).fromNow()}</span>
+                  )}
                 </div>
               </div>
               <FiMoreHorizontal className="close" />
             </div>
-            <p className="about">{post.imgAbout}</p>
-            <div className="postcontent">
-              <img
-                src={"./upload/" + post.img}
-                alt="postimg"
-                className="img-fluid"
-              />
+            {post.imgAbout && <p className="about">{post.imgAbout}</p>}
+            {post.vidAbout && <p className="about">{post.vidAbout}</p>}
+            <div className={post.img ? "postcontent" : "vid"}>
+              {post.img && (
+                <img
+                  src={"./upload/" + post.img}
+                  alt="postimg"
+                  className="img-fluid"
+                />
+              )}
+              {post.vid && (
+                <video controls>
+                  <source src={post.vid} type="video/mp4" />
+                </video>
+              )}
             </div>
             <div className="reactioncenter">
               <div className="starRate">

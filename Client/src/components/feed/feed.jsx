@@ -1,25 +1,21 @@
 import React from "react";
 import Post from "../post/post";
-import Video from "../video/video";
 import Share from "../share/share";
 import "./feed.css";
-// import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../myAxios";
 
 const Feed = () => {
   //making use of react query
-  // const { isLoading, error, data } = useQuery(["post"], () => {
-  //   return makeRequest.get("/post").then((res) => {
-  //     return res.data;
-  //   });
-  // });
+
+  // this is to use the react query library to fetch my image and video post and sort it depending on the time they were posted
   const { isLoading, error, data } = useQuery(["post", "video"], () => {
     return Promise.all([
       makeRequest.get("/post").then((res) => res.data),
       makeRequest.get("/post/vid").then((res) => res.data),
     ]).then(([posts, videos]) => {
-      return [...posts, ...videos];
+      let combinedPost = [...posts, ...videos];
+      return combinedPost;
     });
   });
   console.log(data);
@@ -35,17 +31,11 @@ const Feed = () => {
           {error
             ? "something went wrong with feed loading"
             : isLoading
-            ? "Loading"
-            : data.map((item) => {
-                if (item.img) {
-                  return <Post key={item.id} post={item} />;
-                }
-                if (item.vid) {
-                  return <Video key={item.id} video={item} />;
-                } else {
-                  return null;
-                }
-              })}
+            ? "Loading..."
+            : data
+                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                .map((item) => <Post key={item.id} post={item} />)}
+          {console.log(data)}
         </div>
       </div>
     </>

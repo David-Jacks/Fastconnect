@@ -112,3 +112,14 @@ flex-direction: column;
     }
     
 }
+
+.vid{
+    width: 100%;
+    height: 500px;
+}
+.vid video{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center  65%;
+}

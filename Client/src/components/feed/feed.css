@@ -34,6 +34,9 @@
     animation-duration: 5s;
     animation-iteration-count: infinite;
 }
+.my-feed{
+    height: auto;
+}
 .feedWrapper{
     display: flex;
     flex-direction: column;
