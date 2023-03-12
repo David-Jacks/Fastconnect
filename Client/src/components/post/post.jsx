@@ -56,9 +56,7 @@ const Post = ({ post }) => {
                 />
               )}
               {post.vid && (
-                <video controls>
-                  <source src={post.vid} type="video/mp4" />
-                </video>
+                <video src={"./video/" + post.vid} alt="video" controls></video>
               )}
             </div>
             <div className="reactioncenter">
