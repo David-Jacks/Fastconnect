@@ -1,168 +1,262 @@
 import React from "react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./stulogin.css";
 import axios from "axios";
 
 const Stulogin = () => {
   const navigate = useNavigate();
   //i will have to change the state fnctions later
-  const [userid, setStuID] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [userPassword, setPassword] = useState("");
-  const [passconfirm, setPassconfirm] = useState("");
-  const [userEmail, setstuEmail] = useState("");
-  const [userDOB, setstuDOB] = useState("");
-  const [programme, setProgramme] = useState("");
-  const [userGender, setstuGender] = useState("");
-  const [stulevel, setstuLevel] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isAccurate, setisAccurate] = useState(false);
+  const [user, setUserValues] = useState({
+    userid: "",
+    firstName: "",
+    lastName: "",
+    userPassword: "",
+    passconfirm: "",
+    userEmail: "",
+    userDOB: "",
+    programme: "",
+    userGender: "",
+    stulevel: "",
+  });
 
-  const userName = firstName + " " + lastName;
+  const passwordRegex =
+    /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+  const idRegex = /^\d{8}$/;
+  const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+  const userName = user.firstName + " " + user.lastName;
 
   const formData = {
-    userid,
+    userid: user.userid,
     userName,
-    userPassword,
-    userEmail,
-    userDOB,
-    userGender,
-    stulevel,
-    programme,
+    userPassword: user.userPassword,
+    userEmail: user.userEmail,
+    userDOB: user.userDOB,
+    userGender: user.userGender,
+    stulevel: user.stulevel,
+    programme: user.programme,
   };
 
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserValues({ ...user, [name]: value });
+    const errorsCopy = { ...errors };
+    let Accurate;
+    switch (name) {
+      case "userPassword":
+        errorsCopy.userPassword = !passwordRegex.test(value)
+          ? "password should have a special character, lowercase, number,  uppercase, and be between 7 and 21 charcters"
+          : "";
+        Accurate = !passwordRegex.test(value)
+          ? setisAccurate(false)
+          : setisAccurate(true);
+        break;
+      case "userid":
+        errorsCopy.userid = !idRegex.test(value) ? "Invalid ID" : "";
+        Accurate = !idRegex.test(value)
+          ? setisAccurate(false)
+          : setisAccurate(true);
+        break;
+      case "passconfirm":
+        errorsCopy.passconfirm =
+          value !== user.userPassword ? "password mismatch" : "";
+        Accurate =
+          value !== user.userPassword
+            ? setisAccurate(false)
+            : setisAccurate(true);
+        break;
+      case "userEmail":
+        errorsCopy.userEmail = !emailRegex.test(value) ? "Invalid email" : "";
+        Accurate = !emailRegex.test(value)
+          ? setisAccurate(false)
+          : setisAccurate(true);
+        break;
+      default:
+        break;
+    }
+    setErrors(errorsCopy);
+  }
+
+  console.log(isAccurate);
   const sendFormData = async (e) => {
     e.preventDefault();
-    await axios
-      .post("/api/auth/addstu", formData)
-      .then((res) => {
-        console.log(res);
-        if (res.status === 201 && passconfirm === userPassword) {
+    if (isAccurate) {
+      await axios
+        .post("/api/auth/addstu", formData)
+        .then((res) => {
+          console.log(res);
           navigate("/home");
-        } else navigate("/Stulogin");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("invalid form data");
+    }
   };
+
   return (
     <>
       <div className="studentlog">
         <div className="stuWrapper">
-          <form action="submit" className="stuloginfill">
-            <div>
-              <input
-                name="ID"
-                type="number"
-                placeholder="Stu. ID"
-                className="stuidinput"
-                onChange={(e) => setStuID(e.target.value)}
-              />
+          <h3>REGISTER</h3>
+          <form className="stuloginfill" autoComplete="off">
+            <div className="error-contain">
+              <div className="div">
+                <input
+                  name="userid"
+                  type="number"
+                  placeholder=" "
+                  className="stuidinput"
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="student-id">Input ID</label>
+              </div>
+              <span>{errors.userid}</span>
             </div>
-            <div>
-              <input
-                name="FN"
-                type="text"
-                placeholder="First name"
-                className="fnameinput"
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+            <div className="first-part">
+              <div className="error-contain">
+                <div className="div">
+                  <input
+                    name="firstName"
+                    placeholder=" "
+                    type="text"
+                    className="fnameinput"
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="student-fn"> Firstname</label>
+                </div>
+                <span>{}</span>
+              </div>
+              <div className="error-contain">
+                <div className="div">
+                  <input
+                    name="lastName"
+                    placeholder=" "
+                    type="text"
+                    className="lnameinput"
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="student-ln">Lastname</label>
+                </div>
+                <span>{}</span>
+              </div>
             </div>
-            <div>
-              <input
-                name="LN"
-                type="text"
-                placeholder="Last name"
-                className="lnameinput"
-                onChange={(e) => setLastName(e.target.value)}
-              />
+            <div className="second-part">
+              <div className="error-contain">
+                <div className="div">
+                  <input
+                    name="userPassword"
+                    placeholder=" "
+                    type="password"
+                    className="stupass"
+                    onChange={handleChange}
+                    required
+                  />
+                  <label htmlFor="student-pass">Password</label>
+                </div>
+                <span>{errors.userPassword}</span>
+              </div>
+              <div className="error-contain">
+                <div className="div">
+                  <input
+                    name="passconfirm"
+                    placeholder=" "
+                    type="password"
+                    className="stupasscon"
+                    onChange={handleChange}
+                    required
+                  />
+                  <label htmlFor="stu-pass-con">Confirm Password</label>
+                </div>
+                <span>{errors.passconfirm}</span>
+              </div>
             </div>
-            <div>
-              <input
-                name="PCODE"
-                type="userPassword"
-                placeholder="Password"
-                className="stupass"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
+            <div className="third-part">
+              <div className="error-contain">
+                <div className="div">
+                  <input
+                    name="userEmail"
+                    placeholder=" "
+                    type="email"
+                    className="mail"
+                    onChange={handleChange}
+                    required
+                  />
+                  <label htmlFor="stu-email">Input Email</label>
+                </div>
+                <span>{errors.userEmail}</span>
+              </div>
+              <div className="date-div">
+                <label htmlFor="stuDOB">Date of Birth</label>
+                <input
+                  name="userDOB"
+                  type="date"
+                  className="userDOB"
+                  onChange={handleChange}
+                />
+              </div>
             </div>
-            <div>
-              <input
-                name="PCODEC"
-                type="userPassword"
-                placeholder="Confirm Password"
-                className="stupasscon"
-                onChange={(e) => {
-                  setPassconfirm(e.target.value);
-                }}
-              />
+            <div className="fourth">
+              <div className="other-div">
+                <select
+                  name="programme"
+                  className="programmeinput"
+                  onChange={handleChange}
+                >
+                  <option value="">Programme</option>
+                  <option value="Accounting and Finance">
+                    Accounting and Finance
+                  </option>
+                  <option value="Business Management">
+                    Business Management
+                  </option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Economics and International Relations">
+                    Economics and International Relations
+                  </option>
+                  <option value="English Proficiency">
+                    English Proficiency
+                  </option>
+                  <option value="Executive MBA">Executive MBA</option>
+                  <option value="Foundation Programme">
+                    Foundation Programme
+                  </option>
+                  <option value="Law LLB Hons">Law LLB Hons</option>
+                  <option value="Marketing BSc Hons">Marketing BSc Hons</option>
+                  <option value="Politics and International Relations">
+                    Politics and International Relations
+                  </option>
+                </select>
+              </div>
+              <div className="other-div">
+                <select name="userGender" id="stugen" onChange={handleChange}>
+                  <option value="Male">Select Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+              <div className="other-div">
+                <select
+                  name="stulevel"
+                  id="levelselect"
+                  onChange={handleChange}
+                >
+                  <option value="">select level</option>
+                  <option value="foundation">Foundation</option>
+                  <option value="1st year">1st Year</option>
+                  <option value="2nd year">2nd Year</option>
+                  <option value="3rd year">3rd Year</option>
+                </select>
+              </div>
             </div>
-            <div>
-              <input
-                name="MAIL"
-                type="email"
-                placeholder="Email"
-                className="mail"
-                onChange={(e) => {
-                  setstuEmail(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <label htmlFor="stuDOB">Date of Birth</label>
-              <input
-                name="DOB"
-                type="date"
-                className="userDOB"
-                onChange={(e) => {
-                  setstuDOB(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <input
-                name="PRO"
-                type="text"
-                placeholder="Programme"
-                className="programmeinput"
-                onChange={(e) => {
-                  setProgramme(e.target.value);
-                }}
-              />
-            </div>
-            <div>
-              <select
-                name="GENDER"
-                id="stugen"
-                onChange={(e) => {
-                  setstuGender(e.target.value);
-                }}
-              >
-                <option value="Male">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select>
-            </div>
-            <div>
-              <select
-                name="LEVEL"
-                id="levelselect"
-                onChange={(e) => {
-                  setstuLevel(e.target.value);
-                }}
-              >
-                <option value="foundation">select level</option>
-                <option value="foundation">Foundation</option>
-                <option value="1st year">1st Year</option>
-                <option value="2nd year">2nd Year</option>
-                <option value="3rd year">3rd Year</option>
-              </select>
-            </div>
-            <Link id="stuformsubmit" onClick={sendFormData}>
-              Join_community
-            </Link>
+            <button id="stuformsubmit" onClick={sendFormData}>
+              Join_Community
+            </button>
           </form>
         </div>
       </div>
