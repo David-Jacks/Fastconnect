@@ -2,13 +2,11 @@ import React, { useContext, useEffect } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { AuthContext } from "../../context/auth-context";
 
 const Login = () => {
   const [userid, setUserID] = useState("");
   const [userPassword, setUserPasscode] = useState("");
-  const [log, setLog] = useState(false);
   const [change, setChange] = useState(false);
 
   const inputs = { userid, userPassword };
@@ -22,10 +20,10 @@ const Login = () => {
       await login(inputs);
       history("/home");
     } catch (err) {
-      // setErr(err.response.data);
       console.log(err);
     }
   };
+
   useEffect(() => {
     let newClass = document.querySelector(".dropdown");
     let drop = document.querySelector(".drop");

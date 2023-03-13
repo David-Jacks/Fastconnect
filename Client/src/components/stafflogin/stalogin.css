@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+
 *{
-    box-sizing: border-box;
     margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+display: none;
 }
 .stafflog{
     width: 100vw;
     height: 100vh;
-    padding: 0.5rem;
     overflow-y: hidden;
     background-image: url(/public/assets/lancaster5.jpg);
     background-repeat: no-repeat;
@@ -14,68 +20,126 @@
 }
 .staWrapper{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    border-radius: 6px;
-    margin: 1px auto;
-    background-color: rgba(24, 15, 15, 0.5);
+    background-color: rgba(16, 12, 12, 0.5);
 }
+.staWrapper h3{
+    color: rgb(241, 231, 231);
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 2px;
+}
+
 .staloginfill{
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    margin: 5px auto;
-    justify-content: center;
-    gap: 0.2em;
+    width: 70%;
+    height: 80vh;
+    margin: 1px auto;
+    justify-content: space-around;
+    border-radius: 1em;
+    gap: 0.25em;
+    font-family: 'Roboto Slab', serif; 
+    background-color: rgba(15, 15, 16, 0.4);
+    color:rgb(241, 236, 236); 
+    backdrop-filter: blur(20%);
 }
-.staloginfill div{
+.first-log, .second-log, .third-log, .fourth-log{
     display: flex;
-    flex-direction: column;
-   width: 50vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 65%;
+    align-items: flex-end;
+}
+.staloginfill label{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    transition: all .5s ease;
 }
 .staloginfill input{
+    display: flex;
+    align-self: flex-end;
     width: 100%;
-    min-height: 20px;
-    height: 30px;
+    height: 35px;
+    font-size: medium;
     background-color: transparent;
-    border: 1px solid white;
+    border: none;
+    outline: none;
+    z-index: 54568;
     color: #ffffff;
-    padding: 5px;
+    padding-top: 7px;
+}
+.staloginfill input:focus ~ label, .staloginfill input:not(:placeholder-shown) ~ label{
+    transform: translateY(-20px);
+    color:  #093adaf0;;
+    z-index: 123;
 }
 .staidinput::-webkit-inner-spin-button,.stuidinput::-webkit-outer-spin-button{
     appearance: none;
     margin: 0;
 }
-.staloginfill input:focus{
-    outline: none;
-    background-color: #ffffff;
-    border-radius: 5px; 
-    color: black;
+.my-div{
+    position: relative;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 2px;
+    width: 250px;
+    height: 45px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-top: 3px;
 }
-.staloginfill select:focus{
-    outline: none;
+.my-date-div{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3px;
 }
-.staloginfill label{
+.my-date-div label{
+    position: static;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 11px;
 }
+.other-div select{
+    border-radius: 3px;
+    background-color: #f1ecec;
+    outline: none;
+    border: none;
+    width: 150px;
+}
+
 #staformsubmit{
-    background-color: rgba(181, 18, 26, 0.94);
+    background-color: #b5121af0;
     color: #ffffff;
     letter-spacing: 1.5px;
     font-style: italic;
     text-decoration: none;
     margin-top: 20px;
-    border: 0px solid;
+    border: 2px solid #f1ecec; 
     border-radius: 0.6em;
     padding: 5px 4px;
+    transition: all .5s ease;
 }
 #staformsubmit:hover{
-    border:2px solid #ffffff;
-    background-color: rgba(181, 18, 26, 0.5);
+    background-color: #b5121a80;
+    color: rgb(106, 104, 104);
 }
-.staloginfill input::placeholder{
-    color: aliceblue;
+.error-log{
+    position: relative;
+    display: flex;
+    width: 251px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.error-log span{
+color: #f08181;
+font-size: 10px;
+line-height: 11px;
 }
