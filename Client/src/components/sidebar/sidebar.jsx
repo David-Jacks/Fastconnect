@@ -8,7 +8,6 @@ import { useState } from "react";
 import Courses from "../courses/courses";
 import Clubs from "../clubs/clubs";
 import Department from "../department/department";
-import Group from "../groups/group";
 import Class from "../class/class";
 import Colleagues from "../colleagues/colleagues";
 
@@ -33,7 +32,7 @@ const Sidebar = () => {
                 }}
                 className="sidebarListItemText"
               >
-                Courses
+                Programmes
               </button>
             </li>
             {courseshow ? (
@@ -90,13 +89,7 @@ const Sidebar = () => {
                 Groups
               </button>
             </li>
-            {groupshow ? (
-              <div className="group-wrapper">
-                <Group />
-              </div>
-            ) : (
-              ""
-            )}
+            {groupshow ? <div className="group-wrapper"></div> : ""}
             <li className="sidebarListItem">
               <MdClass className="sidebarIcon" />
               <button

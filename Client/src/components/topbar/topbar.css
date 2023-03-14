@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+/* font-family: 'Bitter', serif;
+font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
+
 .topbarContainer{
     min-height: 50px;
     width: 100%;
@@ -20,179 +26,135 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    cursor: pointer;
     object-fit: cover;
 }
 .logo{
-    font-size: 15px;
-    margin-left: 20px;
+    font-size: 22px;
     font-weight: bolder;
     color: white;
     cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-left: 0;
+    font-family: 'Roboto Slab', serif;
+    margin-left: 5px;
     overflow-wrap:break-word;
+    text-shadow: 1px 1px 2px rgb(8, 8, 8);
 }
-.topbarCenter{
-    /* flex: 5; */
-    width: 35%;
-}
-.searchbar{
-    width: 100%;
-     height: 30px;
-     background-color: white;
-     border-radius: 30px;
-     display: flex;
-     align-items: center;
-}
-.searchIcon{
-    font-size: 20px !important;
-    margin-left: 10px;
-}
-.searchInput{
-    border: none;
-    width: 100%;
-    padding-right: 10px;
-}
-.searchInput:focus{
-    outline: none;
-}
-.topbarRight{
+.topbarLinks{
+    width: 45%;
     display: flex;
-    align-items: center;
-    color: white;
-    width: 35%; 
-    gap: 2px;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1em;
+    font-family: 'Merriweather', serif;
 }
-.topbarLinks a{
-    margin-right: 7px;
+.topbarLinks a:hover{
+    color: #9f7878;
+}
+
+.topbarLink{
     font-size: 14px;
     cursor: pointer;
     color: #ffffff;
     text-decoration: overline;
     font-weight: bold;
+    transition: all .4s ease;
+}
+.topbarhan{
+    margin-right: 7px;
+    font-size: 19px;
+    cursor: pointer;
+    color: #ffffff;
+    text-decoration: overline;
+    font-weight: bold;
+    transition: all .4s ease;
     overflow-wrap: break-word;
 }
-.topbarLinks a:hover{
-    color: #9f7878;
+.topbarRight{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 25%; 
+    justify-content: space-around;
 }
 .topbarIcons{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 25%;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.1em;
+    width: 78%;
 }
 .topbarIconItem{
     position: relative;
-    top: 2dvh;
-    width: fit-content; 
-   height: auto;
-    align-items: center;
-    justify-content: center;
+    top: 1dvh;
+    width: 20%; 
+    padding: 2px 5px;
+    height: auto;
+
 }
 .iconedite{
     color: #ffffff;
-    width: 20px;
-    height: 30px;
+    font-size: 24px;
     cursor: pointer;
-    margin: 1px auto;
+    margin: auto;
+    align-self: center;
 }
 .iconedite:hover{
     color: #9f7878;
 }
 .topbarIconBadge{
-    width: 15px;
-    height: 15px;
+   max-width: 30px;
+    max-height: 30px;
     background-color: red;
     border-radius: 50%;
     color: white;
     position: absolute;
-    top: -1px; right: -1px;
+    top: -2px; right: -1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 10px;
+    padding: 3px;
+    font-weight: 700;
 }
 .topbarImage{
-    width: 32px;
-    height: 32px;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
+    border: 2px solid red;
+}
+.topbarImage:hover{
+    box-shadow: rgba(2px, 2px, 1px, 0.4);
 }
 
-.notification-panel{
-    position: fixed;
-    top: 8.1vh; right: 0.5vw;
-    width: 35vw; height: 80vh;
-    bottom: 5rem;
-    background-color: rgb(91, 15, 15);
-    overflow-y: scroll;
-}
-.btn-noti{
-    outline: none; font-size: small;
-    margin-left: 1px; border-radius: 2px;
-    font-style: italic;
-    border: 0px; color: rgb(238, 2, 14);
-}
-.n-head{
-    text-align: center;
-    text-transform: uppercase;
-    font-family: serif;
-    overflow-y: scroll;
-    
-}
-.n-body{
-    display: flex;
-    flex-direction: column;
-}
 
 
 @media (max-width: 480px) {
-    .topbarContainer{
-        align-items: center;
-    }
-    .searchbar{
-       display: none;
-    }
-    .topbarLeft{
-        width: 50%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 5px;
-    }
-    .topbarCenter{
-        display: none;
-    }
-    .topbarRight{
-        width: 50%;
-        justify-content: space-around;
-    }
-    .topbarIcons{
-        width: 50%;
-    }
-    .topbarLinks a{
-        margin-right: 6px;
-        font-size: 10px;
-        overflow-wrap: break-word;
-    }
-    .topbarLeft img{
-        margin-left: 4px;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    .topbarImage{
-        display: none;
-    }
+   .topbarLinks{
+    display: none;
+   }
+   .topbarLeft{
+    width: 40%;
+
+   }
+   .topbarLeft img{
+    display: none;
+   }
+   .logo{
+    font-size: 10px;
+   }
+   .topbarRight{
+    width: 50%;
+   }
+   .topbarIcons{
+    width: 80%;
+   }
+   .iconedite{
+    font-size: 22px;
+   }
+   .topbarIconItem{
+    width: fit-content;
+   }
  }
- /* .topbarRight{
-    display: flex;
-    align-items: center;
-    color: white;
-    width: 35%; 
-    justify-content: space-around;
-} */

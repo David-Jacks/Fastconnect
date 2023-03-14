@@ -72,8 +72,6 @@ const Stalogin = () => {
     setErrors(errorsCopy);
   }
   // login in the user automatically after sign-up
-  const { userid, userPassword } = user;
-  const inputs = { userid, userPassword };
 
   const sendStaffData = async (e) => {
     e.preventDefault();
@@ -83,12 +81,15 @@ const Stalogin = () => {
         .post("/api/auth/addstaff", staffData)
         .then(async (res) => {
           console.log(res.data);
-          checkUser();
           navigate("/home");
+          checkUser();
         })
         .catch((err) => console.log(err));
     }
   };
+  // trying to make sure these recently signed in user will get the needed data in the local storage
+  const { userid, userPassword } = user;
+  const inputs = { userid, userPassword };
   const checkUser = async () => {
     try {
       await login(inputs);

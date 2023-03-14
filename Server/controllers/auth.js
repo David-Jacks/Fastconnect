@@ -43,16 +43,6 @@ const stuRegister = (req, res) => {
           }
           if (result) {
             res.status(201).json("A student has been added");
-            const token = jwt.sign({ id: userid }, "fastConnect.com");
-
-            //removing password from what will be sent as response
-            const { userPassword, ...others } = results[0];
-            res
-              .cookie("accessToken", token, {
-                httpOnly: true, //make it accesible by only our url, and no other script can access the route
-              })
-              .status(200)
-              .json(others);
           }
         });
 
@@ -109,15 +99,7 @@ const staRegister = (req, res) => {
             console.log("An error occurred: " + err);
           }
           if (result) {
-            const token = jwt.sign({ id: userid }, "fastConnect.com");
-            //removing password from what will be sent as response
-            const { userPassword, ...others } = data;
-            res
-              .cookie("accessToken", token, {
-                httpOnly: true, //make it accesible by only our url, and no other script can access the route
-              })
-              .status(200)
-              .json(others);
+            res.status(201).json("A staff has been added");
           }
         });
 

@@ -1,25 +1,21 @@
 import React from "react";
 import "./courses.css";
 
-
-const Courses = () =>{
-    return(
-        <>
-        <ul>
-            <li>Computer Science BSC Hons</li>
-            <li>Economics and International Relations BA Hons</li>
-            <li>Law LLB</li>
-            <li>Business Management BSc Hons</li>
-            <li>Accounting and Finance BSc Hons</li>
-            <li>Marketing BSc Hons</li>
-            <li>Politics and International Relations BA Hons</li>
-        </ul>
-        
-        </>
-    )
-}
-
-
-
+const Courses = () => {
+  return (
+    <div>
+      <span>Computer Science</span>
+    </div>
+  );
+};
+//   <ul>
+//     <li>Computer Science </li>
+//     <li>Economics and International Relations</li>
+//     <li>Law LLB</li>
+//     <li>Business Management </li>
+//     <li>Accounting and Finance </li>
+//     <li>Marketing BSc Hons</li>
+//     <li>Politics and International Relations </li>
+//   </ul>
 
 export default Courses;

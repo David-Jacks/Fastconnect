@@ -1,11 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+/* font-family: 'Bitter', serif;
+font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
+
 .rightbar{
     flex: 4;
     width: 100%;
     height: calc(100vh - 50px);
-    overflow-y: scroll;
-    
+    overflow-y: hidden;
 }
-
+.rightbarWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; 
+    padding: 2em;
+    margin-top: 10px;
+}
+.rightbarHead{
+    position: static; 
+    top: 51px;
+    height: fit-content;
+    border-bottom: 2px solid #b5212b;
+}
+.rightbarHead span{
+    font-family: 'Roboto Slab', serif; 
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 1.5px black;
+}
+.eventblock{
+    width: 100%;
+    padding: 0.6em 0.2em;
+    height: calc(100vh - 125px);
+    overflow-y: scroll;
+}
 .rightbar ::-webkit-scrollbar{
     width: 0px;
     display: none;
@@ -16,19 +47,8 @@
 .rightbar ::-webkit-scrollbar-thumb{
     color: #fff;
 }
-.rightbarWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-    width: 100%; padding: 2em;
-    margin-top: 20px;
-}
-.eventblock{
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-}
+
+
 .rightbarHr{
     width: 100%;
 }

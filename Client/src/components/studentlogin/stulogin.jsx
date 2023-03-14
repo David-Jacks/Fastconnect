@@ -1,10 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./stulogin.css";
 import axios from "axios";
+import { AuthContext } from "../../context/auth-context";
 
 const Stulogin = () => {
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   //i will have to change the state fnctions later
   const [errors, setErrors] = useState({});
@@ -44,35 +46,29 @@ const Stulogin = () => {
     const { name, value } = e.target;
     setUserValues({ ...user, [name]: value });
     const errorsCopy = { ...errors };
-    let Accurate;
+
     switch (name) {
       case "userPassword":
         errorsCopy.userPassword = !passwordRegex.test(value)
           ? "password should have a special character, lowercase, number,  uppercase, and be between 7 and 21 charcters"
           : "";
-        Accurate = !passwordRegex.test(value)
-          ? setisAccurate(false)
-          : setisAccurate(true);
+        !passwordRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
       case "userid":
         errorsCopy.userid = !idRegex.test(value) ? "Invalid ID" : "";
-        Accurate = !idRegex.test(value)
-          ? setisAccurate(false)
-          : setisAccurate(true);
+        !idRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
       case "passconfirm":
         errorsCopy.passconfirm =
           value !== user.userPassword ? "password mismatch" : "";
-        Accurate =
-          value !== user.userPassword
-            ? setisAccurate(false)
-            : setisAccurate(true);
+
+        value !== user.userPassword
+          ? setisAccurate(false)
+          : setisAccurate(true);
         break;
       case "userEmail":
         errorsCopy.userEmail = !emailRegex.test(value) ? "Invalid email" : "";
-        Accurate = !emailRegex.test(value)
-          ? setisAccurate(false)
-          : setisAccurate(true);
+        !emailRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
       default:
         break;
@@ -89,12 +85,23 @@ const Stulogin = () => {
         .then((res) => {
           console.log(res);
           navigate("/home");
+          checkUser();
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
       console.log("invalid form data");
+    }
+  };
+
+  const { userid, userPassword } = user;
+  const inputs = { userid, userPassword };
+  const checkUser = async () => {
+    try {
+      await login(inputs);
+    } catch (err) {
+      console.log(err);
     }
   };
 
