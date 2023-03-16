@@ -86,24 +86,24 @@ display: none;
     color:  #093adaf0;;
     z-index: 123;
 }
- .div{
-    position: relative;
-    display: flex;
-    border: 2px solid white;
-    border-radius: 2px;
-    width: 250px;
-    height: 45px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    padding-top: 3px;
-}
 .error-contain{
     position: relative;
     display: flex;
     width: 251px;
     flex-wrap: wrap;
     flex-direction: column;
+}
+ .div{
+    position: relative;
+    display: flex;
+    border: 2px solid white;
+    border-radius: 2px;
+    width: 250px;
+    height: auto;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-top: 3px;
 }
 .error-contain span{
 color: #f08181;
@@ -147,4 +147,67 @@ line-height: 11px;
 #stuformsubmit:hover{
     background-color: #b5121a80;
     color: rgb(106, 104, 104);
+}
+
+@media screen  and (max-width: 767px){
+    .stuWrapper{
+        justify-content: space-around;
+    }
+    .stuloginfill{
+        width: 70%;
+        height: 90%;
+        margin: 1px auto;
+        justify-content:center;
+        border-radius: 0.4em;
+        gap: 2px;
+ 
+    }
+    .first-part, .second-part, .third-part, .fourth{
+        justify-content: space-around;
+        width: 100%;
+        align-items: center;
+    }
+    .error-contain{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    .div{
+        width: 100%;
+    }
+    .other-div select{
+        width: 100%;
+    }
+    .stuloginfill input{
+        display: flex;
+        align-self: flex-end;
+        width: 100%;
+        height: 28px;
+        font-size: small;
+        margin-top: 7px;
+    }
+    .error-contain span{
+        color: #f08181;
+        font-size: 9px;
+        line-height: 10px;
+        }
+        #stuformsubmit{
+            letter-spacing: 1.5px;
+            font-style: italic;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .date-div{
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 2px;
+        }
+     .date-div label{
+        font-size: 10px;
+        transform: translateY(6px);
+     }
 }

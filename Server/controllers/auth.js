@@ -1,6 +1,7 @@
 const db = require("../mydata");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 // Registering a Student
 const stuRegister = (req, res) => {
@@ -84,8 +85,6 @@ const staRegister = (req, res) => {
           userID: req.body.userid,
           Department: req.body.Department,
         };
-        const userid = data.userid;
-
         //hask the users password
         const hash = (pass) => {
           return bcrypt.hashSync(pass, 10);
@@ -95,21 +94,17 @@ const staRegister = (req, res) => {
 
         //insert new user into the database
         db.query("INSERT INTO users SET ?", data, function (err, result) {
-          if (err) {
-            console.log("An error occurred: " + err);
-          }
+          if (err) console.log("An error occurred: " + err);
+
           if (result) {
             res.status(201).json("A staff has been added");
           }
         });
 
         db.query("INSERT INTO staffs SET ?", sta, function (err, results) {
-          if (err) {
-            console.log("An error occurred: " + err);
-          }
-          if (results) {
-            console.log("I added to staff table");
-          }
+          if (err) console.log("An error occurred: " + err);
+
+          if (results) console.log("I added to staff table");
         });
       }
     }
@@ -162,8 +157,8 @@ const logout = (req, res) => {
   try {
     res
       .clearCookie("accessToken", {
-        secure: true,
-        sameSite: "none",
+        secure: true, //i willl only set you on when deploying and making use of https
+        sameSite: "lax",
       })
       .status(200)
       .json("user has been logged out");

@@ -84,8 +84,8 @@ const Stulogin = () => {
         .post("/api/auth/addstu", formData)
         .then((res) => {
           console.log(res);
+          LoginUser();
           navigate("/home");
-          checkUser();
         })
         .catch((err) => {
           console.log(err);
@@ -97,7 +97,7 @@ const Stulogin = () => {
 
   const { userid, userPassword } = user;
   const inputs = { userid, userPassword };
-  const checkUser = async () => {
+  const LoginUser = async () => {
     try {
       await login(inputs);
     } catch (err) {

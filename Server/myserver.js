@@ -14,11 +14,9 @@ const myHomeRouter = require("./routes/home");
 const myCommentRouter = require("./routes/comment");
 const clientCatch = require("./routes/clientAll");
 const cookieParser = require("cookie-parser");
-// const anonymous = require("./routes/anonymous");
 
 //my midlewares
 
-// app.use(express.static(path.join(__dirname, "../coding/MyProjects/Fastconnect/Client/build/index.html")));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true); //this is to allow the access of credetials that comes with my token.
   next();

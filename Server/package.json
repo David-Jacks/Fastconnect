@@ -1,13 +1,14 @@
 {
   "name": "fastconnectserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "An Intranet media for lancaster University Ghana",
   "main": "myserver.js",
   "scripts": {
-    "start": "nodemon myserver.js"
+    "start": "node myserver.js",
+    "dev": "nodemon myserver.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "David Jackson",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

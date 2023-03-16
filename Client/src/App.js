@@ -56,7 +56,11 @@ function App() {
     },
     {
       path: "/profile",
-      element: <Profile />,
+      element: (
+        <PrivateRoute>
+          <Profile />
+        </PrivateRoute>
+      ),
     },
   ]);
   return (

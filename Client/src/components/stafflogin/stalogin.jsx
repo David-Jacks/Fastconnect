@@ -79,18 +79,19 @@ const Stalogin = () => {
     if (isAccurate) {
       await axios
         .post("/api/auth/addstaff", staffData)
-        .then(async (res) => {
-          console.log(res.data);
+        .then((res) => {
           navigate("/home");
-          checkUser();
+          HandleLogin();
         })
         .catch((err) => console.log(err));
+    } else {
+      console.log("invalid form data");
     }
   };
   // trying to make sure these recently signed in user will get the needed data in the local storage
   const { userid, userPassword } = user;
   const inputs = { userid, userPassword };
-  const checkUser = async () => {
+  const HandleLogin = async () => {
     try {
       await login(inputs);
     } catch (err) {
@@ -103,7 +104,7 @@ const Stalogin = () => {
       <div className="stafflog">
         <div className="staWrapper">
           <h3>REGISTER</h3>
-          <form className="staloginfill">
+          <form className="staloginfill" onSubmit={sendStaffData}>
             <div className="error-log">
               <div className="my-div">
                 <input
@@ -219,7 +220,7 @@ const Stalogin = () => {
               </div>
             </div>
 
-            <button id="staformsubmit" onClick={sendStaffData}>
+            <button id="staformsubmit" type="submit">
               Join_community
             </button>
           </form>

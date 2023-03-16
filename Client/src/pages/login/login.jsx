@@ -5,23 +5,19 @@ import { useState } from "react";
 import { AuthContext } from "../../context/auth-context";
 
 const Login = () => {
+  const history = useNavigate();
   const [userid, setUserID] = useState("");
   const [userPassword, setUserPasscode] = useState("");
   const [change, setChange] = useState(false);
 
+  const { login } = useContext(AuthContext);
+
   const inputs = { userid, userPassword };
 
-  const { login } = useContext(AuthContext);
-  const history = useNavigate();
-
-  const checkUser = async (e) => {
+  const HandleLogin = async (e) => {
     e.preventDefault();
-    try {
-      await login(inputs);
-      history("/home");
-    } catch (err) {
-      console.log(err);
-    }
+    await login(inputs);
+    history("/home");
   };
 
   useEffect(() => {
@@ -59,7 +55,7 @@ const Login = () => {
             </div>
           </div>
           <div className="loginform">
-            <form>
+            <form onSubmit={HandleLogin}>
               <span className="login">Log-In</span>
 
               <div className="idinput">
@@ -83,7 +79,7 @@ const Login = () => {
                 />
               </div>
               <div className="form-btn">
-                <button className="finalBtn" onClick={checkUser}>
+                <button className="finalBtn" type="submit">
                   Let's Go!
                 </button>
               </div>

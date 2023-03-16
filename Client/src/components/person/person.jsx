@@ -2,8 +2,23 @@ import React from "react";
 import "./person.css";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
+import axios from "axios";
 
 function Person() {
+  const handleLogout = async () => {
+    axios
+      .post("api/auth/logout")
+      .then((res) => {
+        if (res) {
+          localStorage.clear();
+          window.location.reload(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="person">
       <div className="person-wrapper">
@@ -42,6 +57,14 @@ function Person() {
               quibusdam fugit doloribus aperiam ratione suscipit doloremque eos?
             </p>
           </div>
+          <button
+            className="log-out"
+            onClick={() => {
+              handleLogout();
+            }}
+          >
+            log-out
+          </button>
         </div>
       </div>
     </div>
