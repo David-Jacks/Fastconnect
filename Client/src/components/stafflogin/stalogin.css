@@ -77,7 +77,7 @@ display: none;
 }
 .staloginfill input:focus ~ label, .staloginfill input:not(:placeholder-shown) ~ label{
     transform: translateY(-20px);
-    color:  #093adaf0;;
+    color:  #093adaf0;
     z-index: 123;
 }
 .staidinput::-webkit-inner-spin-button,.stuidinput::-webkit-outer-spin-button{
@@ -134,12 +134,62 @@ display: none;
 .error-log{
     position: relative;
     display: flex;
-    width: 251px;
-    flex-wrap: wrap;
+    width: 250px;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 .error-log span{
 color: #f08181;
 font-size: 10px;
 line-height: 11px;
+}
+
+@media screen and (max-width: 767px) {
+    .staWrapper{   
+        justify-content: center;
+        align-items: center;
+    }
+    .staloginfill{
+        height: 90%;
+        justify-content: space-evenly;
+        border-radius: 0.5em;
+    }
+    .first-log, .second-log, .third-log, .fourth-log{
+        justify-content: space-around;
+        width: 100%;
+        align-items: flex-end;
+    }
+    .error-log{  
+        width: 100%;
+    }
+    .error-log span{
+        font-size: 9px;
+        line-height: 10px;
+        }
+    .staloginfill input{
+        width: 100%;
+        height: 20px;
+        font-size: small;
+        padding-top: 5px;
+        padding-left: 4px;
+    }
+    .my-div{
+        border-radius: 2px;
+        width: 100%;
+        height: 45px;
+        padding-top: 3px;
+    }
+    #staformsubmit{
+        font-size: 13px;
+        margin-top: 10px;
+        margin-bottom: 0.1rem;
+    }
+    .staloginfill input:focus ~ label, .staloginfill input:not(:placeholder-shown) ~ label{
+        transform: translateY(-18px);
+    }
+    .other-div select{
+        width: 150px;
+        margin-bottom: 0.2rem;
+    }
+    
 }

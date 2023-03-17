@@ -5,6 +5,7 @@ font-family: 'Pacifico', cursive;
 font-family: 'Roboto Slab', serif; */
 *{
     margin: 0;
+ 
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -89,9 +90,9 @@ display: none;
 .error-contain{
     position: relative;
     display: flex;
-    width: 251px;
-    flex-wrap: wrap;
     flex-direction: column;
+    flex-wrap: wrap;
+    width: 250px;
 }
  .div{
     position: relative;
@@ -151,54 +152,52 @@ line-height: 11px;
 
 @media screen  and (max-width: 767px){
     .stuWrapper{
-        justify-content: space-around;
+        justify-content: center;
     }
     .stuloginfill{
         width: 70%;
         height: 90%;
         margin: 1px auto;
-        justify-content:center;
+        justify-content:space-evenly;
         border-radius: 0.4em;
         gap: 2px;
- 
     }
     .first-part, .second-part, .third-part, .fourth{
         justify-content: space-around;
         width: 100%;
-        align-items: center;
+        align-items: flex-end;
     }
     .error-contain{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
         width: 100%;
-    }
-    .div{
-        width: 100%;
-    }
-    .other-div select{
-        width: 100%;
-    }
-    .stuloginfill input{
-        display: flex;
-        align-self: flex-end;
-        width: 100%;
-        height: 28px;
-        font-size: small;
-        margin-top: 7px;
     }
     .error-contain span{
         color: #f08181;
         font-size: 9px;
         line-height: 10px;
         }
-        #stuformsubmit{
-            letter-spacing: 1.5px;
-            font-style: italic;
-            font-size: 15px;
+    .div{
+        width: 100%;
+        height: 40px;
+    }
+    .other-div{
+        padding: 0;
+    }
+    .other-div select{
+        display: flex;
+        width: 150px;
+        font-size: 13px;
+    }
+    .stuloginfill input{
+        width: 100%;
+        height: 20px;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+    
+         #stuformsubmit{
+            font-size: 13px;
             margin-top: 10px;
-            margin-bottom: 5px;
+            margin-bottom: 0.1rem;
         }
         .date-div{
             width: 80%;
@@ -210,4 +209,7 @@ line-height: 11px;
         font-size: 10px;
         transform: translateY(6px);
      }
+     .stuloginfill input:focus ~ label, .stuloginfill input:not(:placeholder-shown) ~ label{
+        transform: translateY(-17px);
+    }
 }
