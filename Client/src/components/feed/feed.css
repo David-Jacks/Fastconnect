@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+
+/* font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
 .feed{
     flex: 6;
     padding: 1em;
     height: calc(100vh - 50px);
     overflow-y: scroll;
+    position: relative;
 }
 .feed ::-webkit-scrollbar{
     width: 2px;
@@ -33,6 +39,7 @@
     animation-name: example;
     animation-duration: 5s;
     animation-iteration-count: infinite;
+    font-family: 'Merriweather', serif;
 }
 .my-feed{
     height: auto;

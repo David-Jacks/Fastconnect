@@ -1,3 +1,39 @@
+
+.card{
+    width: 19rem;
+    box-shadow: 1px 1px 1px 2px rgba(10, 10, 10, 0.3);
+}
+.card-img-top{
+    max-height: 400px;
+}
+.card-reaction{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-title{
+    font-family: 'Roboto Slab', serif; 
+    border-top: 1px dashed #b5121b;
+}
+.card-text{
+    border-top: 1px dashed #b5121b;
+     font-family: 'Roboto Slab', serif;
+     font-size: 13px;
+     line-height: normal;
+     text-align: justify;
+}
+.card-title span{
+    font-size: 14px;
+}
+.imoj{
+    font-size: 25px;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+.imoj:hover{
+   transform: scale(1.1);
+}
 .book{
     display: flex;
     flex-direction: column;

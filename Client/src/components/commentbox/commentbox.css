@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+/* font-family: 'Bitter', serif;
+font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
 *{
     box-sizing: border-box;
 }
@@ -6,51 +11,52 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-.commentboxhead{
-    width: fit-content;
-    max-height: fit-content;
-    margin: 1px auto;
-    padding-top: 5px;
-    padding-bottom: 3px;
-    
-}
-.boxhider{
-    border: 0px solid;
-    background-color: #b5121b;
-    color: #ffffff;
-    border-radius: 3px;
-    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px 5px 0px;
+    /* background-color: #374284; */
 }
 .commentboxinput{
-    padding: 20px 0px 5px 0px;
     width: 100%;
     display: flex;
+    padding: 3px;
     flex-direction: row;
     align-items: center;
+    font-family: 'Bitter', serif;
     gap: 20px;
 }
-#areatext{
-    margin-left: 10px;
+.psuedo{
+    padding: 2px;
     width: 80%;
+    position: relative;
+}
+#areatext{
+    width: 100%;
     max-height: 40px;
     resize: none;
-    border-right-style: hidden; border-left-style: hidden;
+    border: none;
+    padding: 3px;
+    transition: all .5s ease;
+    outline: none;   
 }
 #areatext:focus{
-    outline: none;
+    outline: 3px dashed rgb(19, 65, 125);
 }
 .comment-saver{
-    border: 0px solid;
+    border: none;
     border-radius: 5px;
     background: #b5121b;
     color: #ffffff;
     font-size: medium;
+    transition: all .5s ease;
+}
+.comment-saver:focus{
+    background-color: burlywood;
+    color: black;
 }
 .commentstorage{
     width: 100%;
-    height: 150px;
+    height: 200px;
     padding-top: 10px;
     overflow-y: scroll;
 }

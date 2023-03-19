@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+/* font-family: 'Bitter', serif;
+font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
+
 .sidebar{
     flex: 2;
     height: calc(100vh - 50px);
@@ -25,6 +31,7 @@
     align-items: center;
     margin-bottom: 16px;
     position: relative;
+    font-family: 'Merriweather', serif;
 }
 .sidebarListItem button{
     cursor: pointer;

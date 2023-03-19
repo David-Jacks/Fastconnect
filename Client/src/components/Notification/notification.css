@@ -1,0 +1,27 @@
+.notification-panel{
+    position: fixed;
+    top: 8.1vh; 
+    right: 0.5vw;
+    width: 35vw; height: 80vh;
+    bottom: 5rem;
+    background-color: rgb(91, 15, 15);
+    overflow-y: scroll;
+}
+.btn-noti{
+    outline: none; font-size: small;
+    margin-left: 1px; border-radius: 2px;
+    font-style: italic;
+    border: 0px; color: rgb(238, 2, 14);
+}
+.n-head{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: serif;
+    overflow-y: scroll;
+    
+}
+.n-body{
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+}

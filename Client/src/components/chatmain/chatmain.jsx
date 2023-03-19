@@ -3,6 +3,8 @@ import "./chatmain.css";
 import { AiOutlineSend } from "react-icons/ai";
 import { BsFillCameraFill, BsEmojiSmile } from "react-icons/bs";
 import { FaMicrophone } from "react-icons/fa";
+import { FiPhoneCall } from "react-icons/fi";
+import { MdVideoCall } from "react-icons/md";
 
 import Messaging from "../messaging/messaging";
 
@@ -11,7 +13,17 @@ const Chatmain = () => {
     <div className="chatmainall">
       <div className="chatmaincontent">
         <div className="chatcontenthead">
-          <span>David Jackson</span>
+          <div className="left">
+            <img src="./assets/final.png" alt="" />
+            <div className="text">
+              <span className="span">David Jackson</span>
+              <span className="span">Typing...</span>
+            </div>
+          </div>
+          <div className="right">
+            <FiPhoneCall className="one" />
+            <MdVideoCall className="one" />
+          </div>
         </div>
         <div className="chatbox">
           <div className="chatdate">

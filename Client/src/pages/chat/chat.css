@@ -13,10 +13,13 @@
     height: calc(100dvh - 50px);
 }
 .chat-converse{
-    flex: 4.5;
-    padding-top: 0.5em;
+    flex: 3.5;
+    padding: 0.3em 0em;
     background-color: rgb(235, 235, 235, 0.7);
     height: calc(100dvh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 .con-head{
     display: flex;
@@ -28,29 +31,35 @@
     margin: auto;
     padding: 5px 0px;
 }
-.con-head > span{
-    position: relative;
-    width: 65px;
+.con-head input{
+    width: 100%;
+    min-height: 30px;
     display: flex;
     align-items: center;
+    outline: none;
+    border: 0.5px solid black;
+    border-radius: 0.25em;
+    background: transparent;
+    padding-left: 4px;
 }
-.chat-icon{
+.con-head input::placeholder{
     color: #b5121b;
-    cursor: pointer;
-    fill: #b5121b;
-    font-size: 20px;
-    transition: all .2s ease;
+    font-weight: bold;
+    
 }
+
 .flow{
     overflow-y: scroll;
     overflow-x: hidden;
+    border: 1px solid black;
     margin: auto;
     width: 60%;
     height: 80dvh;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.5rem;
     background-color: #ebebeb;
-    border-radius: 1em;
+    border-radius: 0.2em;
     box-shadow: 2px 4px 11px 7px rgba(255,255,255,0.75);
     -webkit-box-shadow: 2px 4px 11px 7px rgba(255,255,255,0.75);
     -moz-box-shadow: 2px 4px 11px 7px rgba(255,255,255,0.75);
 }
+/* /templete css */

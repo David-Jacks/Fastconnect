@@ -2,30 +2,61 @@ import React, { useContext, useEffect } from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import { AuthContext } from "../../context/auth-context";
+import axios from "axios";
 
 const Login = () => {
-  const [userid, setUserID] = useState("");
-  const [userPassword, setUserPasscode] = useState("");
-  const [log, setLog] = useState(false);
-  const [change, setChange] = useState(false);
+  // const { login } = useContext(AuthContext);
 
+  const history = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [isAccurate, setisAccurate] = useState(false);
+  const [change, setChange] = useState(false);
+  const [user, setUserValues] = useState({
+    userid: "",
+    userPassword: "",
+  });
+  const passwordRegex =
+    /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+  const idRegex = /^\d{8}$/;
+  const { userid, userPassword } = user;
   const inputs = { userid, userPassword };
 
-  const { login } = useContext(AuthContext);
-  const history = useNavigate();
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserValues({ ...user, [name]: value });
 
-  const checkUser = async (e) => {
+    switch (name) {
+      case "userPassword":
+        errors.userPassword = !passwordRegex.test(value)
+          ? "password should have a special character, lowercase, number,  uppercase, and be between 7 and 21 charcters"
+          : "";
+        !passwordRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
+        break;
+      case "userid":
+        errors.userid = !idRegex.test(value) ? "Invalid ID" : "";
+        !idRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
+        break;
+      default:
+        break;
+    }
+  }
+  const HandleLogin = async (e) => {
     e.preventDefault();
-    try {
-      await login(inputs);
-      history("/home");
-    } catch (err) {
-      // setErr(err.response.data);
-      console.log(err);
+    if (isAccurate) {
+      await axios
+        .post("/api/auth/login", inputs)
+        .then((res) => {
+          const data = res.data;
+          localStorage.setItem("user", JSON.stringify(data));
+          history("/home");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
+
   useEffect(() => {
     let newClass = document.querySelector(".dropdown");
     let drop = document.querySelector(".drop");
@@ -61,31 +92,31 @@ const Login = () => {
             </div>
           </div>
           <div className="loginform">
-            <form>
+            <form onSubmit={HandleLogin}>
               <span className="login">Log-In</span>
 
               <div className="idinput">
                 <input
+                  name="userid"
                   type="number"
                   className="fullID"
                   placeholder="Input ID!"
-                  onChange={(e) => {
-                    setUserID(e.target.value);
-                  }}
+                  onChange={handleChange}
                 />
+                <span>{errors.userid}</span>
               </div>
               <div className="passinput">
                 <input
+                  name="userPassword"
                   type="password"
                   placeholder="Input passcode!"
                   className="fullID"
-                  onChange={(e) => {
-                    setUserPasscode(e.target.value);
-                  }}
+                  onChange={handleChange}
                 />
+                <span>{errors.userPassword}</span>
               </div>
               <div className="form-btn">
-                <button className="finalBtn" onClick={checkUser}>
+                <button className="btn btn-danger" type="submit">
                   Let's Go!
                 </button>
               </div>

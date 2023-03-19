@@ -16,14 +16,11 @@ const Chat = () => {
         <div className="chat-content">
           <div className="chat-converse">
             <div className="con-head">
-              <span>
-                Chat
-                <GoPerson className="chat-icon" />
-              </span>
-              <span>
-                Class
-                <FiClipboard className="chat-icon icon2" />
-              </span>
+              <input
+                type="text"
+                className="chat-search"
+                placeholder="Search for Chat..."
+              />
             </div>
             <div className="flow">
               <Conversation />
