@@ -127,6 +127,8 @@ font-family: 'Roboto Slab', serif; */
 .idinput, .passinput{
     height: 30px;
     display: flex;
+    color: #b5121bad;
+    flex-direction: column;
     background-color: #ffffff;
 }
 .loginform input{

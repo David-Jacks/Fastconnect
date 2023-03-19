@@ -6,23 +6,26 @@ import Stulogin from "./components/studentlogin/stulogin.jsx";
 import Stalogin from "./components/stafflogin/stalogin.jsx";
 import Basket from "./pages/basket/basket.jsx";
 import Chat from "./pages/chat/chat.jsx";
+import Profile from "./components/Profile/profile";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
 import { AuthContext } from "./context/auth-context";
-import Profile from "./components/Profile/profile";
 
 function App() {
   const { currentUser } = useContext(AuthContext);
 
   function PrivateRoute({ children }) {
-    if (!currentUser) {
+    if (
+      localStorage.getItem("user") === null ||
+      localStorage.getItem("user") === " "
+    ) {
       return <Navigate to="/" replace />;
+    } else {
+      return children;
     }
-
-    return children;
   }
 
   const router = createBrowserRouter([

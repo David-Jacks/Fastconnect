@@ -1,7 +1,6 @@
 const db = require("../mydata");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
 
 // Registering a Student
 const stuRegister = (req, res) => {
@@ -140,13 +139,16 @@ const login = (req, res) => {
     if (!hashedPassword) {
       return res.status(400).json("wrong password or username");
     }
-    const token = jwt.sign({ id: userid }, "fastConnect.com");
+    const token = jwt.sign({ id: userid }, "fastConnect.com", {
+      expiresIn: "24h",
+    });
 
     //removing password from what will be sent as response
     const { userPassword, ...others } = results[0];
     res
       .cookie("accessToken", token, {
         httpOnly: true, //make it accesible by only our url, and no other script can access the route
+        sameSite: "strict",
       })
       .status(200)
       .json(others);
@@ -155,13 +157,7 @@ const login = (req, res) => {
 
 const logout = (req, res) => {
   try {
-    res
-      .clearCookie("accessToken", {
-        secure: true, //i willl only set you on when deploying and making use of https
-        sameSite: "lax",
-      })
-      .status(200)
-      .json("user has been logged out");
+    res.clearCookie("accessToken").status(200).json("user has been logged out");
   } catch (err) {
     console.log(err);
   }

@@ -18,6 +18,10 @@ const cookieParser = require("cookie-parser");
 //my midlewares
 
 app.use((req, res, next) => {
+  res.setHeader(
+    "Cache-Control",
+    "no-store, no-cache, must-revalidate, proxy-revalidate"
+  );
   res.header("Access-Control-Allow-Credentials", true); //this is to allow the access of credetials that comes with my token.
   next();
 });
@@ -28,7 +32,6 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(helmet());
 app.use(helmet());
 app.use(morgan("common"));
 app.use("/api/users", myUsersRouter);

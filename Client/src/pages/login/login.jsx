@@ -3,21 +3,58 @@ import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../../context/auth-context";
+import axios from "axios";
 
 const Login = () => {
+  // const { login } = useContext(AuthContext);
+
   const history = useNavigate();
-  const [userid, setUserID] = useState("");
-  const [userPassword, setUserPasscode] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isAccurate, setisAccurate] = useState(false);
   const [change, setChange] = useState(false);
-
-  const { login } = useContext(AuthContext);
-
+  const [user, setUserValues] = useState({
+    userid: "",
+    userPassword: "",
+  });
+  const passwordRegex =
+    /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+  const idRegex = /^\d{8}$/;
+  const { userid, userPassword } = user;
   const inputs = { userid, userPassword };
 
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserValues({ ...user, [name]: value });
+
+    switch (name) {
+      case "userPassword":
+        errors.userPassword = !passwordRegex.test(value)
+          ? "password should have a special character, lowercase, number,  uppercase, and be between 7 and 21 charcters"
+          : "";
+        !passwordRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
+        break;
+      case "userid":
+        errors.userid = !idRegex.test(value) ? "Invalid ID" : "";
+        !idRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
+        break;
+      default:
+        break;
+    }
+  }
   const HandleLogin = async (e) => {
     e.preventDefault();
-    await login(inputs);
-    history("/home");
+    if (isAccurate) {
+      await axios
+        .post("/api/auth/login", inputs)
+        .then((res) => {
+          const data = res.data;
+          localStorage.setItem("user", JSON.stringify(data));
+          history("/home");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   useEffect(() => {
@@ -60,26 +97,26 @@ const Login = () => {
 
               <div className="idinput">
                 <input
+                  name="userid"
                   type="number"
                   className="fullID"
                   placeholder="Input ID!"
-                  onChange={(e) => {
-                    setUserID(e.target.value);
-                  }}
+                  onChange={handleChange}
                 />
+                <span>{errors.userid}</span>
               </div>
               <div className="passinput">
                 <input
+                  name="userPassword"
                   type="password"
                   placeholder="Input passcode!"
                   className="fullID"
-                  onChange={(e) => {
-                    setUserPasscode(e.target.value);
-                  }}
+                  onChange={handleChange}
                 />
+                <span>{errors.userPassword}</span>
               </div>
               <div className="form-btn">
-                <button className="finalBtn" type="submit">
+                <button className="btn btn-danger" type="submit">
                   Let's Go!
                 </button>
               </div>

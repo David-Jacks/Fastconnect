@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Feed from "../../components/feed/feed";
 import Rightbar from "../../components/rightbar/rightbar";
 import Sidebar from "../../components/sidebar/sidebar";
@@ -8,15 +7,22 @@ import "./home.css";
 import { MdTableRows, MdEventAvailable } from "react-icons/md";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const Home = () => {
-  const [userData, setUserData] = useState({});
   const [on, setOn] = useState(false);
 
   useEffect(() => {
-    if (window.innerWidth <= 487) {
-      setOn(false);
-    } else {
-      setOn(true);
-    }
+    const handleResize = () => {
+      if (window.innerWidth <= 767) {
+        setOn(false);
+      } else {
+        setOn(true);
+      }
+    };
+    handleResize(); // Call the function once to set the initial state
+    window.addEventListener("resize", handleResize); // Add event listener
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   //using react query
@@ -38,7 +44,7 @@ const Home = () => {
         </div>
         <div className="homeContainer">
           {on ? <Sidebar /> : null}
-          <Feed userData={userData} />
+          <Feed />
           <Rightbar />
         </div>
       </QueryClientProvider>

@@ -80,8 +80,8 @@ const Stalogin = () => {
       await axios
         .post("/api/auth/addstaff", staffData)
         .then((res) => {
-          navigate("/home");
           HandleLogin();
+          navigate("/home");
         })
         .catch((err) => console.log(err));
     } else {
