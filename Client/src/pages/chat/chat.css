@@ -63,3 +63,22 @@
     -moz-box-shadow: 2px 4px 11px 7px rgba(255,255,255,0.75);
 }
 /* /templete css */
+
+@media screen and (max-width: 767px){
+   .chat-converse{
+    width: 100%;
+   }
+   .con-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 80%;
+    height: fit-content;
+    margin: auto;
+    padding: 5px 0px;
+}
+   .flow{
+    width: 80%;
+   }
+}

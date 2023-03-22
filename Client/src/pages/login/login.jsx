@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth-context";
 import axios from "axios";
 
 const Login = () => {
-  // const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const history = useNavigate();
   const [errors, setErrors] = useState({});
@@ -44,11 +44,8 @@ const Login = () => {
   const HandleLogin = async (e) => {
     e.preventDefault();
     if (isAccurate) {
-      await axios
-        .post("/api/auth/login", inputs)
+      await login(inputs)
         .then((res) => {
-          const data = res.data;
-          localStorage.setItem("user", JSON.stringify(data));
           history("/home");
         })
         .catch((err) => {

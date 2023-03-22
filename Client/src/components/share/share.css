@@ -138,3 +138,12 @@ font-family: 'Roboto Slab', serif; */
     border-radius: 0.3em;
     font-size: 15px;
 }
+@media screen and (max-width: 767px) {
+    .add{
+        position: relative;
+        width: 100%;
+        padding: 0.2em;
+        margin-top: 0px;
+        font-family: 'Merriweather', serif
+    }
+}

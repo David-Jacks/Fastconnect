@@ -73,9 +73,6 @@
     object-fit: cover;
 }
 .chatcontenthead span{
-    border: 3px solid #ebebeb; 
-    border-radius: 5px;
-    border-bottom-style: hidden;
     padding: 5px;
     margin-bottom: -5px;
     background-color: #c0c0c0;
@@ -165,7 +162,7 @@
     font-weight: bold;
     transition: all .3s ease;
 }
-.send-icon:hover,.chat-tools .icon:hover{
+.send-icon:hover,.chat-tools .chat-icon:hover{
     background-color: #c0c0c0;
     color: #121111;
     transform: scale(1.1);
@@ -177,10 +174,80 @@
     justify-content: space-around;
     padding: 4px 0px 4px 0px;
 }
-.chat-tools .icon{
+.chat-tools .chat-icon{
     border: 2px solid #c0c0c0;
     border-radius: 50%;
     padding: 2px;
     transition: all .3s ease;
     color: #b5121b;
 }
+.back{
+    display: none;
+}
+@media screen and (max-width: 767px){
+    .chatmainall{
+        padding: 0.2em;
+        border-left: none;
+    }
+    .chatcontenthead{
+        width: 100%; 
+         align-items: center;
+        padding: 0.1rem 0.1em;
+        border-top: 2px dashed black;
+    }
+    .chatbox{
+        width: 100%;
+        height: 90dvh;
+        overflow-y: scroll;
+        background-color: #959393;
+        margin: 1px auto;
+        gap: 0.2em;
+        border-radius: 6px;
+        padding: 0.1rem 0rem 0px 0rem;
+    }
+
+    .chatcontenthead img{
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    .back{
+        display: flex;
+    }
+    .left .text{
+        padding: 0;
+    }
+    .text .span{
+     font-size: 12px;
+    } 
+    .right .one{
+        border: 2px solid #4f1c1c;
+        border-radius: 50%;
+        padding: 2px;
+        font-size: 30px;
+        fill: #b5121b;
+    }
+    #messagewrite{
+        max-height: 35px;
+        padding-left: 5px; 
+        font-size: 14px;
+    }
+    .chat-tools{
+        display: flex;
+        align-self: flex-end;
+        width: 25%;
+        justify-content: space-around;
+        padding: 4px 0px 4px 0px;
+    }
+    .chat-tools .chat-icon{
+         font-size: 25px;
+        padding: 1px;
+        transition: all .3s ease;
+        color: #b5121b;
+    }
+    .send-icon{
+        font-size: 25px;
+   
+    }
+ }

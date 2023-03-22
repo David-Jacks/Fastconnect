@@ -2,12 +2,13 @@
     display: flex;
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 .control{
     display: none;
+
 }
 .left{
- color: #211c18;
  cursor: pointer;
  margin: 6px 0px 0px 5px;
  background-color: rgb(237, 207, 171);
@@ -27,5 +28,7 @@
     }
     .control{
         display: flex;
+         width: 100%;
+         justify-content: space-between;
     }
 }

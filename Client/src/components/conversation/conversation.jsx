@@ -1,10 +1,10 @@
 import React from "react";
 import "./conversation.css";
 
-const Conversation = () => {
+const Conversation = ({ click }) => {
   return (
     <>
-      <div className="conversationdisplay">
+      <div className="conversationdisplay" onClick={click}>
         <div className="confirst">
           <div>
             <img src="../../assets/rep.jpeg" alt="chatprofile" />

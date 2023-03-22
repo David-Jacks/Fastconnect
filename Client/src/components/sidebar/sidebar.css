@@ -95,11 +95,12 @@ font-family: 'Roboto Slab', serif; */
 
 @media (max-width: 480px) {
     .sidebar{
-        display: block;
-        position: fixed;
+        display: flex;
+        position: absolute;
         left: 0;
+        top: 0;
         background-color: #120505;
-        z-index: 454654;
+        z-index: 45454;
     }
     .sidebar-Wrapper{
         gap: 1em;   

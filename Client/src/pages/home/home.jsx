@@ -8,13 +8,16 @@ import { MdTableRows, MdEventAvailable } from "react-icons/md";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const Home = () => {
   const [on, setOn] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 767) {
         setOn(false);
+        setOpen(false);
       } else {
         setOn(true);
+        setOpen(true);
       }
     };
     handleResize(); // Call the function once to set the initial state
@@ -40,12 +43,17 @@ const Home = () => {
             }}
           />
 
-          <MdEventAvailable className="right" />
+          <MdEventAvailable
+            className="right"
+            onClick={() => {
+              setOpen(!open);
+            }}
+          />
         </div>
         <div className="homeContainer">
           {on ? <Sidebar /> : null}
           <Feed />
-          <Rightbar />
+          {open ? <Rightbar /> : null}
         </div>
       </QueryClientProvider>
     </>

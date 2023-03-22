@@ -5,14 +5,16 @@ import { BsFillCameraFill, BsEmojiSmile } from "react-icons/bs";
 import { FaMicrophone } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { MdVideoCall } from "react-icons/md";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 import Messaging from "../messaging/messaging";
 
-const Chatmain = () => {
+const Chatmain = ({ toggle }) => {
   return (
     <div className="chatmainall">
       <div className="chatmaincontent">
         <div className="chatcontenthead">
+          <IoMdArrowRoundBack className="back" onClick={toggle} />
           <div className="left">
             <img src="./assets/final.png" alt="" />
             <div className="text">
@@ -49,9 +51,9 @@ const Chatmain = () => {
                 placeholder="Message..."
               ></textarea>
               <div className="chat-tools">
-                <FaMicrophone className="icon" />
-                <BsFillCameraFill className="icon" />
-                <BsEmojiSmile className="icon" />
+                <FaMicrophone className="chat-icon" />
+                <BsFillCameraFill className="chat-icon" />
+                <BsEmojiSmile className="chat-icon" />
               </div>
               <AiOutlineSend className="send-icon" />
             </div>

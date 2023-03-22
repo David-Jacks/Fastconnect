@@ -1,34 +1,30 @@
 import React from "react";
 import "./share.css";
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { makeRequest } from "../../myAxios";
+// import { useMutation, useQueryClient } from "@tanstack/react-query";
+import makeRequest from "../../myAxios";
+import axios from "axios";
 
 const Share = () => {
   const [open, setOpen] = useState(false);
   const [picopen, setPicopen] = useState(false);
   const [eventopen, setEventopen] = useState(false);
-
-  //dealing with image post
+  const [vidAbout, setvidAbout] = useState("");
+  const [vid, setvid] = useState(null);
+  const [eventAbout, seteventAbout] = useState("");
+  const [event, setevent] = useState(null);
   const [imgAbout, setimgAbout] = useState("");
   const [img, setimg] = useState(null);
 
-  const queryClient = useQueryClient(); //will use to refresh post automatically
+  //dealing with image post
+  // const queryClient = useQueryClient(); //will use to refresh post automatically
 
-  const mutation = useMutation(
-    (newPost) => {
-      return makeRequest.post("/post/post", newPost);
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["post"]);
-      },
-    }
-  );
-  const upload = async () => {
+  //route to send images to server
+
+  const upload = async (file) => {
     try {
       const formData = new FormData();
-      formData.append("file", img);
+      formData.append("file", file);
       const res = await makeRequest.post("/post/upload", formData);
       return res.data;
     } catch (err) {
@@ -36,65 +32,69 @@ const Share = () => {
     }
   };
 
+  const imageData = { imgAbout, img };
+  const handleRoute = async (imageData) => {
+    await axios
+      .post("api/post/post", imageData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const imagePost = async () => {
     if (imgAbout === "") {
       console.log("please write something");
     } else {
       let imgUrl = "";
       if (img) {
-        imgUrl = await upload();
+        imgUrl = await upload(img);
       }
-      mutation.mutate({ imgAbout, img: imgUrl });
+      imageData.img = imgUrl;
+      handleRoute(imageData);
     }
   };
 
   //dealing with video post
-  const [vidAbout, setvidAbout] = useState("");
-  const [vid, setvid] = useState(null);
 
-  const vidmutation = useMutation(
-    (newPost) => {
-      return makeRequest.post("/post/vid", newPost);
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["video"]);
-      },
-    }
-  );
-  const vidupload = async () => {
-    try {
-      const formData = new FormData();
-      formData.append("file", vid);
-      const res = await makeRequest.post("/post/vidupload", formData);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
+  // const vidupload = async () => {
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("file", vid);
+  //     const res = await makeRequest.post("/vidpost/upload", formData);
+  //     return res.data;
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const handleVidRoute = async (vidData) => {
+    await axios
+      .post("/api/vidpost/vid", vidData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+  const vidData = { vidAbout, vid };
+
   const vidPost = async () => {
     if (vidAbout === "") {
       console.log("please write something abt your video");
     } else {
       let vidURL = "";
       if (vid) {
-        vidURL = await vidupload();
+        vidURL = await upload(vid);
       }
-      console.log(vidURL);
-      vidmutation.mutate({ vid: vidURL, vidAbout: vidAbout });
+      vidData.vid = vidURL;
+      handleVidRoute(vidData);
     }
   };
-
   //dealing with event post
-  const [eventAbout, seteventAbout] = useState("");
-  const [event, setevent] = useState("");
 
-  const eventData = {
-    eventAbout,
-    event,
-  };
   function eventPost() {}
-
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -123,6 +123,7 @@ const Share = () => {
               ></textarea>
               <div className="file-taker">
                 <input
+                  name="file"
                   type="file"
                   className="vidupload"
                   onChange={(e) => {
@@ -157,6 +158,7 @@ const Share = () => {
               ></textarea>
               <div className="file-taker">
                 <input
+                  name="file"
                   type="file"
                   className="eventupload"
                   onChange={(e) => {
@@ -192,6 +194,7 @@ const Share = () => {
               <div className="file-taker">
                 <input
                   type="file"
+                  name="file"
                   className="imageupload"
                   onChange={(e) => {
                     setimg(e.target.files[0]);

@@ -31,13 +31,19 @@ function Person() {
             <div className="user-info">
               <div className="user-handles">
                 <a href="{}">
-                  ##facebook <BsFacebook />
+                  @facebook <BsFacebook />
                 </a>
                 <a href="{}">
-                  ##LinkedIn <FaLinkedinIn />
+                  @LinkedIn <FaLinkedinIn />
                 </a>
                 <a href="{}">
-                  ##Instagram <BsInstagram />
+                  @Instagram <BsInstagram />
+                </a>
+                <a href="{}">
+                  @SpanChat <BsInstagram />
+                </a>
+                <a href="{}">
+                  @Instagram <BsInstagram />
                 </a>
               </div>
               <span className="person-name">David Jackson</span>

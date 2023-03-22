@@ -1,6 +1,6 @@
 import React from "react";
 import "./topbar.css";
-import { FaNotEqual, FaSearch } from "react-icons/fa";
+import { FaNotEqual } from "react-icons/fa";
 import { IoMdChatbubbles } from "react-icons/io";
 import { BsFillBasket3Fill, BsFacebook, BsLinkedin } from "react-icons/bs";
 import { GrInstagram } from "react-icons/gr";

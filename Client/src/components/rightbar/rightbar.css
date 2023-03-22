@@ -1,8 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@300;400&family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
-/* font-family: 'Bitter', serif;
-font-family: 'Merriweather', serif;
-font-family: 'Pacifico', cursive;
-font-family: 'Roboto Slab', serif; */
+
 
 .rightbar{
     flex: 4;
@@ -52,9 +48,27 @@ font-family: 'Roboto Slab', serif; */
 .rightbarHr{
     width: 100%;
 }
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .rightbar{
-   display: none;
+     background-color: black;
+     position: absolute;
+     top: 0;
+     width: 100%;
+     z-index: 45454;
     }
-    
+    .rightbarWrapper{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%; 
+        padding: 0px 2rem 0px 2rem;
+    }
+    .rightbarHead span{
+        font-family: 'Roboto Slab', serif; 
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: #fff;
+    }
+
 }

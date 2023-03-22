@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Conversation from "../../components/conversation/conversation";
 import Chatmain from "../../components/chatmain/chatmain";
 import Topbar from "../../components/topbar/topbar";
-import { GoPerson } from "react-icons/go";
-import { FiClipboard } from "react-icons/fi";
 import "./chat.css";
 
 const Chat = () => {
+  const [remove, setRemove] = useState(true);
+  const [move, setMove] = useState(true);
+  useEffect(() => {
+    const handleScreen = () => {
+      if (window.innerWidth <= 767) {
+        setRemove(false);
+      } else {
+        setRemove(true);
+      }
+    };
+    handleScreen();
+    window.addEventListener("resize", handleScreen);
+    return () => {
+      window.removeEventListener("resize", handleScreen);
+    };
+  }, []);
+
+  const toggleChat = () => {
+    setRemove(!remove);
+    setMove(!move);
+  };
+
   return (
     <>
       <div className="chatcontainer">
@@ -14,33 +34,38 @@ const Chat = () => {
           <Topbar />
         </div>
         <div className="chat-content">
-          <div className="chat-converse">
-            <div className="con-head">
-              <input
-                type="text"
-                className="chat-search"
-                placeholder="Search for Chat..."
-              />
+          {move ? (
+            <div className="chat-converse">
+              <div className="con-head">
+                <input
+                  type="text"
+                  className="chat-search"
+                  placeholder="Search for Chat..."
+                />
+              </div>
+
+              <div className="flow">
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+                <Conversation click={toggleChat} />
+              </div>
             </div>
-            <div className="flow">
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-              <Conversation />
-            </div>
-          </div>
-          <Chatmain />
+          ) : null}
+          {remove ? <Chatmain toggle={toggleChat} /> : null}
         </div>
       </div>
     </>

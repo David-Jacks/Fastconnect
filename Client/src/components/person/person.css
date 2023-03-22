@@ -1,13 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
-
-/* font-family: 'Merriweather', serif;
-font-family: 'Pacifico', cursive;
-font-family: 'Roboto Slab', serif; */
 .person{
     flex: 6;
     padding: 1em;
     height: calc(100vh - 50px);
-    overflow-y: hidden;
+    overflow-y: scroll;
     position: relative;
 }
 .person-wrapper{
@@ -30,13 +25,13 @@ font-family: 'Roboto Slab', serif; */
     border-radius: 0.4em;
 }
 .profilepic{
-    width: 250px;
-    height: 250px;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
     position: absolute;
     object-fit: cover;
     object-position: center;
-    top: 175px;
+    top: 185px;
     left: 0;
     right: 0;
     margin: auto;
@@ -49,7 +44,7 @@ font-family: 'Roboto Slab', serif; */
 .user-info{
     display: flex;
     flex-direction: row;  
-    justify-content: space-between;  
+    justify-content: space-between;
     height: 100%;
 }
 .person-name{
@@ -58,20 +53,22 @@ font-family: 'Roboto Slab', serif; */
     font-size: large;
     text-shadow: 1px 1px 2px rgb(197, 196, 196);
     margin-bottom: -4px;
+    min-width: 230px;
+    text-align: center;
 }
 .user-handles{
     display: flex;
     flex-direction: column;
-   gap: 0.5em;
-    height: 100%;
+    justify-content: space-around;
 }
 .user-handles a{
     text-decoration: none;
-
+    color: rgb(56, 54, 56);
 }
 .abt{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .abt span:nth-child(1),
 .abt span:nth-child(3){
@@ -94,4 +91,66 @@ font-family: 'Roboto Slab', serif; */
 }
 .abt-user p{
     font-size: small;
+}
+
+
+@media screen and (max-width: 377px){
+
+    .images{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    .cover{
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position: center 5%;
+        border-radius: 0.4em;
+    }
+    .profilepic{
+        width: 110px;
+        height: 110px;
+        top: 100px;
+        border: 3.5px solid #b51212;
+    }
+    .user-info{
+        display: flex;
+        flex-direction: row;  
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+    }
+    .abt-user p{
+        font-size: 12px;
+        text-align: justify;
+    }
+    .person-name{
+       text-align: center;
+        font-size: 12.5px;
+        text-shadow: 1px 1px 2px rgb(34, 34, 34);
+        margin-bottom: -4px;
+        min-width: 100px;
+    }
+
+    .user-handles{
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        height: 100%;
+        font-size: 11px;
+    }
+    .abt span:nth-child(1),
+    .abt span:nth-child(3){
+        font-family: 'Merriweather', serif;
+        font-size: 15px;
+        text-decoration: underline;
+        letter-spacing: 1px;
+        font-weight: bold;
+    }
+    .abt span{
+        font-size: 12px;
+        font-family: 'Roboto Slab', serif;  
+    }
+
 }

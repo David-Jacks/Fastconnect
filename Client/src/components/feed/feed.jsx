@@ -3,7 +3,7 @@ import Post from "../post/post";
 import Share from "../share/share";
 import "./feed.css";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../myAxios";
+import makeRequest from "../../myAxios";
 
 const Feed = () => {
   //making use of react query
@@ -12,13 +12,12 @@ const Feed = () => {
   const { isLoading, error, data } = useQuery(["post", "video"], () => {
     return Promise.all([
       makeRequest.get("/post").then((res) => res.data),
-      makeRequest.get("/post/vid").then((res) => res.data),
+      makeRequest.get("/vidpost").then((res) => res.data),
     ]).then(([posts, videos]) => {
       let combinedPost = [...posts, ...videos];
       return combinedPost;
     });
   });
-  console.log(data);
 
   return (
     <>
@@ -35,7 +34,6 @@ const Feed = () => {
             : data
                 .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                 .map((item) => <Post key={item.id} post={item} />)}
-          {console.log(data)}
         </div>
       </div>
     </>

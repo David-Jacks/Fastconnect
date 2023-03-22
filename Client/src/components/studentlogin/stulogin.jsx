@@ -83,7 +83,6 @@ const Stulogin = () => {
       await axios
         .post("/api/auth/addstu", formData)
         .then((res) => {
-          console.log(res);
           LoginUser();
           navigate("/home");
         })
