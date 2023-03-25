@@ -4,10 +4,13 @@
   "description": "An Intranet media for lancaster University Ghana",
   "main": "myserver.js",
   "scripts": {
+    "client-install": "npm install --prefix client",
     "start": "node myserver.js",
-    "dev": "nodemon myserver.js"
+    "dev": "nodemon myserver.js",
+    "client": "npm start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
-  "keywords": [],
+  "keywords": ["fastconnect", "Intanet Media", "Lancaster University"],
   "author": "David Jackson",
   "license": "ISC",
   "dependencies": {
@@ -25,5 +28,8 @@
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "socket.io": "^4.6.1"
+  },
+  "engines": {
+    "node": "16.16.0"
   }
 }

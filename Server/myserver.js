@@ -4,6 +4,7 @@ const port = process.env.PORT || 8080;
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
+const path = require("path");
 
 ///routing
 const myUsersRouter = require("./routes/users");
@@ -33,6 +34,14 @@ app.use("/api/auth", myauthRouter);
 app.use("/api/post", myPostRouter);
 app.use("/api/comment", myCommentRouter);
 app.use("/api/vidpost", myVideoRouter);
+
+//serve front end if in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(port, () => {
   console.log(`backend is active..and ready to start..on port ${port}`);
