@@ -3,7 +3,7 @@ import Conversation from "../../components/conversation/conversation";
 import Chatmain from "../../components/chatmain/chatmain";
 import Topbar from "../../components/topbar/topbar";
 import "./chat.css";
-
+//wiill remove comment later
 const Chat = () => {
   const [remove, setRemove] = useState(true);
   const [move, setMove] = useState(true);
@@ -45,6 +45,7 @@ const Chat = () => {
               </div>
 
               <div className="flow">
+                <Conversation click={toggleChat} />
                 <Conversation click={toggleChat} />
                 <Conversation click={toggleChat} />
                 <Conversation click={toggleChat} />
