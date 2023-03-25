@@ -35,7 +35,7 @@ app.use("/api/post", myPostRouter);
 app.use("/api/comment", myCommentRouter);
 app.use("/api/vidpost", myVideoRouter);
 
-//serve front end if in production
+//serve front-end if in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("*", (req, res) => {
