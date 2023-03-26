@@ -36,12 +36,12 @@ app.use("/api/comment", myCommentRouter);
 app.use("/api/vidpost", myVideoRouter);
 
 //serve front-end if in production
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("Client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("Client/build"));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "Client", "build", "index.html"));
+//   });
+// }
 
 app.listen(port, () => {
   console.log(`backend is active..and ready to start..on port ${port}`);

@@ -4,11 +4,11 @@
   "description": "An Intranet media for lancaster University Ghana",
   "main": "myserver.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "client-install": "npm install --prefix Client",
     "start": "node myserver.js",
     "dev": "nodemon myserver.js",
-    "client": "npm start --prefix client",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client": "npm start --prefix Client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
   },
   "keywords": [
     "fastconnect",
