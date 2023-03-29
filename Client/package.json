@@ -2,7 +2,7 @@
   "name": "fastconnect",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "https://fastconnect.herokuapp.com/",
   "dependencies": {
     "@tanstack/react-query": "^4.24.6",
     "@testing-library/jest-dom": "^5.16.5",
