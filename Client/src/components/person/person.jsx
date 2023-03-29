@@ -8,8 +8,7 @@ function Person() {
   const handleLogout = async () => {
     axios
       .post("api/auth/logout")
-      .then((req, res) => {
-        console.log(req.cookies);
+      .then((res) => {
         if (res) {
           localStorage.clear();
           window.location.reload(true);
