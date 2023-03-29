@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 });
 app.use(
   cors({
-    origin: "https://fastconnect.herokuapp.com/",
+    origin: "https://fastconnect.herokuapp.com",
   })
 );
 app.use(express.json());
