@@ -20,7 +20,11 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true); //this is to allow the access of credetials that comes with my token.
   next();
 });
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://fastconnect.herokuapp.com",
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
