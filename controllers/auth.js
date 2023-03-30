@@ -158,7 +158,6 @@ const login = (req, res) => {
 
 const logout = (req, res) => {
   try {
-    localStorage.clear();
     res.clearCookie("accessToken").status(200).json("user has been logged out");
   } catch (err) {
     console.log(err);
