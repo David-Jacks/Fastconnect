@@ -140,13 +140,14 @@ const login = (req, res) => {
       return res.status(400).json("wrong password or username");
     }
     const token = jwt.sign({ id: userid }, "fastConnect.com", {
-      expiresIn: "24h",
+      expiresIn: "30m",
     });
 
     //removing password from what will be sent as response
     const { userPassword, ...others } = results[0];
     res
       .cookie("accessToken", token, {
+        maxAge: 30 * 60 * 1000, // 30 minutes in milliseconds
         httpOnly: true, //make it accesible by only our url, and no other script can access the route
         sameSite: "strict",
       })
@@ -158,6 +159,7 @@ const login = (req, res) => {
 const logout = (req, res) => {
   try {
     res.clearCookie("accessToken").status(200).json("user has been logged out");
+    localStorage.clear();
   } catch (err) {
     console.log(err);
   }

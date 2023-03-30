@@ -10,7 +10,6 @@ function Person() {
       .post("api/auth/logout")
       .then((res) => {
         if (res) {
-          localStorage.clear();
           window.location.reload(true);
         }
       })

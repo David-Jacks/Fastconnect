@@ -9,7 +9,7 @@ Router.post("/post", addPost);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./client/public/upload");
+    cb(null, "./Client/public/upload");
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
