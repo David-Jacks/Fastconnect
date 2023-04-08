@@ -67,8 +67,17 @@
     display: flex;
     align-items: center;
     color: white;
-    width: 25%; 
+    width: 25%;
     justify-content: space-around;
+}
+.badge{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: none;
+    height: 30px;
+    background: transparent;
 }
 .topbarIcons{
     display: flex;
@@ -81,14 +90,14 @@
 .topbarIconItem{
     position: relative;
     top: 1dvh;
-    width: 20%; 
+    width: fit-content; 
     padding: 2px 5px;
     height: auto;
 
 }
 .iconedite{
     color: #ffffff;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     margin: auto;
     align-self: center;
@@ -99,7 +108,7 @@
 .topbarIconBadge{
    max-width: 30px;
     max-height: 30px;
-    background-color: red;
+    background-color: rgb(10, 1, 1);
     border-radius: 50%;
     color: white;
     position: absolute;
@@ -107,7 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 8px;
     padding: 3px;
     font-weight: 700;
 }
@@ -130,14 +139,14 @@
     display: none;
    }
    .topbarLeft{
-    width: 40%;
+    width: 50%;
    }
    .topbarLeft img{
     display: none;
    }
    .logo{
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 800;
     color: white;
     display: flex;
     margin-left: 1px;

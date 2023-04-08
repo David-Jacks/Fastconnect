@@ -43,6 +43,7 @@ const Share = () => {
         console.log(err);
       });
   };
+
   const imagePost = async () => {
     if (imgAbout === "") {
       console.log("please write something");
@@ -68,6 +69,7 @@ const Share = () => {
   //     console.log(err);
   //   }
   // };
+
   const handleVidRoute = async (vidData) => {
     await axios
       .post("/api/vidpost/vid", vidData)
@@ -107,6 +109,7 @@ const Share = () => {
         </div>
 
         {/* open and close logs */}
+
         {open ? (
           <div className="port-contain">
             <div className="add">
@@ -214,6 +217,7 @@ const Share = () => {
         ) : null}
 
         {/* buttons to control open and close logs */}
+
         <div className="shareBottom">
           <button
             onClick={() => {

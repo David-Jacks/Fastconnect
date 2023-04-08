@@ -40,9 +40,6 @@ function Person() {
                   @Instagram <BsInstagram />
                 </a>
                 <a href="{}">
-                  @SpanChat <BsInstagram />
-                </a>
-                <a href="{}">
                   @Instagram <BsInstagram />
                 </a>
               </div>

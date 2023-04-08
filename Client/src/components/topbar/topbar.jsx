@@ -70,6 +70,7 @@ const Topbar = () => {
             <BsLinkedin />
           </a>
         </div>
+        {/* bootsrap */}
 
         <div className="topbarRight">
           <div className="topbarIcons">
@@ -95,7 +96,7 @@ const Topbar = () => {
           <Link to={"/profile"}>
             <img
               src="/assets/02B00C71-F3B5-46C8-9F15-A768CF2AE1B7.jpeg"
-              alt=""
+              alt="profile"
               className="topbarImage"
             />
           </Link>

@@ -83,6 +83,8 @@
     font-family: 'Roboto Slab', serif; 
 }
 .about-style{
+    display: flex;
+    flex-direction: column;
     border-radius: 0.4em;
     padding: 0px 0.3em;
     -webkit-box-shadow: -7px 4px 64px 7px rgba(237,237,237,1);
@@ -91,6 +93,15 @@
 }
 .abt-user p{
     font-size: small;
+}
+.log-out{
+    margin-bottom: 5px;
+    outline: 3.5px dashed #b51212;
+    border: 2.2px dashed  #b51212;
+    background:  #b51212;
+    color: white;
+    font-style: italic;
+    padding: 0px 4px;
 }
 
 
