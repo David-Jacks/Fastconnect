@@ -15,7 +15,7 @@ const Topbar = () => {
       <div className="topbarContainer">
         <div className="topbarLeft">
           <Link to={"/home"} style={{ textDecoration: "none" }}>
-            <img src="../assets/res.jpeg" alt="logo" />
+            <img src="../assets/Logo.jpg" alt="logo" />
             <span className="logo">Lancaster Fastconnect</span>
           </Link>
         </div>
