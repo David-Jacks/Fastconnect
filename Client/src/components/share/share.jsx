@@ -32,10 +32,9 @@ const Share = () => {
     }
   };
 
-  const imageData = { imgAbout, img };
-  const handleRoute = async (imageData) => {
+  const handleImage = async (data) => {
     await axios
-      .post("api/post/post", imageData)
+      .post("api/post/post", data)
       .then((res) => {
         console.log(res);
       })
@@ -43,6 +42,7 @@ const Share = () => {
         console.log(err);
       });
   };
+  const imageData = { imgAbout, img };
 
   const imagePost = async () => {
     if (imgAbout === "") {
@@ -53,22 +53,11 @@ const Share = () => {
         imgUrl = await upload(img);
       }
       imageData.img = imgUrl;
-      handleRoute(imageData);
+      handleImage(imageData);
     }
   };
 
   //dealing with video post
-
-  // const vidupload = async () => {
-  //   try {
-  //     const formData = new FormData();
-  //     formData.append("file", vid);
-  //     const res = await makeRequest.post("/vidpost/upload", formData);
-  //     return res.data;
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const handleVidRoute = async (vidData) => {
     await axios
@@ -97,6 +86,7 @@ const Share = () => {
   //dealing with event post
 
   function eventPost() {}
+
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -126,7 +116,7 @@ const Share = () => {
               ></textarea>
               <div className="file-taker">
                 <input
-                  name="file"
+                  name="vid"
                   type="file"
                   className="vidupload"
                   onChange={(e) => {
@@ -180,6 +170,7 @@ const Share = () => {
             </div>
           </div>
         ) : null}
+        {/* dealing with images  and other vital data*/}
         {picopen ? (
           <div className="port-contain">
             <div className="add">
@@ -192,21 +183,24 @@ const Share = () => {
                 placeholder="Brief the image to be posted..."
                 onChange={(e) => {
                   setimgAbout(e.target.value);
+                  console.log(imgAbout);
                 }}
               ></textarea>
               <div className="file-taker">
                 <input
-                  type="file"
                   name="file"
+                  type="file"
                   className="imageupload"
+                  accept="image/*"
                   onChange={(e) => {
                     setimg(e.target.files[0]);
+                    // console.log(img);
                   }}
                 />
                 <button
                   onClick={() => {
-                    imagePost();
                     setPicopen(false);
+                    imagePost();
                   }}
                 >
                   upload image
