@@ -125,11 +125,18 @@ font-family: 'Roboto Slab', serif; */
     color: white;
 }
 .idinput, .passinput{
-    height: 30px;
     display: flex;
-    color: #b5121bad;
     flex-direction: column;
     background-color: #ffffff;
+}
+.err{
+    width: 55%;
+    color: #fff;
+    padding-left: 2px;
+    font-size: 12px;
+   transform: translateY(-18px);
+   text-align: center;
+   line-height: 12px;
 }
 .loginform input{
     border: none;
@@ -148,11 +155,7 @@ font-family: 'Roboto Slab', serif; */
    -webkit-appearance: none;
    margin: 0;
 }
-.finalBtn{
-outline: none;
-border: none;
-border-radius: 5px;
-}
+
 .login{
     font-size: xx-large;
     color: rgb(225, 171, 108);
@@ -227,7 +230,9 @@ border-radius: 5px;
 
 
 
-@media screen and (max-width: 767px) {
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
     .bigcontainer{
         padding: 0;
     }
@@ -236,11 +241,15 @@ border-radius: 5px;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
-    /* width: 100%; */
+
 }
+.conner{
+    display: none;
+    }
+
 .pageAbout{
     width: 100%;
-    height: 45%;
+    height: auto;
 }
 .loginform{
     width: 100%;
@@ -248,12 +257,10 @@ border-radius: 5px;
     gap: 0;
 }
 .login{
-    font-size: medium;
+    font-size: small;
     transform: translateY(0px);
 }
-.conner{
-display: none;
-}
+
 .mainlog{
     display: flex;
     flex-direction: column;
@@ -266,7 +273,7 @@ display: none;
     flex-direction: column;
     align-items: center;
     font-family: 'Roboto Slab', serif;
-    gap: 0.5em;
+    gap: 0.0rem;
 }
 .welMess span:nth-child(1){
     font-size: medium;
@@ -274,24 +281,29 @@ display: none;
 }
 .welMess span:nth-child(2){
     text-shadow: 1px 1px 1.5px;
-    font-size: 15px;
+    font-size: 14px;
+    color: #f70713;
 }
 .welMess span:nth-child(3){
-    text-shadow: 1px 1px 1px;
-    font-size: 15px;
+    text-shadow: 0.5px 0.5px 1px;
+    font-size: 12px;
     text-align: justify;
 }
 .welMess span:nth-child(4){
-    font-size: medium;
+    font-size: 15px;
     font-family: sans-serif;
 }
 .welMess span:nth-child(5){
     font-family: 'Pacifico', cursive;
-    font-size: medium;
-    letter-spacing: 2px;
+    font-size: 18px;
+    line-height: normal;
+    text-align: center;
 }
 .mystery{
-    font-size: large;
+    font-size: medium;
+}
+.btn{
+    font-size: 13px;
 }
 .drop{
     color: #ffffff;

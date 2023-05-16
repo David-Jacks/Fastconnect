@@ -183,7 +183,6 @@ const Share = () => {
                 placeholder="Brief the image to be posted..."
                 onChange={(e) => {
                   setimgAbout(e.target.value);
-                  console.log(imgAbout);
                 }}
               ></textarea>
               <div className="file-taker">
@@ -194,13 +193,12 @@ const Share = () => {
                   accept="image/*"
                   onChange={(e) => {
                     setimg(e.target.files[0]);
-                    // console.log(img);
                   }}
                 />
                 <button
                   onClick={() => {
-                    setPicopen(false);
                     imagePost();
+                    setPicopen(false);
                   }}
                 >
                   upload image

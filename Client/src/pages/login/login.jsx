@@ -99,8 +99,8 @@ const Login = () => {
                   placeholder="Input ID!"
                   onChange={handleChange}
                 />
-                <span>{errors.userid}</span>
               </div>
+              <span className="err">{errors.userid}</span>
               <div className="passinput">
                 <input
                   name="userPassword"
@@ -109,8 +109,8 @@ const Login = () => {
                   className="fullID"
                   onChange={handleChange}
                 />
-                <span>{errors.userPassword}</span>
               </div>
+              <span className="err">{errors.userPassword}</span>
               <div className="form-btn">
                 <button className="btn btn-danger" type="submit">
                   Let's Go!
