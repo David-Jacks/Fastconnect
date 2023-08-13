@@ -7,6 +7,8 @@ import "./chat.css";
 const Chat = () => {
   const [remove, setRemove] = useState(true);
   const [move, setMove] = useState(true);
+
+  // this is to make the chat responsive on smaller screens
   useEffect(() => {
     const handleScreen = () => {
       if (window.innerWidth <= 767) {
@@ -29,7 +31,7 @@ const Chat = () => {
 
   return (
     <>
-      <div className="chatcontainer">
+      <div id="chatcontainer">
         <div className="chat-top">
           <Topbar />
         </div>
