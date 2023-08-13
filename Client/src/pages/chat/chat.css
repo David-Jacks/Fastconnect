@@ -63,7 +63,7 @@
     -moz-box-shadow: 0 0 7px #615a5abf;
 }
 
-
+/* responsive chatting */
 @media screen and (max-width: 767px){
    .chat-converse{
     width: 100%;
