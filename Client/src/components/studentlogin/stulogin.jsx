@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/auth-context";
 
 const Stulogin = () => {
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const history = useNavigate();
   //i will have to change the state fnctions later
   const [errors, setErrors] = useState({});
   const [isAccurate, setisAccurate] = useState(false);
@@ -84,7 +84,7 @@ const Stulogin = () => {
         .post("/api/auth/addstu", formData)
         .then((res) => {
           LoginUser();
-          navigate("/home");
+          history("/home");
         })
         .catch((err) => {
           console.log(err);
@@ -96,6 +96,7 @@ const Stulogin = () => {
 
   const { userid, userPassword } = user;
   const inputs = { userid, userPassword };
+
   const LoginUser = async () => {
     try {
       await login(inputs);
@@ -118,7 +119,7 @@ const Stulogin = () => {
                   placeholder=" "
                   className="stuidinput"
                   onChange={handleChange}
-                  required
+                  // required
                 />
                 <label htmlFor="student-id">Input ID</label>
               </div>
@@ -161,7 +162,7 @@ const Stulogin = () => {
                     type="password"
                     className="stupass"
                     onChange={handleChange}
-                    required
+                    // required
                   />
                   <label htmlFor="student-pass">Password</label>
                 </div>
@@ -175,7 +176,7 @@ const Stulogin = () => {
                     type="password"
                     className="stupasscon"
                     onChange={handleChange}
-                    required
+                    // required
                   />
                   <label htmlFor="stu-pass-con">Confirm Password</label>
                 </div>
@@ -191,7 +192,7 @@ const Stulogin = () => {
                     type="email"
                     className="mail"
                     onChange={handleChange}
-                    required
+                    // required
                   />
                   <label htmlFor="stu-email">Input Email</label>
                 </div>
@@ -260,7 +261,7 @@ const Stulogin = () => {
                 </select>
               </div>
             </div>
-            <button id="stuformsubmit" onClick={sendFormData}>
+            <button id="stuformsubmit" onClick={()=>{history("/home")}}>
               Join_Community
             </button>
           </form>
