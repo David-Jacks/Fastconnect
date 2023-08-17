@@ -1,7 +1,7 @@
 import React from "react";
 import "./rightbar.css";
 import Events from "../events/event";
-
+import eventData from "../../event.json";
 const Rightbar = () => {
   return (
     <>
@@ -11,10 +11,7 @@ const Rightbar = () => {
             <span>UPCOMING EVENTS</span>
           </div>
           <div className="eventblock">
-            <Events />
-            <Events />
-            <Events />
-            <Events />
+            {eventData.map((eventData)=> <Events eventData={eventData}/>)}
           </div>
         </div>
       </div>

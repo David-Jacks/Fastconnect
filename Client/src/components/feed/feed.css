@@ -1,19 +1,10 @@
-.feed{
+
+#feed{
     flex: 6;
     padding: 1em;
     height: calc(100vh - 50px);
     overflow-y: scroll;
     position: relative;
-}
-.feed ::-webkit-scrollbar{
-    width: 2px;
-    display: none;
-}
-.feed ::-webkit-scrollbar-track{
-    background-color: #444;
-}
-.feed ::-webkit-scrollbar-thumb{
-    color: #ffffff;
 }
 .head-const{
     display: flex;
@@ -27,28 +18,28 @@
     100% {left: 0px; }
 }
 .head-const h1{
-    font-size: 24px;
-    font-family: monospace; position: relative;
-    font-weight: bold;
+    font-size: 20px;
+    position: relative;
+    font-weight: 800;
     letter-spacing: 1px;
     animation-name: example;
     animation-duration: 5s;
     animation-iteration-count: infinite;
-    font-family: 'Merriweather', serif;
 }
-.my-feed{
+/* .my-feed{
     height: auto;
-}
+} */
 .feedWrapper{
     display: flex;
     flex-direction: column;
     gap: 1em;
     width: 100%;
     height: auto;
+    background: transparent;
 }
 
 @media (max-width: 480px) {
-   .feed{
+    #feed{
    padding: 0;
    }
    @keyframes example {

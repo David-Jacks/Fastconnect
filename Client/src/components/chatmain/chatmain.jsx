@@ -9,15 +9,14 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 
 import Messaging from "../messaging/messaging";
 
-const Chatmain = ({ toggle }) => {
+const Chatmain = ({ click, chatData }) => {
   return (
     <div className="chatmainall">
       <div className="chatmaincontent">
         <div className="chatcontenthead">
-          <IoMdArrowRoundBack className="back" onClick={toggle} />
+          <IoMdArrowRoundBack className="back" onClick={click} />
           <div className="left">
-            <img src="./assets/final.png" alt="" />
-            <div className="text">
+            <img src="./assets/profile6.JPG" alt="" />          <div className="text">
               <span className="span">David Jackson</span>
               <span className="span">Typing...</span>
             </div>
@@ -43,6 +42,7 @@ const Chatmain = ({ toggle }) => {
           <Messaging />
           <div className="chatsend">
             <div className="chatsend-div">
+              <BsEmojiSmile className="chat-icon" />
               <textarea
                 name="chatinput"
                 id="messagewrite"
@@ -50,12 +50,11 @@ const Chatmain = ({ toggle }) => {
                 rows="10"
                 placeholder="Message..."
               ></textarea>
-              <div className="chat-tools">
-                <FaMicrophone className="chat-icon" />
+               <FaMicrophone className="chat-icon" />
                 <BsFillCameraFill className="chat-icon" />
-                <BsEmojiSmile className="chat-icon" />
+              <div className="chat-tools">
+               <AiOutlineSend className="send-icon" />
               </div>
-              <AiOutlineSend className="send-icon" />
             </div>
           </div>
         </div>

@@ -1,0 +1,193 @@
+[
+    {   "id": 1,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book16.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 2,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book15.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 3,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book14.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 4,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book13.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 5,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book12.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 6,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book11.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 7,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book10.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 8,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book9.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 9,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book8.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 10,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book7.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 11,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book6.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 12,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book5.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 13,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book4.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 14,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book3.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 15,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book2.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+    ,
+    {   "id": 16,
+        "topic":"Algorithms",
+        "author":"David Jackson",
+        "bookimg":"./assets/books/book1.jpg",
+        "year":"2023",
+        "about":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, rem voluptates voluptas alias, placeat ducimus voluptatum ullam expedita animi vero esse atque saepe. Exercitationem delectus, necessitatibus provident suscipit at modi cumque deserunt dolore amet quam iste, tempore quis unde doloremque adipisci totam dignissimos laboriosam rem et ea eveniet tenetur! Culpa.",
+        "reactions":{
+            "like": 7,
+            "hate": 1
+        }
+    }
+]

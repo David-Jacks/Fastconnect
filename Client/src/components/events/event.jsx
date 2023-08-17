@@ -1,23 +1,21 @@
 import React from "react";
 import "./events.css";
 
-const Events = () => {
+const Events = ({eventData}) => {
   return (
     <>
       <div className="eventcontainer">
         <div className="eventheader">
-          <p className="eventTopic"> October summit 2022</p>
+          <p className="eventTopic">{eventData.eventName}</p>
+          <p>{eventData.eventDay}</p>
+          <p>{eventData.eventPlace}</p>
         </div>
         <div className="mainevent">
-          <img src="/assets/madrid.jpg" alt="" />
+          <img src={eventData.eventPic} alt="events" />
         </div>
         <div className="eventreaction">
           <a href="{}" className="aboutevent">
-            About
-          </a>
-          <a href="{}" className="loveevent">
-            {" "}
-            Ask Question?{" "}
+            make enquiries
           </a>
         </div>
       </div>

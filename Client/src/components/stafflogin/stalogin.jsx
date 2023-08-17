@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/auth-context";
 
 const Stalogin = () => {
   const { login } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const history = useNavigate();
 
   const [errors, setErrors] = useState({});
   const [isAccurate, setisAccurate] = useState(false);
@@ -81,7 +81,7 @@ const Stalogin = () => {
         .post("/api/auth/addstaff", staffData)
         .then((res) => {
           HandleLogin();
-          navigate("/home");
+          history("/home");
         })
         .catch((err) => console.log(err));
     } else {
@@ -220,7 +220,7 @@ const Stalogin = () => {
               </div>
             </div>
 
-            <button id="staformsubmit" type="submit">
+            <button id="staformsubmit" type="submit" onClick={()=>{history("/home")}}>
               Join_community
             </button>
           </form>

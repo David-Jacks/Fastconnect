@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
 import Home from "./pages/home/home.jsx";
 import Login from "./pages/login/login.jsx";
@@ -6,17 +6,23 @@ import Stulogin from "./components/studentlogin/stulogin.jsx";
 import Stalogin from "./components/stafflogin/stalogin.jsx";
 import Basket from "./pages/basket/basket.jsx";
 import Chat from "./pages/chat/chat.jsx";
-
+import Profile from "./pages/Profile/profile";
+import userData from "../src/userdata.json";
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Profile from "./pages/Profile/profile";
-// import { AuthContext } from "./context/auth-context";
+
 
 function App() {
   // const { currentUser } = useContext(AuthContext);
+  const AuthenticatedUserId = "00466124";
+
+  function getUserById(Id){
+     return userData.find((user) => user.userId === Id)
+  }
+  const AuthenticatedUser = getUserById(AuthenticatedUserId);
 
   function PrivateRoute({ children }) {
     if (
@@ -38,7 +44,7 @@ function App() {
       path: "/home",
       element: (
         <PrivateRoute>
-          <Home />
+          <Home userData={AuthenticatedUser}/>
         </PrivateRoute>
       ),
     },
@@ -52,17 +58,17 @@ function App() {
     },
     {
       path: "/basket",
-      element: <Basket />,
+      element: <Basket userData={AuthenticatedUser}/>,
     },
     {
       path: "/chat",
-      element: <Chat />,
+      element: <Chat userData={AuthenticatedUser}/>,
     },
     {
       path: "/profile",
       element: (
         <PrivateRoute>
-          <Profile />
+          <Profile userData={AuthenticatedUser}/>
         </PrivateRoute>
       ),
     },

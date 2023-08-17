@@ -70,10 +70,10 @@ const Login = () => {
       <div className="bigcontainer">
         <div className="mainlog">
           <div className="conner">
-            <img
+            {/* <img
               src="https://cdn.modernghana.com/story_/400/250/818201662154_142961407894lancasteruniversityghana.png"
               alt="lancaster"
-            />
+            /> */}
             <h2>Lancaster Fastconnect</h2>
           </div>
           <div className="pageAbout">
@@ -112,7 +112,7 @@ const Login = () => {
               </div>
               <span className="err">{errors.userPassword}</span>
               <div className="form-btn">
-                <button className="btn btn-danger" type="submit">
+                <button className="btn btn-danger" type="submit" onClick={()=>{history("/home")}}>
                   Let's Go!
                 </button>
               </div>

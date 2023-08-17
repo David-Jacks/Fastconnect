@@ -6,7 +6,7 @@ const Comment = () => {
       <div className="comments">
         <div className="comment-head">
           <img src="./assets/rep.jpeg" alt="" />
-          <span>commenter</span>
+          <span>David Jackson</span>
         </div>
         <div className="comment-body">
           <p className="actuallcomment">

@@ -7,15 +7,14 @@ import { GrInstagram } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Topbar = () => {
+const Topbar = ({ userData }) => {
   const [open, setOpen] = useState(false);
-
+  console.log(userData)
   return (
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
           <Link to={"/home"} style={{ textDecoration: "none" }}>
-            <img src="../assets/Logo.jpg" alt="logo" />
             <span className="logo">Lancaster Fastconnect</span>
           </Link>
         </div>
@@ -95,7 +94,7 @@ const Topbar = () => {
           </div>
           <Link to={"/profile"}>
             <img
-              src="/assets/02B00C71-F3B5-46C8-9F15-A768CF2AE1B7.jpeg"
+              src={userData.userProfile}
               alt="profile"
               className="topbarImage"
             />

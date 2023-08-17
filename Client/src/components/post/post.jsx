@@ -12,7 +12,7 @@ import moment from "moment";
 // import { useQuery } from "@tanstack/react-query";
 // import { makeRequest } from "../../myAxios";
 
-const Post = ({ post }) => {
+const Post = ({ post}) => {
   const [likes, setLikes] = useState(0);
   const [secret, setSecret] = useState(0);
   const [show, setShow] = useState(false);
@@ -26,37 +26,36 @@ const Post = ({ post }) => {
 
   return (
     <div>
-      <div className="postdiv">
+      <div id="postdiv">
         <div className="postWrapper">
           <div className="postmain">
             <div className="postabout">
               <div className="f-part">
-                <img src="./assets/final.png" alt="postuserprofile" />
+                <img src={post.userProfile} alt="postuserprofile" />
                 <div className="details">
-                  <Link to={"profilePage"} className="link">
+                  <Link to={"/profile"} className="link">
                     {post.userName && (
                       <span className="name">{post.userName}</span>
                     )}
                   </Link>
                   {post.created_at && (
-                    <span>{moment(post.created_at).fromNow()}</span>
+                    <span>{post.created_at}</span>
                   )}
                 </div>
               </div>
               <FiMoreHorizontal className="close" />
             </div>
-            {post.imgAbout && <p className="about">{post.imgAbout}</p>}
-            {post.vidAbout && <p className="about">{post.vidAbout}</p>}
-            <div className={post.img ? "postcontent" : "vid"}>
+             <p className="about">{post.imgAbout || post.vidAbout}</p>
+            <div className={post.img ? "postimg" : "vid"}>
               {post.img && (
                 <img
-                  src={"./upload/" + post.img}
+                  src={post.img}
                   alt="postimg"
                   className="img-fluid"
                 />
               )}
               {post.vid && (
-                <video src={"./video/" + post.vid} alt="video" controls></video>
+                <video src={post.vid} alt="video" controls></video>
               )}
             </div>
             <div className="reactioncenter">
