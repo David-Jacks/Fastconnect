@@ -131,7 +131,7 @@ const Sidebar = () => {
               <button className="sidebarListItemText">Events</button>
             </li>
           </ul>
-          <button className="sidebarButton">Show Associates</button>
+          <button className="sidebarButton">Associates</button>
           <hr className="sidebarHr" />
         </div>
       </div>

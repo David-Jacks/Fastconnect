@@ -5,7 +5,7 @@ import { useState } from "react";
 import makeRequest from "../../myAxios";
 import axios from "axios";
 
-const Share = () => {
+const Share = ({userData}) => {
   const [open, setOpen] = useState(false);
   const [picopen, setPicopen] = useState(false);
   const [eventopen, setEventopen] = useState(false);
@@ -92,10 +92,10 @@ const Share = () => {
       <div className="shareWrapper">
         <div className="shareTop">
           <img
-            src="/assets/02B00C71-F3B5-46C8-9F15-A768CF2AE1B7.jpeg"
+            src={userData.userProfile}
             alt="profile"
           />
-          <input type="text" placeholder="speak to the whole community" />
+          <input type="text" placeholder="Search post by the users name" />
         </div>
 
         {/* open and close logs */}

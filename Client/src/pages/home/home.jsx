@@ -5,11 +5,13 @@ import Sidebar from "../../components/sidebar/sidebar";
 import Topbar from "../../components/topbar/topbar";
 import "./home.css";
 import { MdTableRows, MdEventAvailable } from "react-icons/md";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-const Home = () => {
+
+
+const Home = ({userData}) => {
   const [on, setOn] = useState(false);
   const [open, setOpen] = useState(false);
 
+  
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 767) {
@@ -28,13 +30,11 @@ const Home = () => {
     };
   }, []);
 
-  //using react query
-  const queryClient = new QueryClient();
 
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <Topbar />
+    
+      <Topbar userData={userData} />
         <div className="control">
           <MdTableRows
             className="left"
@@ -52,10 +52,9 @@ const Home = () => {
         </div>
         <div className="homeContainer">
           {on ? <Sidebar /> : null}
-          <Feed />
+          <Feed userData={userData}/>
           {open ? <Rightbar /> : null}
         </div>
-      </QueryClientProvider>
     </>
   );
 };

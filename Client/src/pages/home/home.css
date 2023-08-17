@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     position: relative;
+    background-color: var(--white);
 }
 .control{
     display: none;

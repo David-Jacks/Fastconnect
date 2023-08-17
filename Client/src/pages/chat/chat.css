@@ -51,16 +51,15 @@
 .flow{
     overflow-y: scroll;
     overflow-x: hidden;
-    border: 1px solid #615a5abf;
+    border-radius: 0.4rem;
     margin: auto;
     width: 60%;
     height: 80dvh;
     padding-bottom: 0.5rem;
-    background-color: #ebebeb;
-    border-radius: 0.2em;
-    box-shadow: 0 0 7px #615a5abf;
-    -webkit-box-shadow: 0 0 7px #615a5abf;
-    -moz-box-shadow: 0 0 7px #615a5abf;
+    background-color: var(--white);
+    box-shadow: 0 0 20px var(--second-color);
+    -webkit-box-shadow: 0 0 20px var(--second-color);
+    -moz-box-shadow: 0 0 20px var(--second-color);
 }
 
 /* responsive chatting */

@@ -3,8 +3,9 @@ import Conversation from "../../components/conversation/conversation";
 import Chatmain from "../../components/chatmain/chatmain";
 import Topbar from "../../components/topbar/topbar";
 import "./chat.css";
+import chatData from "../../userdata.json";
 //wiill remove comment later
-const Chat = () => {
+const Chat = ({userData}) => {
   const [remove, setRemove] = useState(true);
   const [move, setMove] = useState(true);
 
@@ -25,15 +26,17 @@ const Chat = () => {
   }, []);
 
   const toggleChat = () => {
-    setRemove(!remove);
-    setMove(!move);
+    if(window.innerWidth <= 767){
+      setRemove(!remove);
+      setMove(!move);
+    }
   };
 
   return (
     <>
       <div id="chatcontainer">
         <div className="chat-top">
-          <Topbar />
+          <Topbar userData={userData}/>
         </div>
         <div className="chat-content">
           {move ? (
@@ -47,28 +50,11 @@ const Chat = () => {
               </div>
 
               <div className="flow">
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
-                <Conversation click={toggleChat} />
+                {chatData.map((chatData)=> <Conversation key={chatData.userId} chatData={chatData} click={toggleChat} />)}
               </div>
             </div>
           ) : null}
-          {remove ? <Chatmain toggle={toggleChat} /> : null}
+          {remove ? <Chatmain chatData={chatData} click={toggleChat} /> : null}
         </div>
       </div>
     </>

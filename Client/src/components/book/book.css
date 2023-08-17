@@ -1,104 +1,102 @@
 
 .card{
-    width: 19rem;
-    box-shadow: 1px 1px 1px 2px rgba(10, 10, 10, 0.3);
+    margin-left: 1rem;
+    margin-top: 1rem;
+    width: 420px;
+    height: 420px;
+    box-shadow: 0 0 20px var(--second-color);
+    padding: 0.5rem 0rem;
 }
 .card-img-top{
-    max-height: 400px;
+    position: relative;
+    height: 250px;
+    /* max-height: 350px; */
+    /* object-fit: cover; */
+    object-position: center;
+}
+.card-img-top img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card-title{
+    /* border-top: 1px dashed #b5121b; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.card-title span:nth-child(1){
+    font-size: 2rem;
+    font-weight: 700;
+}
+.card-title span:nth-child(2){
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.card-text{
+    border-top: 1px solid var(--black);
+     font-size: 1.2rem;
+     font-weight: 700;
+     line-height: normal;
+     text-align: justify;
 }
 .card-reaction{
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding: 0 0 1.5rem 0;
 }
-.card-title{
-    font-family: 'Roboto Slab', serif; 
-    border-top: 1px dashed #b5121b;
+.card-reaction span{
+    font-weight: 600;
 }
-.card-text{
-    border-top: 1px dashed #b5121b;
-     font-family: 'Roboto Slab', serif;
-     font-size: 13px;
+.imoj{
+    font-size: 1.9rem;
+    cursor: pointer;
+    transition: all .5s ease;
+    color: var(--first-color);
+    margin-right: 5px;
+}
+.imoj:hover{
+ color: var(--black);
+}
+@media (max-width: 487px) {
+    .card{
+        max-width: 420px;
+        min-height: 430px;
+        box-shadow: 0 0 20px var(--second-color);
+        padding: 0.3rem 0rem 1rem 0rem;
+    }
+    .card-reaction{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-end;
+        padding: 0 0 5rem 0;
+    }
+    .card-title{
+    font-size: 1rem;
+    font-weight: 500;
+    }
+    .card-title span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 800;
+    }
+    .card-title span:nth-child(2){
+    font-size: 1rem;
+    font-weight: 600;
+    }
+    .card-text{
+     font-size: 1rem;
+     font-weight: 700;
      line-height: normal;
      text-align: justify;
 }
-.card-title span{
-    font-size: 14px;
-}
-.imoj{
-    font-size: 25px;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-.imoj:hover{
-   transform: scale(1.1);
-}
-.book{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    /* margin: 1px auto; */
-    width: 100%;
-    padding: 8px;
-}
-.topinfo{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 5px;
-}
-.topinfo span{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.bookcontainer img{
-    width: 100%;
-    max-height: 65vh;
-    object-fit: contain;
-}
-.bookcontainer{
-    border: 1px solid #444;
-    height: auto;
-    width: 50%;
-    box-shadow: -11px 10px 23px 5px rgba(0,0,0,0.75);
-    -webkit-box-shadow: -11px 10px 23px 5px rgba(0,0,0,0.75);
-    -moz-box-shadow: -11px 10px 23px 5px rgba(0,0,0,0.75);
-    border-radius: 10px;
-}
-.bookinfo{
-    padding: 7px;
-    display: flex;
-    align-items: center;
-    width: 70%;
-    padding: 7px;
-    margin-top: 15px;
-}
-.bookorder{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%; height: auto;
-    justify-content: space-around;
-    padding: 0; margin: 0;
-    padding-bottom: 3px;
-}
-.like{
-    width: 25px;
-    height: 25px;
-    color: #b5121b;
-}
-.btnorder{
-    background-color: #b5121b;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 3px;
-    color: #ffffff;
-}
-.bookorder span{
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }

@@ -6,7 +6,7 @@ import Topbar from "../../components/topbar/topbar";
 import "./profile.css";
 import { MdTableRows, MdEventAvailable } from "react-icons/md";
 
-function Profile() {
+function Profile({userData}) {
   const [on, setOn] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -29,7 +29,7 @@ function Profile() {
   }, []);
   return (
     <div className="profilecontainer">
-      <Topbar />
+      <Topbar userData={userData}/>
       <div className="control">
         <MdTableRows
           className="left"
@@ -47,7 +47,7 @@ function Profile() {
       </div>
       <div className="profile-wrapper">
         {on ? <Sidebar /> : null}
-        <Person />
+        <Person userData={userData}/>
         {open ? <Rightbar /> : null}
       </div>
     </div>

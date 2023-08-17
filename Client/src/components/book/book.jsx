@@ -1,68 +1,42 @@
 import React from "react";
 import "./book.css";
 import { FcLike } from "react-icons/fc";
+import {AiFillLike, AiFillDislike} from "react-icons/ai";
 
-const Book = () => {
+const Book = ({bookData}) => {
   return (
     //i will remove you later
     <>
       <div class="card">
-        <img src="./assets/final.png" class="card-img-top " alt="" />
+        <div className="card-img-top">
+         <img src={bookData.bookimg}  alt="bookimg" />
+        </div>
         <div class="card-body">
-          <h5 class="card-title">
-            Topic: <span>Algorithms</span>
-          </h5>
-          <h5 class="card-title">
-            Author: <span>David Kweku Jackson</span>
-          </h5>
-          <h5 class="card-title">
-            Year: <span>2023</span>
-          </h5>
+          <div className="card-title">
+            <span>Algorithms</span>
+            <span>{bookData.author}</span>
+            <span>{bookData.year}</span>
+          </div>
           <p class="card-text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            perferendis repellat itaque soluta eum laudantiu, aperiam quas
-            consequuntur, culpa error consequatur nesciunt? Nobis dolor eveniet
-            dolorem maxime rem sint
+          {bookData.about}
           </p>
           <div className="card-reaction">
+            <span>
             <a href="/" class="btn btn-danger">
               Order
             </a>
-            <span className="imoj">👍</span>
-            <span className="imoj">😲</span>
-            <span className="imoj">🥰</span>
+            </span>   
+            <span >
+              <AiFillLike className="imoj"/>
+              {bookData.reactions.like}
+              </span>
+            <span>
+              <AiFillDislike className="imoj"/>
+              {bookData.reactions.hate}
+              </span>
           </div>
         </div>
       </div>
-      {/* <div className="book">
-        <div className="topinfo">
-          <span>
-            <h3>Topic:</h3> Information systems
-          </span>
-          <span>
-            <h3>Year:</h3> 2018
-          </span>
-          <span>
-            <h3>Author:</h3> Steven Larkai
-          </span>
-        </div>
-        <div className="bookcontainer">
-          <div className="bookorder">
-            <button className="btnorder">OrderNow</button>
-            <span>
-              <FcLike className="like" /> 1
-            </span>
-          </div>
-        </div>
-        <div className="bookinfo">
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            perferendis repellat itaque soluta eum laudantiu, aperiam quas
-            consequuntur, culpa error consequatur nesciunt? Nobis dolor eveniet
-            dolorem maxime rem sint
-          </p>
-        </div>
-      </div> */}
     </>
   );
 };

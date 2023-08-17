@@ -1,0 +1,42 @@
+[
+    {
+        "eventName":"Mock Interview",
+        "eventDay":"Thursday",
+        "eventPlace":"M-P hall",
+        "eventPic":"./assets/events/lancaster1.jpg"
+    },
+    {
+        "eventName":"Walk with God",
+        "eventDay":"Friday",
+        "eventPlace":"L-R 3",
+        "eventPic":"./assets/events/lancaster2.jpg"
+    }
+    ,
+    {
+        "eventName":"Project Management",
+        "eventDay":"Tuesday",
+        "eventPlace":"L-R 3",
+        "eventPic":"./assets/events/lancaster3.jpg"
+    }
+    ,
+    {
+        "eventName":"Fellows Program",
+        "eventDay":"Friday",
+        "eventPlace":"L-R 3",
+        "eventPic":"./assets/events/lancaster4.jpg"
+    }
+    ,
+    {
+        "eventName":"Anointed Service",
+        "eventDay":"Monday",
+        "eventPlace":"L-R 3",
+        "eventPic":"./assets/events/lancaster5.jpg"
+    }
+    ,
+    {
+        "eventName":"Mentor Training",
+        "eventDay":"Friday",
+        "eventPlace":"L-S 5",
+        "eventPic":"./assets/events/lancaster6.jpg"
+    }
+]
