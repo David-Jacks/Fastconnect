@@ -1,54 +1,56 @@
-.conversationdisplay {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  margin-left: 1rem;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+
+
+.conversationdisplay{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
-.confirst {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  cursor: pointer;
-  padding: 5px 0px;
+.confirst{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    padding: 5px 0px;
 }
-.confirst > div {
-  position: relative;
-  display: flex;
-  width: fit-content;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  border-radius: 6px;
-  padding: 0.2em;
-  transition: 0.3s ease;
-  padding: 6px 0.3rem;
+.confirst > div{
+    position: relative;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 6px;
+    padding: 0.2em;
+    transition:.3s ease;
+    padding: 6px 0.3rem;
 }
-.confirst > div:hover {
-  background-color: var(--second-color);
+.confirst > div:hover{
+    background-color: var(--second-color);
 }
-.con-f-child {
-  font-size: 19px;
-  font-weight: 500;
-  text-shadow: 1px 0px rgb(160, 154, 154);
+.con-f-child{
+    font-size: 19px;
+    font-weight: 500;
+    text-shadow: 1px 0px rgb(160, 154, 154);
 }
 .confirst img {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
-  border: 1px solid rgb(149, 147, 146);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid rgb(149, 147, 146);
 }
-.con-ident {
-  position: absolute;
-  top: 1px;
-  right: 3px;
-  font-size: 10px;
-  color: var(--first-color);
-  font-weight: bold;
+.con-ident{
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    font-size: 10px;
+    color: var(--first-color);
+    font-weight: bold;
 }

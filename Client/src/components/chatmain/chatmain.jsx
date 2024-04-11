@@ -64,4 +64,3 @@ const Chatmain = ({ click, chatData }) => {
 };
 
 export default Chatmain;
-

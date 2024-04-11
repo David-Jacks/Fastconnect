@@ -61,4 +61,3 @@ const Chat = ({userData}) => {
   );
 };
 export default Chat;
-

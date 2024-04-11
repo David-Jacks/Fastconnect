@@ -18,4 +18,3 @@ const Conversation = ({ click, chatData }) => {
 };
 
 export default Conversation;
-

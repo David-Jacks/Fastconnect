@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Pacifico&family=Roboto+Slab:wght@700&display=swap');
+
+/* font-family: 'Merriweather', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto Slab', serif; */
+*{
+    overflow-y: hidden;
+}
+.bigcontainer{
+    position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/public/assets/lancaster5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    padding: 0.4em;
+}
+.bigcontainer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* dark overlay color */
+  }
+.mainlog{
+    /* position: relative; */
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    min-height: 560px;
+    margin: 1px auto;
+    justify-content: space-between;
+    background: transparent;
+    border-radius: 1.5em;
+    padding: 0.5em;
+    z-index: 50012;
+}
+.conner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 0.6em;    
+}
+.conner h2{
+    font-size: large;
+    text-align: center;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Merriweather', serif;;
+    text-shadow: 1px 1px 1.5px rgb(253, 253, 253);
+}
+
+.conner img{
+    width: 100px;
+    border-radius: .5em;
+    object-fit: contain;
+}
+.pageAbout{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(241, 236, 236);
+}
+
+.welMess{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    font-family: 'Roboto Slab', serif;
+    padding: 5px 0px;
+}
+.welMess span:nth-child(1){
+    font-size: large;
+    font-style: italic;
+}
+.welMess span:nth-child(2){
+    text-shadow: 1px 1px 1.5px;
+    font-size: 24px;
+}
+.welMess span:nth-child(4){
+    font-size: xx-large;
+    font-family: sans-serif;
+}
+.welMess span:nth-child(5){
+    font-family: 'Pacifico', cursive;
+    font-size: larger;
+    letter-spacing: 2px;
+}
+.mystery{
+    font-weight: bold;
+    font-size: 28px;
+    color: rgb(225, 171, 108);
+    letter-spacing: 3px;
+    font-family: 'Roboto Slab', serif;
+}
+.loginform{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3em;
+    align-items: center;
+    transition: all .5s ease;
+    font-family: 'Roboto Slab', serif;
+}
+.loginform form{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 1.5em;
+    transition: all .5s ease;
+    color: white;
+}
+.idinput, .passinput{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.err{
+    width: 55%;
+    color: #fff;
+    padding-left: 2px;
+    font-size: 12px;
+   transform: translateY(-18px);
+   text-align: center;
+   line-height: 12px;
+}
+.loginform input{
+    border: none;
+    width: 100%;
+    color: black;
+    padding-left: 10px;
+}
+.loginform input:focus{
+    outline: none;
+    background: transparent;
+}
+.form-btn{
+    display: flex;
+}
+.fullID::-webkit-outer-spin-button, .fullID::-webkit-inner-spin-button{
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+.login{
+    font-size: xx-large;
+    color: rgb(225, 171, 108);
+    transform: translateY(-15px);
+}
+.signUp{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;  
+    transition: all .5s ease;
+}
+.dropdown{
+    width: max-content;
+    height: auto;
+    display: flex;
+    align-self: center;
+}
+ .drop{
+    color: #ffffff;
+    font-size: 20px;
+    border: 0px solid; 
+    border-radius: 5px;
+    background-color: #b5121b;
+    padding: 5px; 
+    letter-spacing: 1px; 
+    transition: all .5s ease;
+}
+.drop:hover{
+    background-color:rgb(225, 171, 108) ;
+    color: black;
+}
+ .dropcontent{
+    background-color: rgb(177, 20, 28);
+    display: flex; 
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 3px;
+    display: none;
+}
+.newDrop .dropcontent{
+    background-color: rgb(177, 20, 28);
+    display: flex; 
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 6px;
+    border-radius: 3px;
+}
+.studrop, .stadrop{
+    text-decoration: none;
+    color: rgb(184, 202, 24);
+    font-size: 17px;
+    transition: all .5s ease;
+    
+}
+.studrop:hover, .stadrop:hover{
+    background-color: #b5121b;
+    color:rgb(225, 171, 108);
+    transform: scaleX(1.08);
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .bigcontainer{
+        padding: 0;
+    }
+.mainlog{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+
+}
+.conner{
+    display: none;
+    }
+
+.pageAbout{
+    width: 100%;
+    height: auto;
+}
+.loginform{
+    width: 100%;
+    justify-content: space-around;
+    gap: 0;
+}
+.login{
+    font-size: small;
+    transform: translateY(0px);
+}
+
+.mainlog{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    width: 100%;
+}
+.welMess{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto Slab', serif;
+    gap: 0.0rem;
+}
+.welMess span:nth-child(1){
+    font-size: medium;
+    font-style: italic;
+}
+.welMess span:nth-child(2){
+    text-shadow: 1px 1px 1.5px;
+    font-size: 14px;
+    color: #f70713;
+}
+.welMess span:nth-child(3){
+    text-shadow: 0.5px 0.5px 1px;
+    font-size: 12px;
+    text-align: justify;
+}
+.welMess span:nth-child(4){
+    font-size: 15px;
+    font-family: sans-serif;
+}
+.welMess span:nth-child(5){
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
+    line-height: normal;
+    text-align: center;
+}
+.mystery{
+    font-size: medium;
+}
+.btn{
+    font-size: 13px;
+}
+.drop{
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #b5121b;
+    padding: 5px; 
+    letter-spacing: 1px; 
+    transition: all .5s ease;
+}
+.signUp{
+    gap: 6px;
+}
+.signUp span{
+    font-size: 15px;
+}
+.dropcontent{
+    width: 100%;
+}
+.newDrop .dropcontent{
+    background-color: rgb(177, 20, 28);
+    display: flex; 
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3px;
+    align-self: center;
+    border-radius: 3px;
+    width: fit-content;
+}
+}

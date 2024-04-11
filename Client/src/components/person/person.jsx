@@ -75,4 +75,3 @@ function Person({userData}) {
 }
 
 export default Person;
-

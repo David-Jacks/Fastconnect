@@ -272,4 +272,3 @@ const Stulogin = () => {
 };
 
 export default Stulogin;
-
