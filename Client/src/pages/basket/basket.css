@@ -1,11 +1,11 @@
-.basketwrapper{
-    width: 100dvw;
-    height: calc(100dvh - 50px);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    gap: 1.5rem;
-    justify-content: flex-start;
-    padding: 0.6rem 1rem;
+.basketwrapper {
+  width: 100dvw;
+  height: calc(100dvh - 50px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  padding: 0.6rem 1rem;
 }

@@ -36,3 +36,4 @@ const Feed = ({userData}) => {
 };
 
 export default Feed;
+

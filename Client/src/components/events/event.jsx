@@ -24,3 +24,4 @@ const Events = ({eventData}) => {
 };
 
 export default Events;
+
