@@ -1,0 +1,122 @@
+.sidebar {
+  flex: 2;
+  height: calc(100vh - 50px);
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.sidebar-Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1em;
+  margin-left: 0.5em;
+  margin-top: 5rem;
+  width: 100%;
+  height: auto;
+}
+.sidebarList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sidebarListItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  position: relative;
+}
+.sidebarListItem button {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0px 0.4rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: var(--third-color);
+  color: var(--white);
+  transition: 0.4s;
+}
+.sidebarListItem button:hover {
+  background-color: #444;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.sidebarIcon {
+  margin-right: 15px;
+  color: var(--first-color);
+  width: 25px;
+  height: 25px;
+}
+.sidebarButton {
+  width: 10rem;
+  border: none;
+  background-color: var(--first-color);
+  border-radius: 0.4rem;
+  padding: 5px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  align-self: center;
+}
+.sidebarHr {
+  width: 100%;
+  height: 4px;
+  color: #b5121b;
+}
+.sidebarFriendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sidebarFriend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.sidebarFriend img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.course-wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.course-wrapper::after {
+  content: "corses";
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--second-color);
+    z-index: 45454;
+  }
+  .sidebar-Wrapper {
+    gap: 1em;
+    margin: 1em 0em 0em 0.5em;
+  }
+  .sidebarIcon {
+    margin-right: 15px;
+    width: 25px;
+    height: 25px;
+  }
+}
+/* @media (min-width: 487px) {
+    .sidebar{
+        display: block;
+    }
+    
+} */

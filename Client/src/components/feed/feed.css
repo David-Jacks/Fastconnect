@@ -1,0 +1,60 @@
+#feed {
+  flex: 6;
+  padding: 1em;
+  height: calc(100vh - 50px);
+  overflow-y: scroll;
+  position: relative;
+}
+.head-const {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+@keyframes example {
+  0% {
+    left: 0px;
+  }
+  50% {
+    left: 300px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+.head-const h1 {
+  font-size: 20px;
+  position: relative;
+  font-weight: 800;
+  letter-spacing: 1px;
+  animation-name: example;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+/* .my-feed{
+    height: auto;
+} */
+.feedWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+@media (max-width: 480px) {
+  #feed {
+    padding: 0;
+  }
+  @keyframes example {
+    0% {
+      left: 0px;
+    }
+    50% {
+      left: 20%;
+    }
+    100% {
+      left: 0px;
+    }
+  }
+}

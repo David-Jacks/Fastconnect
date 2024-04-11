@@ -1,0 +1,44 @@
+[
+    {
+        "userId":"00466120",
+        "userName":"David Jackson",
+        "userProfile": "./assets/profile6.JPG",
+        "userCover":"./assets/profile3.jpeg",
+        "userEmail": ""
+    },
+    {
+        "userId":"00466121",
+        "userName":"Isaac Amfoh",
+        "userProfile": "./assets/profile2.jpeg",
+        "userCover":"./assets/profile1.jpg",
+        "userEmail": ""
+    },
+    {
+        "userId":"00466122",
+        "userName":"Abigail Ofori",
+        "userProfile": "./assets/profile3.jpeg",
+        "userCover":"./assets/profile4.jpeg",
+        "userEmail": ""
+    },
+    {
+        "userId":"00466123",
+        "userName":"Steven Lakai",
+        "userProfile": "./assets/profile4.jpeg",
+        "userCover":"./assets/profile5.jpg",
+        "userEmail": ""
+    },
+    {
+        "userId":"00466124",
+        "userName":"Nokplin Nornor",
+        "userProfile": "./assets/profile5.jpg",
+        "userCover":"./assets/profile6.JPG",
+        "userEmail": ""
+    },
+    {
+        "userId":"00466125",
+        "userName":"Hafford Mensah",
+        "userProfile": "./assets/profile1.jpg",
+        "userCover":"./assets/profile2.jpeg",
+        "userEmail": ""
+    }
+]
