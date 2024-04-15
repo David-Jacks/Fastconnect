@@ -1,18 +1,21 @@
-import React from "react";
-import { useState, useContext } from "react";
+import { React, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./stulogin.css";
 import axios from "axios";
 import { AuthContext } from "../../context/auth-context";
+import { auth } from "../../config/firebase";
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import { usersDataEntity } from "../../db_entities";
+import {addDoc} from "firebase/firestore"
 
 const Stulogin = () => {
   const { login } = useContext(AuthContext);
+  // const usersData = collection(db, "Users");
   const history = useNavigate();
   //i will have to change the state fnctions later
   const [errors, setErrors] = useState({});
   const [isAccurate, setisAccurate] = useState(false);
   const [user, setUserValues] = useState({
-    userid: "",
     firstName: "",
     lastName: "",
     userPassword: "",
@@ -20,7 +23,6 @@ const Stulogin = () => {
     userEmail: "",
     userDOB: "",
     programme: "",
-    userGender: "",
     stulevel: "",
   });
 
@@ -32,12 +34,10 @@ const Stulogin = () => {
   const userName = user.firstName + " " + user.lastName;
 
   const formData = {
-    userid: user.userid,
     userName,
     userPassword: user.userPassword,
     userEmail: user.userEmail,
     userDOB: user.userDOB,
-    userGender: user.userGender,
     stulevel: user.stulevel,
     programme: user.programme,
   };
@@ -53,10 +53,6 @@ const Stulogin = () => {
           ? "password should have a special character, lowercase, number,  uppercase, and be between 7 and 21 charcters"
           : "";
         !passwordRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
-        break;
-      case "userid":
-        errorsCopy.userid = !idRegex.test(value) ? "Invalid ID" : "";
-        !idRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
       case "passconfirm":
         errorsCopy.passconfirm =
@@ -83,7 +79,7 @@ const Stulogin = () => {
       await axios
         .post("/api/auth/addstu", formData)
         .then((res) => {
-          LoginUser();
+          signInUser();
           history("/home");
         })
         .catch((err) => {
@@ -94,14 +90,20 @@ const Stulogin = () => {
     }
   };
 
-  const { userid, userPassword } = user;
-  const inputs = { userid, userPassword };
-
-  const LoginUser = async () => {
+  // destructing the user object
+  // const {userEmail, userPassword} = user;
+  // const input = {userEmail, userPassword};
+  const signInUser = async (e) => {
+    e.preventDefault();
     try {
-      await login(inputs);
+      await createUserWithEmailAndPassword(auth, formData.userEmail, formData.userPassword).then((res)=>{
+        console.log(res);
+        history("/home");
+      })
+      const response = isAccurate ? await addDoc(usersDataEntity, formData): "";
+      console.log(response)
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
@@ -110,30 +112,17 @@ const Stulogin = () => {
       <div className="studentlog">
         <div className="stuWrapper">
           <h3>REGISTER</h3>
-          <form className="stuloginfill" autoComplete="off">
-            <div className="error-contain">
-              <div className="div">
-                <input
-                  name="userid"
-                  type="number"
-                  placeholder=" "
-                  className="stuidinput"
-                  onChange={handleChange}
-                  // required
-                />
-                <label htmlFor="student-id">Input ID</label>
-              </div>
-              <span>{errors.userid}</span>
-            </div>
+          <form className="stuloginfill" onSubmit={signInUser}>
             <div className="first-part">
               <div className="error-contain">
                 <div className="div">
                   <input
                     name="firstName"
-                    placeholder=" "
+                    placeholder=""
                     type="text"
                     className="fnameinput"
                     onChange={handleChange}
+                    required
                   />
                   <label htmlFor="student-fn"> Firstname</label>
                 </div>
@@ -143,10 +132,11 @@ const Stulogin = () => {
                 <div className="div">
                   <input
                     name="lastName"
-                    placeholder=" "
+                    placeholder=""
                     type="text"
                     className="lnameinput"
                     onChange={handleChange}
+                    required
                   />
                   <label htmlFor="student-ln">Lastname</label>
                 </div>
@@ -162,7 +152,7 @@ const Stulogin = () => {
                     type="password"
                     className="stupass"
                     onChange={handleChange}
-                    // required
+                    required
                   />
                   <label htmlFor="student-pass">Password</label>
                 </div>
@@ -176,7 +166,7 @@ const Stulogin = () => {
                     type="password"
                     className="stupasscon"
                     onChange={handleChange}
-                    // required
+                    required
                   />
                   <label htmlFor="stu-pass-con">Confirm Password</label>
                 </div>
@@ -192,9 +182,9 @@ const Stulogin = () => {
                     type="email"
                     className="mail"
                     onChange={handleChange}
-                    // required
+                    required
                   />
-                  <label htmlFor="stu-email">Input Email</label>
+                  <label htmlFor="stu-email">Email</label>
                 </div>
                 <span>{errors.userEmail}</span>
               </div>
@@ -241,13 +231,6 @@ const Stulogin = () => {
                 </select>
               </div>
               <div className="other-div">
-                <select name="userGender" id="stugen" onChange={handleChange}>
-                  <option value="Male">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-              <div className="other-div">
                 <select
                   name="stulevel"
                   id="levelselect"
@@ -261,7 +244,7 @@ const Stulogin = () => {
                 </select>
               </div>
             </div>
-            <button id="stuformsubmit" onClick={()=>{history("/home")}}>
+            <button id="stuformsubmit" type="submit" >
               Join_Community
             </button>
           </form>

@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./person.css";
+import {useNavigate} from "react-router-dom"
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import axios from "axios";
+import { auth } from "../../config/firebase";
+import {signOut} from "firebase/auth";
+import { usersDataEntity } from "../../db_entities";
+import {getDoc} from "firebase/firestore";
 
 function Person({userData}) {
-  const handleLogout = async () => {
-    axios
-      .post("api/auth/logout")
-      .then((res) => {
-        if (res) {
-          localStorage.removeItem("user");
-          window.location.reload(true);
+  
+  const navigate = useNavigate();
+  
+
+  useEffect(()=>{
+    const getProfileData = async () =>{
+        try {
+          const profileData = await getDoc(usersDataEntity, auth.currentUser.uid)
+          console.log(profileData)
+        } catch (err) {
+          console.error(err)
         }
+    }
+
+    getProfileData();
+
+  })
+
+  const handleLogout = async () => {
+   await signOut(auth).then((res) => {
+        // if (res) {
+          // localStorage.removeItem("user");
+          // window.location.reload(true);
+        navigate("/");
+        // }
       })
       .catch((err) => {
         console.log(err);
@@ -46,7 +68,7 @@ function Person({userData}) {
               <span className="person-name">{userData.userName}</span>
               <div className="abt">
                 <span>Studying</span>
-                <span>Computer Science</span>
+                {/* <span>{profileData}</span> */}
                 <span>Level</span>
                 <span>Foundation</span>
               </div>

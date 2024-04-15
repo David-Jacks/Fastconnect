@@ -3,7 +3,6 @@ import "./App.css";
 import Home from "./pages/home/home.jsx";
 import Login from "./pages/login/login.jsx";
 import Stulogin from "./components/studentlogin/stulogin.jsx";
-import Stalogin from "./components/stafflogin/stalogin.jsx";
 import Basket from "./pages/basket/basket.jsx";
 import Chat from "./pages/chat/chat.jsx";
 import Profile from "./pages/Profile/profile";
@@ -51,10 +50,6 @@ function App() {
     {
       path: "/stulogin",
       element: <Stulogin />,
-    },
-    {
-      path: "/stalogin",
-      element: <Stalogin />,
     },
     {
       path: "/basket",

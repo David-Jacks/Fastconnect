@@ -3,23 +3,25 @@ import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../../context/auth-context";
+import { auth, googleAuth } from "../../config/firebase";
+import {signInWithEmailAndPassword, signInWithPopup} from "firebase/auth"
 
 const Login = () => {
   const { login } = useContext(AuthContext);
 
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [isAccurate, setisAccurate] = useState(false);
   const [change, setChange] = useState(false);
   const [user, setUserValues] = useState({
-    userid: "",
+    userEmail: "",
     userPassword: "",
   });
   const passwordRegex =
     /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-  const idRegex = /^\d{8}$/;
-  const { userid, userPassword } = user;
-  const inputs = { userid, userPassword };
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const { userEmail, userPassword } = user;
+  const inputs = { userEmail, userPassword };
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -32,9 +34,9 @@ const Login = () => {
           : "";
         !passwordRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
-      case "userid":
-        errors.userid = !idRegex.test(value) ? "Invalid ID" : "";
-        !idRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
+      case "userEmail":
+        errors.userEmail = !emailRegex.test(value) ? "Invalid email" : "";
+        !emailRegex.test(value) ? setisAccurate(false) : setisAccurate(true);
         break;
       default:
         break;
@@ -43,96 +45,82 @@ const Login = () => {
   const HandleLogin = async (e) => {
     e.preventDefault();
     if (isAccurate) {
-      await login(inputs)
+      await signInWithEmailAndPassword(auth, user.userEmail, user.userPassword)
         .then((res) => {
-          history("/home");
+          console.log(res);
+          navigate("/home");
         })
         .catch((err) => {
           console.log(err);
         });
     }
   };
-
-  useEffect(() => {
-    let newClass = document.querySelector(".dropdown");
-    let drop = document.querySelector(".drop");
-    if (change) {
-      newClass.classList.add("newDrop");
-      drop.innerHTML = "Close";
-    } else {
-      drop.innerHTML = "Sign-up";
-      newClass.classList.remove("newDrop");
-    }
-  }, [change]);
-
+  const googleSignIn = async() =>{
+      await signInWithPopup(auth, googleAuth).then((res) =>{
+        navigate("/home");
+      }).catch((err) =>{
+        console.log(err);
+      })
+  }
   return (
     <>
       <div className="bigcontainer">
         <div className="mainlog">
-          <div className="conner">
-            {/* <img
-              src="https://cdn.modernghana.com/story_/400/250/818201662154_142961407894lancasteruniversityghana.png"
-              alt="lancaster"
-            /> */}
-            <h2>Lancaster Fastconnect</h2>
-          </div>
+          
           <div className="pageAbout">
             <div className="welMess">
-              <span>Welcome to the</span>
-              <span>Lancaster University Intranet media</span>
+              <span>Welcome to </span>
+              <span>LANCASTER FASTCONNECT</span>
               <span>Effective for Communication and Management </span>
-              <span>&&</span>
               <span>
-                Where all the <b className="mystery">Mystery Lies</b>
+                Where all the Mystery Lies
               </span>
             </div>
           </div>
           <div className="loginform">
             <form onSubmit={HandleLogin}>
-              <span className="login">Log-In</span>
+              <span className="login">Log In</span>
 
               <div className="idinput">
                 <input
-                  name="userid"
-                  type="number"
+                  name="userEmail"
+                  type="email"
                   className="fullID"
-                  placeholder="Input ID!"
+                  placeholder="Email"
                   onChange={handleChange}
                 />
               </div>
-              <span className="err">{errors.userid}</span>
+              <span className="err">{errors.userEmail}</span>
               <div className="passinput">
                 <input
                   name="userPassword"
                   type="password"
-                  placeholder="Input passcode!"
+                  placeholder="Password"
                   className="fullID"
                   onChange={handleChange}
                 />
               </div>
               <span className="err">{errors.userPassword}</span>
               <div className="form-btn">
-                <button className="btn btn-danger" type="submit" onClick={()=>{history("/home")}}>
+                <button className="btn btn-danger" type="submit" >
                   Let's Go!
                 </button>
               </div>
             </form>
             <div className="signUp">
-              <div>
-                <span>First time to Lancaster Fastconnect? </span>
-                <button className="drop" onClick={() => setChange(!change)}>
-                  Sign-up
-                </button>
-              </div>
               <div className="dropdown">
-                <div className="dropcontent">
+                <Link to={"/stulogin"}>create account</Link> or sign up with <Link onClick={googleSignIn} >
+                    google account
+                  </Link>
+                {/* <div className="dropcontent">
+
                   <Link to={"/stulogin"} className="studrop">
                     as a Student
                   </Link>
                   <Link to={"/stalogin"} className="stadrop">
                     as a Staff
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
