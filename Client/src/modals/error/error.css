@@ -1,0 +1,31 @@
+#error_modal {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--third-color);
+}
+
+#error_modal .err_mess {
+  width: 50vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-color);
+  color: var(--black);
+  font-family: var(--Montserrat);
+  font-weight: 500;
+}
+#error_modal .err_mess .err_btn {
+  outline: none;
+  border: none;
+  border-radius: 0.2rem;
+  background: var(--first-color);
+  padding: 0.3rem 1rem;
+  font-family: var(--roboto);
+  color: var(--white);
+}

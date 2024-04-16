@@ -1,88 +1,81 @@
 import React from "react";
 import "./share.css";
 import { useState } from "react";
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
-import makeRequest from "../../myAxios";
-import axios from "axios";
+import Posting from "../../modals/posting/posting";
+import { storage } from "../../config/firebase";
+import {ref, uploadBytes} from "firebase/storage"
 
 const Share = ({userData}) => {
   const [open, setOpen] = useState(false);
   const [picopen, setPicopen] = useState(false);
   const [eventopen, setEventopen] = useState(false);
-  const [vidAbout, setvidAbout] = useState("");
-  const [vid, setvid] = useState(null);
-  const [eventAbout, seteventAbout] = useState("");
-  const [event, setevent] = useState(null);
-  const [imgAbout, setimgAbout] = useState("");
-  const [img, setimg] = useState(null);
+  
+  const [fileAbout, setFileAbout] = useState("");
+  const [fileUpload, setFileUpload] = useState(null);
 
   //dealing with image post
   // const queryClient = useQueryClient(); //will use to refresh post automatically
+  
+  // taking file from child modal component "Posting"
+  const recieveObj = async(objToRec) =>{
+    await setFileAbout(objToRec.about);
+    await setFileUpload(objToRec.file);
+    console.log(fileUpload);
 
-  //route to send images to server
-
-  const upload = async (file) => {
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await makeRequest.post("/post/upload", formData);
-      return res.data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const handleImage = async (data) => {
-    await axios
-      .post("api/post/post", data)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const imageData = { imgAbout, img };
-
-  const imagePost = async () => {
-    if (imgAbout === "") {
-      console.log("please write something");
-    } else {
-      let imgUrl = "";
-      if (img) {
-        imgUrl = await upload(img);
+    // if (fileUpload.type.includes("image")){
+    //   handleImgFileUpload();
+    // }else if(fileUpload.type.includes("video")){
+    //   handleVidFileUpload();
+    // }
+  }
+  //uploading image files to firebase storage
+  const handleImgFileUpload = async() =>{
+    // setFileAbout(objToRec.about);
+    // setFileUpload(objToRec.file);
+    // console.log(fileUpload);
+    
+    // firebase storage referencing
+    if (fileUpload){
+      const imgFile = ref(storage, `imageFiles/${fileUpload?.name}`);
+      try {
+        await uploadBytes(imgFile, fileUpload);
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
       }
-      imageData.img = imgUrl;
-      handleImage(imageData);
+    }else{
+      console.log("image file is not added yet");
     }
   };
 
-  //dealing with video post
-
-  const handleVidRoute = async (vidData) => {
-    await axios
-      .post("/api/vidpost/vid", vidData)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  const vidData = { vidAbout, vid };
-
-  const vidPost = async () => {
-    if (vidAbout === "") {
-      console.log("please write something abt your video");
-    } else {
-      let vidURL = "";
-      if (vid) {
-        vidURL = await upload(vid);
+  // upoading video files to firebase
+  const handleVidFileUpload = async() =>{
+    // setFileAbout(objToRec.about);
+    // setFileUpload(objToRec.file);
+    // console.log(fileUpload);
+    
+    // firebase storage referencing
+    if(fileUpload){
+      const vidFile = ref(storage, `videoFiles/${fileUpload?.name}`);
+      try {
+        await uploadBytes(vidFile, fileUpload);
+        window.location.reload();
+      } catch (error) {
+        console.error(error);
       }
-      vidData.vid = vidURL;
-      handleVidRoute(vidData);
+    }else{
+      console.log("the video file is not added yet")
     }
   };
+
+
+  // toggling posting modal
+  const togglePostingVid = () =>{
+    setOpen(!open);
+  }
+  const togglePostingImg = () =>{
+    setPicopen(!picopen);
+  }
   //dealing with event post
 
   function eventPost() {}
@@ -100,42 +93,9 @@ const Share = ({userData}) => {
 
         {/* open and close logs */}
 
-        {open ? (
-          <div className="port-contain">
-            <div className="add">
-              <h3>Happy Posting</h3>
-              <textarea
-                name="video-text"
-                id="aboutVideo"
-                cols="13"
-                rows="3"
-                placeholder="Brief the vidoe to be posted..."
-                onChange={(e) => {
-                  setvidAbout(e.target.value);
-                }}
-              ></textarea>
-              <div className="file-taker">
-                <input
-                  name="vid"
-                  type="file"
-                  className="vidupload"
-                  onChange={(e) => {
-                    setvid(e.target.files[0]);
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    vidPost();
-                    setOpen(false);
-                  }}
-                >
-                  upload video
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
-        {eventopen ? (
+        {open ? (<Posting upload={recieveObj} type={"video"} close={togglePostingVid}/>) : null}
+        {picopen ? (<Posting upload={recieveObj} type={"image"} close={togglePostingImg}/>) : null}
+       {eventopen ? (
           <div className="port-contain">
             <div className="add">
               <h3>Happy Posting</h3>
@@ -146,7 +106,7 @@ const Share = ({userData}) => {
                 rows="3"
                 placeholder="Brief the event to be posted..."
                 onChange={(e) => {
-                  seteventAbout(e.target.value);
+                  // seteventAbout(e.target.value);
                 }}
               ></textarea>
               <div className="file-taker">
@@ -155,7 +115,7 @@ const Share = ({userData}) => {
                   type="file"
                   className="eventupload"
                   onChange={(e) => {
-                    setevent(e.target.files[0]);
+                    // setevent(e.target.files[0]);
                   }}
                 />
                 <button
@@ -168,47 +128,11 @@ const Share = ({userData}) => {
                 </button>
               </div>
             </div>
-          </div>
-        ) : null}
+          </div>) : null}
         {/* dealing with images  and other vital data*/}
-        {picopen ? (
-          <div className="port-contain">
-            <div className="add">
-              <h3>Happy Posting</h3>
-              <textarea
-                name="image-text"
-                id="aboutImg"
-                cols="13"
-                rows="3"
-                placeholder="Brief the image to be posted..."
-                onChange={(e) => {
-                  setimgAbout(e.target.value);
-                }}
-              ></textarea>
-              <div className="file-taker">
-                <input
-                  name="file"
-                  type="file"
-                  className="imageupload"
-                  accept="image/*"
-                  onChange={(e) => {
-                    setimg(e.target.files[0]);
-                  }}
-                />
-                <button
-                  onClick={() => {
-                    imagePost();
-                    setPicopen(false);
-                  }}
-                >
-                  upload image
-                </button>
-              </div>
-            </div>
-          </div>
-        ) : null}
+        
 
-        {/* buttons to control open and close logs */}
+        {/* buttons to control open and close modals */}
 
         <div className="shareBottom">
           <button

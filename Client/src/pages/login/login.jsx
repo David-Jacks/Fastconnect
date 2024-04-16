@@ -1,13 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { AuthContext } from "../../context/auth-context";
 import { auth, googleAuth } from "../../config/firebase";
 import {signInWithEmailAndPassword, signInWithPopup} from "firebase/auth"
+import Error from "../../modals/error/error";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
@@ -20,8 +19,7 @@ const Login = () => {
   const passwordRegex =
     /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const { userEmail, userPassword } = user;
-  const inputs = { userEmail, userPassword };
+
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -42,6 +40,7 @@ const Login = () => {
         break;
     }
   }
+  // loging in with email and password
   const HandleLogin = async (e) => {
     e.preventDefault();
     if (isAccurate) {
@@ -51,19 +50,26 @@ const Login = () => {
           navigate("/home");
         })
         .catch((err) => {
+          setChange(true);
           console.log(err);
         });
     }
   };
+  // signing in with google accnt
   const googleSignIn = async() =>{
       await signInWithPopup(auth, googleAuth).then((res) =>{
         navigate("/home");
       }).catch((err) =>{
+        setChange(true);
         console.log(err);
       })
   }
-  return (
-    <>
+  // toggling error modal
+  const toggleError = () =>{
+    setChange(!change)
+  }
+  return (!change
+    ? <>
       <div className="bigcontainer">
         <div className="mainlog">
           
@@ -126,7 +132,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </> : <Error mess={"User not found"} toggleErr={toggleError}/>
   );
 };
 

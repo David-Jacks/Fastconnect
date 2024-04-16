@@ -1,19 +1,18 @@
-import { React, useState, useContext } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./stulogin.css";
-import axios from "axios";
-import { AuthContext } from "../../context/auth-context";
 import { auth } from "../../config/firebase";
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import { usersDataEntity } from "../../db_entities";
 import {addDoc} from "firebase/firestore"
+import Error from "../../modals/error/error";
 
 const Stulogin = () => {
-  const { login } = useContext(AuthContext);
   // const usersData = collection(db, "Users");
   const history = useNavigate();
   //i will have to change the state fnctions later
   const [errors, setErrors] = useState({});
+  const [err, setErr] = useState(false)
   const [isAccurate, setisAccurate] = useState(false);
   const [user, setUserValues] = useState({
     firstName: "",
@@ -28,7 +27,6 @@ const Stulogin = () => {
 
   const passwordRegex =
     /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
-  const idRegex = /^\d{8}$/;
   const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   const userName = user.firstName + " " + user.lastName;
@@ -42,6 +40,7 @@ const Stulogin = () => {
     programme: user.programme,
   };
 
+  // taking input values from input fields using thier name and value props
   function handleChange(e) {
     const { name, value } = e.target;
     setUserValues({ ...user, [name]: value });
@@ -71,43 +70,29 @@ const Stulogin = () => {
     }
     setErrors(errorsCopy);
   }
-
-  console.log(isAccurate);
-  const sendFormData = async (e) => {
-    e.preventDefault();
-    if (isAccurate) {
-      await axios
-        .post("/api/auth/addstu", formData)
-        .then((res) => {
-          signInUser();
+  //toggle the error modal
+  const errorMessage = "User already signed up please check email";
+  const toggleErr = () =>{
+    setErr(!err);
+  }
+  // registering a new user when called
+  const signInUser = async (e) => {
+    e.preventDefault();//prevent empty fields in the form
+    if(isAccurate){
+      try {
+        await createUserWithEmailAndPassword(auth, formData.userEmail, formData.userPassword).then((res)=>{
+          console.log(res);
           history("/home");
         })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      console.log("invalid form data");
-    }
+        await addDoc(usersDataEntity, formData)
+      } catch (err) {
+        setErr(true);
+        // console.error(err);
+      } 
+      }
   };
-
-  // destructing the user object
-  // const {userEmail, userPassword} = user;
-  // const input = {userEmail, userPassword};
-  const signInUser = async (e) => {
-    e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(auth, formData.userEmail, formData.userPassword).then((res)=>{
-        console.log(res);
-        history("/home");
-      })
-      const response = isAccurate ? await addDoc(usersDataEntity, formData): "";
-      console.log(response)
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  return (
+  
+  return (!err ?
     <>
       <div className="studentlog">
         <div className="stuWrapper">
@@ -250,8 +235,9 @@ const Stulogin = () => {
           </form>
         </div>
       </div>
-    </>
+    </> : <Error mess={errorMessage} toggleErr={toggleErr}/>
   );
+  // return(<Error mess={errorMessage} toggleErr={toggleErr}/>);
 };
 
 export default Stulogin;
