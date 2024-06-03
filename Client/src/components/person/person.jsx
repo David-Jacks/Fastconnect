@@ -3,7 +3,6 @@ import "./person.css";
 import {useNavigate} from "react-router-dom"
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
-import axios from "axios";
 import { auth } from "../../config/firebase";
 import {signOut} from "firebase/auth";
 import { usersDataEntity } from "../../db_entities";

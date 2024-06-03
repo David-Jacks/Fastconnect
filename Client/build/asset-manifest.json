@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.12f756f2.css",
+    "main.js": "/static/js/main.6eb8bb7b.js",
+    "static/media/lancaster5.jpg": "/static/media/lancaster5.6a4c0074efcd57e545f5.jpg",
+    "index.html": "/index.html",
+    "main.12f756f2.css.map": "/static/css/main.12f756f2.css.map",
+    "main.6eb8bb7b.js.map": "/static/js/main.6eb8bb7b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12f756f2.css",
+    "static/js/main.6eb8bb7b.js"
+  ]
+}

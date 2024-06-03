@@ -8,9 +8,7 @@ import { useState } from "react";
 import Commentbox from "../commentbox/commentbox";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import moment from "moment";
-// import { useQuery } from "@tanstack/react-query";
-// import { makeRequest } from "../../myAxios";
+// import moment from "moment";
 
 const Post = ({ post}) => {
   const [likes, setLikes] = useState(0);
@@ -55,7 +53,7 @@ const Post = ({ post}) => {
                 />
               )}
               {post.vid && (
-                <video src={post.vid} alt="video" controls></video>
+                <video src={post.img} alt="video" controls></video>
               )}
             </div>
             <div className="reactioncenter">

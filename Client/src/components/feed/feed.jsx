@@ -1,25 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Post from "../post/post";
 import Share from "../share/share";
 import "./feed.css";
-import postData from "../../post.json";
-// import { useQuery } from "@tanstack/react-query";
-// import makeRequest from "../../myAxios";
+import { getDocs } from "firebase/firestore";
+import { userPostCollection } from "../../db_entities";
+
+
 
 const Feed = ({userData}) => {
-  //making use of react query
 
-  // this is to use the react query library to fetch my image and video post and sort it depending on the time they were posted
-  // const { isLoading, error, data } = useQuery(["post", "video"], () => {
-  //   return Promise.all([
-  //     makeRequest.get("/post").then((res) => res.data),
-  //     makeRequest.get("/vidpost").then((res) => res.data),
-  //   ]).then(([posts, videos]) => {
-  //     let combinedPost = [...posts, ...videos];
-  //     return combinedPost;
-  //   });
-  // });
-
+  const [postData, setPostData] = useState([]) 
+  // getting feed data from firebase and redering on the feed page
+  // getting post data everytime the page loads
+  useEffect(()=>{
+    async function getPostData(){
+      try {
+        const postDocs = await getDocs(userPostCollection);
+        const feedData = postDocs.docs.map((doc)=>{
+          const data = doc.data();
+          return {...data, id: doc.id}
+        })
+        console.log(feedData);
+        setPostData(feedData);
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    getPostData()
+  },[])
+  console.log(postData);
   return (
     <>
       <div id="feed">
@@ -28,7 +37,9 @@ const Feed = ({userData}) => {
           </div>
           <Share userData={userData}/>
         <div className="feedWrapper">
-          {postData.map((postData) => <Post key={postData.id} post={postData} />)}
+          {postData.length > 0 ? postData.map((postData) => (
+            <Post key={postData.id} post={postData} />
+          )): <p>Feed is loading please wait...</p>}
         </div>
       </div>
     </>

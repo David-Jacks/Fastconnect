@@ -1,7 +1,7 @@
 * {
   font-family: var(--Montserrat);
 }
-#port-contain {
+#port_contain {
   position: absolute;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   justify-content: center;
   z-index: 56456;
 }
-#port-contain .add {
+#port_contain .add {
   position: relative;
   width: 80%;
   height: 80%;
@@ -30,7 +30,7 @@
   padding: 1rem;
   /* margin-top: -10px; */
 }
-#port-contain .add textarea {
+#port_contain .add textarea {
   width: 100%;
   resize: none;
   outline: none;
@@ -42,14 +42,14 @@
   border-top: none;
   margin-top: -6rem;
 }
-#port-contain .add h3 {
+#port_contain .add h3 {
   color: var(--white);
   font-weight: 500;
   font-size: 3rem;
   letter-spacing: 4px;
   margin-top: -2rem;
 }
-#port-contain .add .close {
+#port_contain .add .close {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -59,19 +59,19 @@
   padding: 0.1rem 0.6rem;
   font-weight: bold;
 }
-#port-contain .file-taker {
+#port_contain .file-taker {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
-#port-contain .file-taker input {
+#port_contain .file-taker input {
   border: none;
   outline: none;
   border-radius: 0.3em;
   color: var(--white);
   font-size: 15px;
 }
-#port-contain .file-taker button {
+#port_contain .file-taker button {
   border: none;
   outline: none;
   border-radius: 0.1rem;
