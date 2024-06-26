@@ -20,7 +20,7 @@ const Feed = ({userData}) => {
           const data = doc.data();
           return {...data, id: doc.id}
         })
-        console.log(feedData);
+    
         setPostData(feedData);
       } catch (error) {
         console.error(error)
